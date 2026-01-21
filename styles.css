@@ -1,81 +1,94 @@
-/* SAFETY: if something overrides, these prevent gigantic svg/img */
-.brand__mark svg{ width:36px; height:36px; display:block; }
-.portrait img{ max-width:100%; height:auto; display:block; }
+/* =========================
+   HERO (Dr. Zachary Rose)
+   ========================= */
+.hero--zachary{
+  /* πιο “sunflower / warm human” */
+  --accent: #e0b04a;      /* warm sunflower */
+  --accent-2: #7faea0;    /* soft green (ήδη ταιριάζει) */
+  --accent-3: #e8c2b2;    /* warm blush */
+}
 
-/* NAV */
-.heroNav{
+.hero--zachary .eyebrow{
+  color: rgba(224,176,74,.98);
+}
+
+/* Mini brand row inside hero */
+.hero-brand{
   display:flex;
   align-items:center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  padding: 14px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,.70);
-  box-shadow: 0 12px 28px rgba(31,29,26,.06);
-  margin-bottom: 26px;
+  gap: 12px;
+  margin: 0 0 14px;
 }
 
-.heroNav__links{
+.hero-logo{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(222,211,196,.95);
+  background: rgba(255,255,255,.72);
+  box-shadow:
+    0 12px 28px rgba(31,29,26,.08),
+    inset 0 1px 0 rgba(255,255,255,.70);
+  display:grid;
+  place-items:center;
+  flex: 0 0 auto;
+  overflow:hidden;
+}
+
+.hero-logo svg{
+  width: 34px;
+  height: 34px;
+  display:block;
+}
+
+.hero-brand-text{
   display:flex;
-  align-items:center;
-  gap: 14px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  line-height: 1.15;
 }
 
-.navLink{
-  text-decoration:none;
-  color: rgba(31,29,26,.78);
-  font-weight: 730;
-  font-size: 13px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  transition: background .2s ease, border-color .2s ease, transform .18s ease;
+.hero-brand-name{
+  font-family: var(--font-serif);
+  font-weight: 760;
+  letter-spacing: .2px;
+  color: rgba(31,29,26,.95);
 }
 
-.navLink:hover{
-  background: rgba(255,255,255,.82);
-  border-color: rgba(215,162,79,.45);
-  transform: translateY(-1px);
+.hero-brand-sub{
+  font-size: 12.5px;
+  color: rgba(31,29,26,.72);
+  margin-top: 3px;
 }
 
-.navCta{
-  text-decoration:none;
-  color: #2a1c0d;
-  background: rgba(215,162,79,1);
-  border: 1px solid rgba(215,162,79,.55);
-  box-shadow: 0 14px 34px rgba(215,162,79,.20);
-  font-weight: 820;
-  letter-spacing: .1px;
-  padding: 11px 14px;
-  border-radius: 999px;
-  transition: transform .18s ease;
+/* 3:4 photo */
+.hero--zachary .hero-photo{
+  height: auto;                 /* override το fixed height */
+  aspect-ratio: 3 / 4;          /* ζητούμενο */
 }
 
-.navCta:hover{ transform: translateY(-2px); }
-
-/* Smaller portrait */
-.portrait--small{
-  max-width: 420px;
-  margin-left: auto;
+.hero--zachary .hero-photo img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Align right card bottom with left side content on desktop */
-@media (min-width: 900px){
-  .hero__grid{ align-items: stretch; }
-  .hero__visual{
-    height: 100%;
-    display:flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-  .infoCard{ margin-top: auto; }
+/* Make the right column feel more “portrait-first” */
+.hero--zachary .hero-visual{
+  width: min(520px, 100%);
 }
 
-/* Mobile nav cleanup */
-@media (max-width: 520px){
-  .heroNav__links{ display:none; }
-  .heroNav{ border-radius: 22px; padding: 12px 12px; }
+/* Slightly warmer CTAs */
+.hero--zachary .btn--primary{
+  background: rgba(224,176,74,.96);
+  border-color: rgba(224,176,74,.62);
+  box-shadow: 0 14px 34px rgba(224,176,74,.22);
+  color: #231c12;
+}
+.hero--zachary .btn--primary:hover{
+  background: rgba(224,176,74,1);
+}
+
+/* Optional: make pills a touch cleaner */
+.hero--zachary .pill{
+  background: rgba(255,255,255,.78);
 }
