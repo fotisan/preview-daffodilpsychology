@@ -131,6 +131,7 @@ a:focus-visible, button:focus-visible{
 }
 
 /* Buttons (also avoids any seam line by keeping borders clean) */
+/* Buttons (refined to match the bright sunflower palette) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -141,44 +142,73 @@ a:focus-visible, button:focus-visible{
   font-weight: 680;
   font-size: 14px;
 
-  border: 0;
+  border: 1px solid transparent;
   background-clip: padding-box;
   overflow: hidden;
   transform: translateZ(0);
   isolation: isolate;
 
-  transition: transform .12s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
+  transition: transform .12s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease, color .18s ease;
   will-change: transform;
 }
 .btn:active{ transform: translateY(1px); }
 
+/* Primary: cream base + subtle sunflower glow (not a loud gradient) */
 .btn-primary{
-  background: linear-gradient(135deg, rgba(255,212,91,1), rgba(242,169,59,1));
-  color: #141008;
-  box-shadow: 0 14px 32px rgba(242,169,59,.24);
+  background: rgba(255,255,255,.78);
+  border-color: rgba(20,16,8,.14);
+  color: rgba(20,16,8,.92);
+  box-shadow:
+    0 14px 32px rgba(20,16,8,.10),
+    0 10px 30px rgba(255,212,91,.16);
 }
-.btn-primary:hover{ box-shadow: 0 18px 42px rgba(242,169,59,.30); }
+.btn-primary:hover{
+  background: rgba(255,255,255,.88);
+  border-color: rgba(242,169,59,.28);
+  box-shadow:
+    0 18px 42px rgba(20,16,8,.12),
+    0 14px 40px rgba(242,169,59,.18);
+}
 
+/* Alt primary: same style, slightly warmer tint for “Call now” */
 .btn-primary-alt{
-  background: linear-gradient(135deg, rgba(242,169,59,1), rgba(184,116,18,1));
-  color: #141008;
-  box-shadow: 0 14px 32px rgba(184,116,18,.22);
+  background: rgba(255,244,218,.92); /* warm cream */
+  border-color: rgba(242,169,59,.26);
+  color: rgba(20,16,8,.92);
+  box-shadow:
+    0 14px 32px rgba(20,16,8,.10),
+    0 10px 30px rgba(242,169,59,.16);
 }
-.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(184,116,18,.28); }
+.btn-primary-alt:hover{
+  background: rgba(255,239,203,.96);
+  border-color: rgba(184,116,18,.22);
+  box-shadow:
+    0 18px 42px rgba(20,16,8,.12),
+    0 14px 40px rgba(184,116,18,.14);
+}
 
+/* Secondary: quiet */
 .btn-secondary{
-  background: rgba(255,255,255,.70);
-  border: 1px solid rgba(20,16,8,.12);
+  background: rgba(255,255,255,.64);
+  border-color: rgba(20,16,8,.12);
   color: rgba(20,16,8,.90);
 }
-.btn-secondary:hover{ background: rgba(255,255,255,.85); }
+.btn-secondary:hover{
+  background: rgba(255,255,255,.78);
+  border-color: rgba(20,16,8,.14);
+}
 
+/* Ghost: minimal */
 .btn-ghost{
   background: rgba(255,255,255,.30);
-  border: 1px solid rgba(20,16,8,.12);
-  color: rgba(20,16,8,.86);
+  border-color: rgba(20,16,8,.14);
+  color: rgba(20,16,8,.84);
 }
-.btn-ghost:hover{ background: rgba(255,255,255,.55); }
+.btn-ghost:hover{
+  background: rgba(255,255,255,.50);
+  border-color: rgba(20,16,8,.16);
+}
+
 
 .nav-toggle{
   display:none;
@@ -538,3 +568,4 @@ a:focus-visible, button:focus-visible{
 body.menu-open{
   overflow:hidden;
 }
+
