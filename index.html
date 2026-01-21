@@ -1,135 +1,159 @@
-<section class="hero" id="top" aria-label="Hero">
-  <div class="container">
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <div class="hero-topbar" aria-label="Top bar">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="brand-mark" aria-hidden="true">
-          <!-- Sunflower mark (inline SVG) -->
-          <svg viewBox="0 0 64 64" role="img" aria-label="Sunflower">
-            <defs>
-              <radialGradient id="sf-core" cx="35%" cy="35%" r="70%">
-                <stop offset="0%" stop-color="#fff2c6"/>
-                <stop offset="55%" stop-color="#f2c14b"/>
-                <stop offset="100%" stop-color="#c77b1c"/>
-              </radialGradient>
-            </defs>
+  <title>Dr. Zachary Rose | Autism Evaluations & Therapy | Merrick, NY</title>
+  <meta name="description" content="Full or partial autism evaluations for any age with ADOS-2. Therapy for all ages, including young kids. Merrick, NY." />
 
-            <!-- petals -->
-            <g fill="#f2c14b">
-              <path d="M32 4c3 6 3 10 0 16c-3-6-3-10 0-16z"/>
-              <path d="M32 60c-3-6-3-10 0-16c3 6 3 10 0 16z"/>
-              <path d="M4 32c6-3 10-3 16 0c-6 3-10 3-16 0z"/>
-              <path d="M60 32c-6 3-10 3-16 0c6-3 10-3 16 0z"/>
-              <path d="M12 12c6 2 9 5 12 12c-7-3-10-6-12-12z"/>
-              <path d="M52 52c-6-2-9-5-12-12c7 3 10 6 12 12z"/>
-              <path d="M52 12c-2 6-5 9-12 12c3-7 6-10 12-12z"/>
-              <path d="M12 52c2-6 5-9 12-12c-3 7-6 10-12 12z"/>
-            </g>
+  <style>
+    /* Tiny critical reset (keeps CLS low and makes it feel premium fast) */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+  </style>
 
-            <!-- core -->
-            <circle cx="32" cy="32" r="14" fill="url(#sf-core)"/>
-            <circle cx="32" cy="32" r="8" fill="#7a4a17" opacity=".35"/>
-          </svg>
-        </span>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 
-        <span class="brand-text">
-          <span class="brand-name">Dr. Zachary Rose</span>
-          <span class="brand-sub">Psychological Services · Merrick, NY</span>
-        </span>
-      </a>
+<body>
+  <!-- HERO ONLY -->
+  <section class="hero" aria-label="Hero">
+    <div class="container">
 
-      <nav class="hero-nav" aria-label="Quick links">
-        <a class="hero-nav-link" href="#evaluations">Evaluations</a>
-        <a class="hero-nav-link" href="#therapy">Therapy</a>
-        <a class="hero-nav-link hero-nav-link--cta" href="#contact">Contact</a>
-      </nav>
-    </div>
+      <!-- top bar (still part of hero, for “site continuity”) -->
+      <div class="hero-top">
+        <a class="brand" href="#" aria-label="Home">
+          <span class="brand-mark" aria-hidden="true">
+            <!-- Sunflower SVG (no image asset) -->
+            <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+              <defs>
+                <radialGradient id="sunCore" cx="40%" cy="35%" r="70%">
+                  <stop offset="0%" stop-color="#F6D36A"/>
+                  <stop offset="65%" stop-color="#E2A94A"/>
+                  <stop offset="100%" stop-color="#B7782E"/>
+                </radialGradient>
+              </defs>
 
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow">Autism evaluations with ADOS-2 · All ages</p>
+              <!-- petals -->
+              <g fill="#F2B24D" opacity="0.95">
+                <path d="M32 5c4 6 4 11 0 16c-4-5-4-10 0-16z"/>
+                <path d="M32 43c4 5 4 10 0 16c-4-6-4-11 0-16z"/>
+                <path d="M5 32c6-4 11-4 16 0c-5 4-10 4-16 0z"/>
+                <path d="M43 32c5-4 10-4 16 0c-6 4-11 4-16 0z"/>
 
-        <h1 class="h1">
-          Clear answers, practical next steps, and support that feels human.
-        </h1>
+                <path d="M12 12c7 2 10 6 11 12c-6-1-10-4-12-11z"/>
+                <path d="M52 52c-7-2-10-6-11-12c6 1 10 4 12 11z"/>
+                <path d="M12 52c2-7 6-10 12-11c-1 6-4 10-11 12z"/>
+                <path d="M52 12c-2 7-6 10-12 11c1-6 4-10 11-12z"/>
+              </g>
 
-        <p class="lead">
-          Dr. Rose offers <strong>FULL or PARTIAL Autism Evaluations</strong> for any age (including ADOS-2),
-          plus <strong>therapy for children, adolescents, and adults</strong>.
-          You’ll leave with clarity, a plan, and a path forward.
-        </p>
+              <!-- core -->
+              <circle cx="32" cy="32" r="14" fill="url(#sunCore)"/>
+              <circle cx="32" cy="32" r="9" fill="#6B3E1E" opacity="0.35"/>
+            </svg>
+          </span>
 
-        <div class="hero-cta" id="contact">
-          <a class="btn btn--primary" href="tel:+15162345005" aria-label="Call or text +1 516-234-5005">
-            Call / Text
-            <span class="btn-meta">(516) 234-5005</span>
-          </a>
-          <a class="btn btn--outline" href="mailto:dr.zacharyrose1@gmail.com">
-            Email
-            <span class="btn-meta">dr.zacharyrose1@gmail.com</span>
-          </a>
+          <span class="brand-text">
+            <span class="brand-name">Dr. Zachary Rose</span>
+            <span class="brand-sub">Merrick, New York</span>
+          </span>
+        </a>
+
+        <div class="top-actions">
+          <a class="btn btn--outline" href="mailto:dr.zacharyrose1@gmail.com">Email</a>
+          <a class="btn btn--primary" href="tel:+15162345005">Call or Text</a>
+        </div>
+      </div>
+
+      <div class="hero-grid">
+        <!-- copy -->
+        <div class="hero-copy">
+          <p class="micro">Autism evaluations and therapy in Merrick, NY</p>
+
+          <h1 class="h1">
+            Clear answers, compassionate care, and a plan you can trust.
+          </h1>
+
+          <p class="lead">
+            Full or partial autism evaluations for any age, including ADOS-2. Therapy for all ages, including young kids.
+            You get clarity first, then the right next step.
+          </p>
+
+          <div class="cta-row" aria-label="Primary actions">
+            <a class="btn btn--primary" href="tel:+15162345005">Schedule an evaluation</a>
+            <a class="btn btn--soft" href="mailto:dr.zacharyrose1@gmail.com">Ask a quick question</a>
+          </div>
+
+          <div class="trust" aria-label="Trust points">
+            <div class="trust-item"><span class="dot" aria-hidden="true"></span> Family friendly</div>
+            <div class="trust-item"><span class="dot dot--mint" aria-hidden="true"></span> Any age evaluations</div>
+            <div class="trust-item"><span class="dot dot--rose" aria-hidden="true"></span> Clear guidance</div>
+          </div>
+
+          <div class="info-card" aria-label="Contact details">
+            <div class="info-row">
+              <span class="info-label">Office</span>
+              <span class="info-value">1955 Merrick Road, Suite 205A, Merrick, NY</span>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Phone</span>
+              <a class="info-link" href="tel:+15162345005">+1 (516) 234-5005</a>
+            </div>
+
+            <div class="info-row">
+              <span class="info-label">Email</span>
+              <a class="info-link" href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
+            </div>
+          </div>
         </div>
 
-        <div class="trust-row" aria-label="Trust indicators">
-          <div class="trust"><span class="dot"></span> Evidence-informed care</div>
-          <div class="trust"><span class="dot dot--soft"></span> Warm, clear communication</div>
-          <div class="trust"><span class="dot"></span> All ages welcome</div>
-        </div>
+        <!-- visual -->
+        <div class="hero-visual" aria-label="Doctor photo">
+          <figure class="photo-frame">
+            <!-- 3:4 ratio + fixed dimensions to avoid layout shift -->
+            <img
+              src="dr-zachary-rose.png"
+              alt="Dr. Zachary Rose"
+              width="900"
+              height="1200"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
 
-        <div class="hero-mini">
-          <div class="hero-mini-card">
-            <strong>Services at a glance</strong>
-            <ul>
-              <li>Full or Partial Autism Evaluations (ADOS-2)</li>
-              <li>Therapy for kids, teens, and adults</li>
-              <li>Support for families and parents</li>
-            </ul>
+          <div class="side-card" aria-label="Quick services">
+            <div class="side-card__top">
+              <span class="pill">ADOS-2</span>
+              <span class="pill">Any age</span>
+              <span class="pill">Therapy for kids</span>
+            </div>
+
+            <div class="side-card__body">
+              <div class="metric">
+                <span class="metric-label">Evaluations</span>
+                <span class="metric-value">Full or partial autism evaluations</span>
+              </div>
+              <div class="metric">
+                <span class="metric-label">Therapy</span>
+                <span class="metric-value">All ages, including young kids</span>
+              </div>
+            </div>
+
+            <div class="side-card__bottom">
+              <a class="btn btn--soft btn--block" href="tel:+15162345005">Call or text now</a>
+              <a class="btn btn--outline btn--block" href="mailto:dr.zacharyrose1@gmail.com">Send an email</a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="hero-visual" aria-label="Photo and details">
-        <figure class="hero-photo">
-          <img
-            src="dr-zachary-rose.png"
-            alt="Dr. Zachary Rose"
-            width="900"
-            height="1200"
-            decoding="async"
-            loading="eager"
-          />
-        </figure>
-
-        <div class="visual-card">
-          <div class="visual-card-top">
-            <span class="pill">1955 Merrick Road, Suite 205A</span>
-            <span class="pill">Merrick, NY</span>
-          </div>
-
-          <div class="visual-card-mid">
-            <div class="metric" id="evaluations">
-              <span class="metric-label">Evaluations</span>
-              <span class="metric-value">Full or Partial · Any age</span>
-            </div>
-            <div class="metric" id="therapy">
-              <span class="metric-label">Therapy</span>
-              <span class="metric-value">Children · Adolescents · Adults</span>
-            </div>
-          </div>
-
-          <div class="visual-card-bottom">
-            <div class="badge">
-              <span class="badge-icon" aria-hidden="true">✓</span>
-              <span class="badge-text">If you’re unsure what you need, reach out and we’ll choose the right starting point together.</span>
-            </div>
-            <div class="badge">
-              <span class="badge-icon" aria-hidden="true">✓</span>
-              <span class="badge-text">Clear expectations, respectful process, and a plan you can actually use.</span>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-
-  </div>
-</section>
+  </section>
+</body>
+</html>
