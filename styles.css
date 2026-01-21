@@ -1,19 +1,19 @@
-/* styles.css */
+/* styles.css (BRIGHTER sunflower theme) */
 :root{
-  /* Sunflower palette (matches the logo tones) */
-  --bg: #0c0a07;      /* deep warm charcoal */
-  --bg2:#141008;      /* warm deep brown */
+  /* Brighter, light-cream base + sunflower accents */
+  --bg: #fff7e6;        /* warm cream */
+  --bg2:#fff1cf;        /* soft sunflower tint */
 
-  --text: rgba(255,255,255,.92);
-  --muted: rgba(255,255,255,.72);
+  --text: rgba(20,16,8,.92);     /* warm near-black */
+  --muted: rgba(20,16,8,.68);
 
-  --accent:  #ffcf55; /* petals - bright yellow */
-  --accent2: #e6a52f; /* petals - golden */
-  --warm:    #b87412; /* center - amber */
+  --accent:  #ffd45b;   /* petals - bright yellow */
+  --accent2: #f2a93b;   /* petals - golden */
+  --warm:    #b87412;   /* center - amber */
 
-  --ring: 0 0 0 4px rgba(255,207,85,.22);
-  --shadow: 0 18px 55px rgba(0,0,0,.50);
-  --shadow2: 0 12px 30px rgba(0,0,0,.36);
+  --ring: 0 0 0 4px rgba(255,212,91,.30);
+  --shadow: 0 18px 55px rgba(20,16,8,.16);
+  --shadow2: 0 12px 30px rgba(20,16,8,.12);
 
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -29,9 +29,9 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
   background:
-    radial-gradient(900px 520px at 14% 0%, rgba(255,207,85,.20), transparent 60%),
-    radial-gradient(900px 520px at 88% 14%, rgba(230,165,47,.18), transparent 56%),
-    radial-gradient(740px 420px at 56% 112%, rgba(184,116,18,.16), transparent 60%),
+    radial-gradient(900px 520px at 14% 0%, rgba(255,212,91,.38), transparent 60%),
+    radial-gradient(900px 520px at 88% 14%, rgba(242,169,59,.26), transparent 56%),
+    radial-gradient(740px 420px at 56% 112%, rgba(184,116,18,.18), transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   min-height:100vh;
   overflow-x:hidden;
@@ -55,7 +55,8 @@ a:focus-visible, button:focus-visible{
   top: 12px;
   padding: 10px 12px;
   border-radius: 12px;
-  background: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(20,16,8,.10);
 }
 .skip:focus{ left: 12px; z-index: 9999; }
 
@@ -65,8 +66,8 @@ a:focus-visible, button:focus-visible{
   z-index: 60;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  background: rgba(12,10,7,.66);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  background: rgba(255,247,230,.72);
+  border-bottom: 1px solid rgba(20,16,8,.10);
 }
 
 .header-inner{
@@ -85,24 +86,24 @@ a:focus-visible, button:focus-visible{
 
 /* Inline SVG logo container */
 .brand-mark{
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 14px;
   display:grid;
   place-items:center;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
+  box-shadow: 0 10px 26px rgba(20,16,8,.12);
   overflow:hidden;
 }
 .brand-flower{
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   display:block;
 }
 
 .brand-text{ display:flex; flex-direction:column; line-height:1.05; }
-.brand-name{ font-weight: 700; letter-spacing: .2px; }
+.brand-name{ font-weight: 740; letter-spacing: .2px; }
 .brand-sub{ font-size: 12px; color: var(--muted); margin-top: 3px; }
 
 .nav{
@@ -113,14 +114,14 @@ a:focus-visible, button:focus-visible{
 }
 .nav-link{
   font-size: 14px;
-  color: rgba(255,255,255,.78);
+  color: rgba(20,16,8,.78);
   padding: 10px 10px;
   border-radius: 12px;
   transition: background .18s ease, color .18s ease;
 }
 .nav-link:hover{
-  background: rgba(255,255,255,.08);
-  color: rgba(255,255,255,.92);
+  background: rgba(20,16,8,.06);
+  color: rgba(20,16,8,.92);
 }
 
 .header-cta{
@@ -129,7 +130,7 @@ a:focus-visible, button:focus-visible{
   align-items:center;
 }
 
-/* Buttons (also fixes the tiny left seam line issue) */
+/* Buttons (also avoids any seam line by keeping borders clean) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -137,7 +138,7 @@ a:focus-visible, button:focus-visible{
   gap: 10px;
   padding: 11px 14px;
   border-radius: 14px;
-  font-weight: 650;
+  font-weight: 680;
   font-size: 14px;
 
   border: 0;
@@ -152,32 +153,32 @@ a:focus-visible, button:focus-visible{
 .btn:active{ transform: translateY(1px); }
 
 .btn-primary{
-  background: linear-gradient(135deg, rgba(255,207,85,1), rgba(230,165,47,1));
+  background: linear-gradient(135deg, rgba(255,212,91,1), rgba(242,169,59,1));
   color: #141008;
-  box-shadow: 0 14px 32px rgba(255,207,85,.16);
+  box-shadow: 0 14px 32px rgba(242,169,59,.24);
 }
-.btn-primary:hover{ box-shadow: 0 18px 42px rgba(255,207,85,.22); }
+.btn-primary:hover{ box-shadow: 0 18px 42px rgba(242,169,59,.30); }
 
 .btn-primary-alt{
-  background: linear-gradient(135deg, rgba(230,165,47,1), rgba(184,116,18,1));
+  background: linear-gradient(135deg, rgba(242,169,59,1), rgba(184,116,18,1));
   color: #141008;
-  box-shadow: 0 14px 32px rgba(230,165,47,.16);
+  box-shadow: 0 14px 32px rgba(184,116,18,.22);
 }
-.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(230,165,47,.22); }
+.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(184,116,18,.28); }
 
 .btn-secondary{
-  background: rgba(255,255,255,.10);
-  border: 1px solid rgba(255,255,255,.14);
-  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.12);
+  color: rgba(20,16,8,.90);
 }
-.btn-secondary:hover{ background: rgba(255,255,255,.14); }
+.btn-secondary:hover{ background: rgba(255,255,255,.85); }
 
 .btn-ghost{
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.16);
-  color: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.30);
+  border: 1px solid rgba(20,16,8,.12);
+  color: rgba(20,16,8,.86);
 }
-.btn-ghost:hover{ background: rgba(255,255,255,.08); }
+.btn-ghost:hover{ background: rgba(255,255,255,.55); }
 
 .nav-toggle{
   display:none;
@@ -185,22 +186,22 @@ a:focus-visible, button:focus-visible{
   width: 44px;
   height: 44px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.16);
-  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(20,16,8,.14);
+  background: rgba(255,255,255,.55);
   cursor:pointer;
 }
 .nav-toggle span{
   display:block;
   width: 18px;
   height: 2px;
-  background: rgba(255,255,255,.86);
+  background: rgba(20,16,8,.86);
   margin: 4px auto;
   border-radius: 999px;
 }
 
 .mobile-panel{
-  border-top: 1px solid rgba(255,255,255,.08);
-  background: rgba(12,10,7,.80);
+  border-top: 1px solid rgba(20,16,8,.10);
+  background: rgba(255,247,230,.88);
 }
 .mobile-links{
   padding: 14px 0 18px;
@@ -210,9 +211,9 @@ a:focus-visible, button:focus-visible{
 .mobile-link{
   padding: 12px 12px;
   border-radius: 14px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
+  color: rgba(20,16,8,.88);
 }
 .mobile-cta{
   display:grid;
@@ -238,9 +239,9 @@ a:focus-visible, button:focus-visible{
 .microline{
   display:inline-block;
   font-size: 13px;
-  color: rgba(255,255,255,.80);
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(20,16,8,.74);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
   padding: 8px 12px;
   border-radius: 999px;
   margin: 0 0 14px;
@@ -281,9 +282,9 @@ a:focus-visible, button:focus-visible{
   gap: 10px;
   padding: 10px 12px;
   border-radius: 999px;
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
-  color: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
+  color: rgba(20,16,8,.84);
   font-size: 13px;
 }
 .trust-pill .dot{
@@ -291,7 +292,7 @@ a:focus-visible, button:focus-visible{
   height: 9px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  box-shadow: 0 0 0 4px rgba(255,207,85,.16);
+  box-shadow: 0 0 0 4px rgba(255,212,91,.26);
 }
 
 .hero-meta{
@@ -304,29 +305,30 @@ a:focus-visible, button:focus-visible{
 .meta-card{
   padding: 14px 14px;
   border-radius: var(--radius-md);
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
+  box-shadow: 0 10px 26px rgba(20,16,8,.07);
 }
 .meta-label{
   display:block;
   font-size: 12px;
-  color: rgba(255,255,255,.66);
+  color: rgba(20,16,8,.62);
   margin-bottom: 6px;
 }
 .meta-value{
   display:block;
   font-size: 14px;
-  color: rgba(255,255,255,.90);
+  color: rgba(20,16,8,.92);
 }
 .inline-link{
-  color: rgba(255,255,255,.92);
+  color: rgba(20,16,8,.92);
   text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,.22);
+  text-decoration-color: rgba(20,16,8,.22);
   text-underline-offset: 3px;
 }
 .sep{
   margin: 0 8px;
-  color: rgba(255,255,255,.40);
+  color: rgba(20,16,8,.35);
 }
 
 .hero-visual{
@@ -341,8 +343,8 @@ a:focus-visible, button:focus-visible{
   gap: 14px;
   padding: 12px 12px;
   border-radius: var(--radius-lg);
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.72);
+  border: 1px solid rgba(20,16,8,.10);
   box-shadow: var(--shadow2);
   margin: 0 0 12px;
 }
@@ -351,8 +353,8 @@ a:focus-visible, button:focus-visible{
   aspect-ratio: 1 / 1;
   border-radius: 18px;
   overflow:hidden;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(0,0,0,.18);
+  border: 1px solid rgba(20,16,8,.10);
+  background: rgba(0,0,0,.06);
   flex: 0 0 78px;
 }
 .profile-media img{
@@ -362,21 +364,21 @@ a:focus-visible, button:focus-visible{
   display:block;
 }
 .profile-name{
-  font-weight: 760;
+  font-weight: 780;
   letter-spacing: .2px;
   line-height: 1.15;
 }
 .profile-note{
   margin-top: 4px;
   font-size: 13px;
-  color: rgba(255,255,255,.70);
+  color: rgba(20,16,8,.62);
 }
 
 .visual-card{
   position: relative;
   border-radius: var(--radius-lg);
-  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-  border: 1px solid rgba(255,255,255,.12);
+  background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.64));
+  border: 1px solid rgba(20,16,8,.10);
   box-shadow: var(--shadow);
   padding: 18px;
   overflow:hidden;
@@ -387,11 +389,11 @@ a:focus-visible, button:focus-visible{
   position:absolute;
   inset: -2px;
   background:
-    radial-gradient(600px 220px at 20% 0%, rgba(255,207,85,.22), transparent 60%),
-    radial-gradient(540px 280px at 86% 18%, rgba(230,165,47,.20), transparent 55%),
-    radial-gradient(540px 340px at 60% 120%, rgba(184,116,18,.16), transparent 60%);
+    radial-gradient(600px 240px at 20% 0%, rgba(255,212,91,.28), transparent 62%),
+    radial-gradient(540px 300px at 86% 18%, rgba(242,169,59,.22), transparent 58%),
+    radial-gradient(540px 340px at 60% 120%, rgba(184,116,18,.14), transparent 60%);
   pointer-events:none;
-  filter: blur(6px);
+  filter: blur(8px);
   opacity: .85;
 }
 .visual-card > *{ position: relative; }
@@ -408,23 +410,23 @@ a:focus-visible, button:focus-visible{
   align-items:center;
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(255,207,85,.14);
-  border: 1px solid rgba(255,207,85,.26);
-  color: rgba(255,255,255,.92);
+  background: rgba(255,212,91,.24);
+  border: 1px solid rgba(255,212,91,.40);
+  color: rgba(20,16,8,.92);
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 720;
 }
 .chip-soft{
-  background: rgba(230,165,47,.12);
-  border-color: rgba(230,165,47,.22);
+  background: rgba(242,169,59,.18);
+  border-color: rgba(242,169,59,.34);
 }
 
 .visual-title{
   font-size: 16px;
-  font-weight: 760;
+  font-weight: 780;
   letter-spacing: .2px;
   margin: 4px 0 12px;
-  color: rgba(255,255,255,.92);
+  color: rgba(20,16,8,.92);
 }
 
 .visual-list{
@@ -439,9 +441,9 @@ a:focus-visible, button:focus-visible{
   align-items:flex-start;
   padding: 12px 12px;
   border-radius: var(--radius-md);
-  background: rgba(0,0,0,.16);
-  border: 1px solid rgba(255,255,255,.08);
-  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.68);
+  border: 1px solid rgba(20,16,8,.10);
+  color: rgba(20,16,8,.86);
   font-size: 14px;
   line-height: 1.35;
 }
@@ -453,7 +455,7 @@ a:focus-visible, button:focus-visible{
   margin-top: 3px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   flex: 0 0 12px;
-  box-shadow: 0 0 0 4px rgba(255,207,85,.12);
+  box-shadow: 0 0 0 4px rgba(255,212,91,.22);
 }
 
 .visual-cta{
@@ -463,21 +465,21 @@ a:focus-visible, button:focus-visible{
   gap: 14px;
   padding: 12px 12px;
   border-radius: var(--radius-md);
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(20,16,8,.10);
 }
 
 .mini-label{
   display:block;
   font-size: 12px;
-  color: rgba(255,255,255,.66);
+  color: rgba(20,16,8,.62);
   margin-bottom: 4px;
 }
 .mini-value{
   display:block;
   font-size: 14px;
-  font-weight: 720;
-  color: rgba(255,255,255,.92);
+  font-weight: 760;
+  color: rgba(20,16,8,.92);
 }
 
 .pulse{
@@ -485,31 +487,31 @@ a:focus-visible, button:focus-visible{
   height: 12px;
   border-radius: 999px;
   background: var(--accent2);
-  box-shadow: 0 0 0 0 rgba(230,165,47,.40);
+  box-shadow: 0 0 0 0 rgba(242,169,59,.40);
   animation: pulse 2.4s infinite;
 }
 @keyframes pulse{
-  0%{ box-shadow: 0 0 0 0 rgba(230,165,47,.35); }
-  60%{ box-shadow: 0 0 0 12px rgba(230,165,47,0); }
-  100%{ box-shadow: 0 0 0 0 rgba(230,165,47,0); }
+  0%{ box-shadow: 0 0 0 0 rgba(242,169,59,.35); }
+  60%{ box-shadow: 0 0 0 12px rgba(242,169,59,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(242,169,59,0); }
 }
 
 .orb{
   position:absolute;
   border-radius: 999px;
   filter: blur(18px);
-  opacity: .75;
+  opacity: .70;
   pointer-events:none;
 }
 .orb-1{
   width: 180px; height: 180px;
   left: -40px; top: 40px;
-  background: rgba(255,207,85,.22);
+  background: rgba(255,212,91,.26);
 }
 .orb-2{
   width: 220px; height: 220px;
   right: -60px; top: 120px;
-  background: rgba(230,165,47,.20);
+  background: rgba(242,169,59,.22);
 }
 .orb-3{
   width: 220px; height: 220px;
