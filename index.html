@@ -1,514 +1,165 @@
-/* styles.css */
-:root{
-  --bg: #fbf6ee;
-  --bg-2: #fffaf3;
-  --ink: #1c1a16;
-
-  --muted: rgba(28,26,22,.84);
-  --muted-2: rgba(28,26,22,.74);
-
-  --card: rgba(255,255,255,.78);
-  --stroke: rgba(28,26,22,.14);
-
-  --sun-1: #ffd36b;
-  --sun-2: #ffb23e;
-  --sun-3: #ff8d2b;
-
-  --seed: #3a2b1f;
-  --seed-2: #2f241b;
-  --seed-3: #1f1812;
-
-  --accent: #d86a2a;
-  --accent-2: #b8521f;
-
-  --shadow: 0 18px 55px rgba(18,14,10,.12);
-  --shadow-2: 0 10px 26px rgba(18,14,10,.10);
-
-  --r-lg: 26px;
-  --r-md: 18px;
-
-  --max: 1160px;
-
-  --fz-1: clamp(2.05rem, 3.35vw, 3.15rem);
-  --fz-2: clamp(1.05rem, 1.2vw, 1.14rem);
-
-  --lh: 1.22;
-}
-
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  color: var(--ink);
-
-  background:
-    radial-gradient(900px 520px at 18% 10%, rgba(255,179,62,.20), transparent 56%),
-    radial-gradient(720px 520px at 86% 18%, rgba(216,106,42,.16), transparent 60%),
-    linear-gradient(180deg, var(--bg), var(--bg-2));
-  background-attachment: fixed;
-}
-
-a{ color:inherit; text-decoration:none; }
-
-a:focus-visible,
-button:focus-visible{
-  outline: 3px solid rgba(216,106,42,.92);
-  outline-offset: 4px;
-  border-radius: 12px;
-}
-
-.container{
-  width: min(var(--max), calc(100% - 40px));
-  margin-inline: auto;
-}
-
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  background: rgba(251,246,238,.80);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(28,26,22,.10);
-}
-
-.topbar__inner{
-  position: relative;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 14px;
-  padding: 14px 0;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  min-width: 230px;
-}
-
-.brand__mark{
-  width: 44px;
-  height: 44px;
-  display:grid;
-  place-items:center;
-  border-radius: 16px;
-  background: rgba(255,255,255,.62);
-  border: 1px solid rgba(28,26,22,.12);
-  box-shadow: 0 8px 20px rgba(18,14,10,.08);
-}
-.brand__mark svg{ width: 36px; height: 36px; display:block; }
-
-.brand__text{
-  display:flex;
-  flex-direction:column;
-  line-height: 1.1;
-}
-.brand__name{
-  font-weight: 720;
-  letter-spacing: -0.01em;
-}
-.brand__sub{
-  font-size: .92rem;
-  color: var(--muted-2);
-  margin-top: 2px;
-}
-
-/* Hamburger (mobile) */
-.nav-toggle{
-  position: absolute;
-  inset: 0;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.hamburger{
-  width: 44px;
-  height: 44px;
-  border-radius: 14px;
-  border: 1px solid rgba(28,26,22,.12);
-  background: rgba(255,255,255,.62);
-  box-shadow: 0 10px 22px rgba(18,14,10,.08);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  flex: 0 0 auto;
-}
-.hamburger span{
-  display:block;
-  width: 18px;
-  height: 2px;
-  background: rgba(28,26,22,.78);
-  border-radius: 2px;
-  margin: 2.5px 0;
-}
-
-/* Menu */
-.menu{
-  display:none;
-  position:absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  right: 0;
-  padding: 10px;
-  border-radius: 18px;
-  border: 1px solid rgba(28,26,22,.10);
-  background: rgba(255,255,255,.72);
-  box-shadow: var(--shadow-2);
-  backdrop-filter: blur(14px);
-  gap: 8px;
-  z-index: 60;
-}
-
-.menu__link{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  font-size: .96rem;
-  color: rgba(28,26,22,.82);
-  padding: 12px 12px;
-  border-radius: 14px;
-  transition: background .18s ease, color .18s ease, transform .18s ease;
-}
-.menu__link:hover{
-  background: rgba(255,255,255,.78);
-  color: rgba(28,26,22,.94);
-}
-
-.menu__link--cta{
-  background: linear-gradient(135deg, rgba(216,106,42,.95), rgba(184,82,31,.95));
-  color: #fff;
-}
-.menu__link--cta:hover{
-  background: linear-gradient(135deg, rgba(216,106,42,1), rgba(184,82,31,1));
-  transform: translateY(-1px);
-}
-
-/* Toggle open (CSS-only) */
-#nav-toggle:checked ~ .menu{
-  display:grid;
-}
-
-/* HERO */
-.hero{
-  padding: clamp(28px, 4vw, 56px) 0 clamp(34px, 5vw, 74px);
-}
-
-.hero__grid{
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 26px;
-  align-items:center;
-}
-
-.hero__copy{ padding-top: 10px; }
-
-.microline{
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
-  margin: 0 0 14px;
-  font-size: .95rem;
-  color: var(--muted);
-}
-.microline::before{
-  content:"";
-  width: 12px;
-  height: 12px;
-  border-radius: 4px;
-  background: radial-gradient(circle at 35% 30%, var(--sun-1), var(--sun-3));
-  box-shadow: 0 0 0 5px rgba(255,179,62,.20);
-}
-
-h1{
-  margin: 0 0 12px;
-  font-size: var(--fz-1);
-  line-height: var(--lh);
-  letter-spacing: -0.03em;
-}
-
-.subhead{
-  margin: 0;
-  max-width: 62ch;
-  font-size: var(--fz-2);
-  line-height: 1.62;
-  color: var(--muted);
-}
-
-/* CTA */
-.cta{
-  display:flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 20px;
-  align-items:center;
-}
-
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap: 10px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  border: 1px solid transparent;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
-  will-change: transform;
-}
-
-.btn--primary{
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #fff;
-  box-shadow: 0 18px 40px rgba(216,106,42,.22);
-}
-.btn--primary:hover{ transform: translateY(-1px); }
-
-.btn--ghost{
-  background: rgba(255,255,255,.66);
-  border-color: rgba(28,26,22,.14);
-  box-shadow: 0 14px 30px rgba(18,14,10,.08);
-}
-.btn--ghost:hover{
-  transform: translateY(-1px);
-  border-color: rgba(28,26,22,.18);
-}
-
-/* Trust pills */
-.trust{
-  margin-top: 14px;
-  display:flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.pill{
-  display:inline-flex;
-  align-items:center;
-  padding: 8px 10px;
-  border-radius: 999px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(28,26,22,.10);
-  color: rgba(28,26,22,.82);
-  font-size: .92rem;
-}
-
-/* Proof cards */
-.proof{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-}
-
-.proof__card{
-  background: var(--card);
-  border: 1px solid var(--stroke);
-  border-radius: var(--r-md);
-  box-shadow: var(--shadow-2);
-  padding: 14px 14px;
-  scroll-margin-top: 92px;
-}
-
-.proof__label{
-  font-size: .82rem;
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  color: rgba(28,26,22,.62);
-}
-.proof__value{
-  margin-top: 6px;
-  font-weight: 760;
-  letter-spacing: -0.01em;
-}
-.proof__meta{
-  margin-top: 3px;
-  font-size: .95rem;
-  color: var(--muted-2);
-}
-
-/* Portrait */
-.hero__media{
-  position: relative;
-  isolation: isolate;
-}
-
-.portrait{
-  position: relative;
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  max-width: 420px;
-  margin-inline: auto;
-
-  /* removed frame */
-  border: none;
-  box-shadow: none;
-  background: transparent;
-}
-
-.portrait img{
-  width: 100%;
-  height: clamp(340px, 46vw, 520px);
-  display:block;
-  object-fit: cover;
-  object-position: center 22%;
-
-  /* keeps rounded corners even when we allow overflow on mobile */
-  border-radius: var(--r-lg);
-}
-
-/* ✅ Badge: rounded corners on ALL devices */
-.portrait__badge{
-  position:absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-
-  background: rgba(255,255,255,.88);
-  border: 1px solid rgba(28,26,22,.12);
-  border-radius: 18px;
-  padding: 12px 14px;
-
-  backdrop-filter: blur(12px);
-  box-shadow: 0 18px 46px rgba(18,14,10,.14);
-}
-
-.badge__head{
-  display:flex;
-  flex-direction:column;
-  gap: 2px;
-  margin-bottom: 10px;
-}
-.badge__who{
-  font-weight: 820;
-  letter-spacing: -0.01em;
-}
-.badge__role{
-  font-size: .92rem;
-  color: rgba(28,26,22,.70);
-}
-
-.badge__row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-  font-size: .98rem;
-  color: var(--muted);
-}
-
-.badge__k{
-  font-size: .82rem;
-  color: rgba(28,26,22,.62);
-  text-transform: uppercase;
-  letter-spacing: .12em;
-  white-space: nowrap;
-}
-
-.badge__link{
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 4px;
-  text-decoration-color: rgba(216,106,42,.35);
-}
-.badge__link:hover{ text-decoration-color: rgba(216,106,42,.75); }
-
-/* Subtle glow */
-.glow{
-  position:absolute;
-  inset: -24px;
-  z-index: -1;
-  background:
-    radial-gradient(420px 340px at 35% 30%, rgba(255,179,62,.22), transparent 64%),
-    radial-gradient(520px 380px at 70% 70%, rgba(216,106,42,.14), transparent 68%);
-  filter: blur(16px);
-  opacity: .45;
-}
-
-/* Continuation block */
-.anchor{
-  padding: 0 0 clamp(40px, 5vw, 80px);
-}
-.anchor__inner{
-  border: 1px solid rgba(28,26,22,.12);
-  background: rgba(255,255,255,.62);
-  border-radius: var(--r-lg);
-  box-shadow: var(--shadow-2);
-  padding: 18px 18px;
-  scroll-margin-top: 92px;
-}
-.anchor__title{
-  margin: 0 0 8px;
-  font-size: 1.22rem;
-  letter-spacing: -0.01em;
-}
-.anchor__text{
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.65;
-}
-
-/* ✅ Mobile-only: badge half on photo / half below */
-@media (max-width: 979px){
-  .portrait{
-    overflow: visible; /* allow badge to go below */
-    padding-bottom: clamp(64px, 10vw, 92px); /* space for the lower half */
-  }
-
-  .portrait__badge{
-    bottom: 0;
-    transform: translateY(50%); /* half outside */
-  }
-}
-
-/* Desktop layout */
-@media (min-width: 980px){
-  .hamburger{ display:none; }
-  #nav-toggle:checked ~ .menu{ display:flex; }
-
-  .menu{
-    display:flex;
-    position: static;
-    padding: 8px;
-    border-radius: 999px;
-    background: rgba(255,255,255,.52);
-    box-shadow: none;
-    border: 1px solid rgba(28,26,22,.10);
-    gap: 6px;
-  }
-
-  .menu__link{
-    padding: 10px 12px;
-    border-radius: 999px;
-  }
-
-  .menu__link--cta{
-    padding: 10px 14px;
-  }
-
-  /* reset any mobile behavior */
-  .portrait{
-    overflow: hidden;
-    padding-bottom: 0;
-  }
-  .portrait__badge{
-    transform: none;
-    bottom: 14px;
-  }
-}
-
-@media (min-width: 860px){
-  .hero__grid{
-    grid-template-columns: 1.2fr .8fr;
-    gap: 34px;
-  }
-
-  .proof{
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+<!-- index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Autism evaluations with ADOS-2 and therapy for children, teens, adults, and families in Merrick, NY. Call or text (516) 234-5005." />
+  <title>Dr. Zachary Rose | Therapy & Autism Evaluations | Merrick, NY</title>
+
+  <link rel="preload" as="image" href="dr-zachary-rose.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="topbar" aria-label="Top navigation">
+    <div class="container topbar__inner">
+      <a class="brand" href="#" aria-label="Daffodil Psychology home">
+        <span class="brand__mark" aria-hidden="true">
+          <!-- Full flower mark (12 petals) -->
+          <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <radialGradient id="g" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="var(--sun-1)"/>
+                <stop offset="55%" stop-color="var(--sun-2)"/>
+                <stop offset="100%" stop-color="var(--sun-3)"/>
+              </radialGradient>
+            </defs>
+            <g>
+              <g transform="translate(32 32)">
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(30)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(60)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(90)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(120)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(150)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(180)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(210)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(240)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(270)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(300)"/>
+                <path d="M0-26 C6-26 10-20 8-14 C6-9 2-6 0-6 C-2-6 -6-9 -8-14 C-10-20 -6-26 0-26Z" fill="url(#g)" transform="rotate(330)"/>
+              </g>
+
+              <circle cx="32" cy="32" r="12" fill="var(--seed)" />
+              <circle cx="32" cy="32" r="8" fill="var(--seed-2)" opacity="0.92"/>
+              <circle cx="32" cy="32" r="4.2" fill="var(--seed-3)" opacity="0.92"/>
+            </g>
+          </svg>
+        </span>
+
+        <span class="brand__text">
+          <span class="brand__name">Daffodil Psychology</span>
+          <span class="brand__sub">Dr. Zachary Rose</span>
+        </span>
+      </a>
+
+      <!-- Mobile hamburger (CSS-only) -->
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Open menu" />
+      <label class="hamburger" for="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="menu" aria-label="Primary menu">
+        <a class="menu__link" href="#evaluations">Evaluations</a>
+        <a class="menu__link" href="#therapy">Therapy</a>
+        <a class="menu__link" href="#ados2">ADOS-2</a>
+        <a class="menu__link" href="#location">Location</a>
+        <a class="menu__link menu__link--cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="microline">Autism evaluations and therapy in Merrick, New York</p>
+
+          <h1>Clarity first. Support that feels steady.</h1>
+
+          <p class="subhead">
+            Full or partial autism evaluations for any age with ADOS-2, plus therapy for children, adolescents, adults, and families.
+          </p>
+
+          <div class="cta" id="contact" aria-label="Primary calls to action">
+            <a class="btn btn--primary" href="tel:+15162345005">Start with a quick call</a>
+            <a class="btn btn--ghost" href="#evaluations">See evaluation options</a>
+          </div>
+
+          <div class="trust" aria-label="Highlights">
+            <span class="pill">Full or partial evaluations</span>
+            <span class="pill">Any age</span>
+            <span class="pill">ADOS-2 available</span>
+            <span class="pill">Therapy for all ages</span>
+          </div>
+
+          <div class="proof" aria-label="Key details">
+            <div class="proof__card" id="evaluations">
+              <div class="proof__label">Evaluations</div>
+              <div class="proof__value">Full or partial, any age</div>
+              <div class="proof__meta">Guidance on the right next step</div>
+            </div>
+
+            <div class="proof__card" id="therapy">
+              <div class="proof__label">Therapy</div>
+              <div class="proof__value">Children, teens, adults, families</div>
+              <div class="proof__meta">Including young children</div>
+            </div>
+
+            <div class="proof__card" id="location">
+              <div class="proof__label">Location</div>
+              <div class="proof__value">1955 Merrick Road, Suite 205A</div>
+              <div class="proof__meta">Merrick, NY</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__media" aria-label="Doctor portrait">
+          <div class="portrait">
+            <img
+              src="dr-zachary-rose.png"
+              alt="Dr. Zachary Rose"
+              width="1040"
+              height="1200"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
+            />
+
+            <!-- Badge now flush with image edges (left/right/bottom) + includes name & specialty -->
+            <div class="portrait__badge" aria-label="Contact details">
+              <div class="badge__head">
+                <div class="badge__who">Dr. Zachary Rose</div>
+                <div class="badge__role">Psychologist</div>
+              </div>
+
+              <div class="badge__row">
+                <span class="badge__k">Call/Text</span>
+                <a class="badge__link" href="tel:+15162345005">+1 516 234 5005</a>
+              </div>
+              <div class="badge__row">
+                <span class="badge__k">Email</span>
+                <a class="badge__link" href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glow" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="anchor" id="ados2" aria-label="ADOS-2 information">
+      <div class="container anchor__inner">
+        <h2 class="anchor__title">What is ADOS-2?</h2>
+        <p class="anchor__text">
+          ADOS-2 is a standardized assessment commonly used as part of an autism evaluation. If you’re unsure whether a full or partial evaluation fits,
+          start with a brief call or text to get clear direction.
+        </p>
+        <!-- Buttons removed per request -->
+      </div>
+    </section>
+  </main>
+</body>
+</html>
