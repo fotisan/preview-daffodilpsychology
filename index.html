@@ -7,7 +7,6 @@
   <meta name="description" content="Autism evaluations with ADOS-2 and therapy for all ages. Call or text Dr. Zachary Rose in Long Island, NY." />
   <title>Dr. Zachary Rose | Autism Evaluations (ADOS-2) & Therapy | Long Island, NY</title>
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -60,6 +59,23 @@
     <section class="hero" aria-label="Hero">
       <div class="container hero-grid">
         <div class="hero-copy">
+          <!-- NEW: Photo card (left, above the hero text) -->
+          <div class="profile-card">
+            <div class="profile-media">
+              <!-- Replace with your real image file -->
+              <img
+                src="assets/dr-zachary-rose.jpg"
+                alt="Dr. Zachary Rose"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+            <div class="profile-meta">
+              <div class="profile-name">Dr. Zachary Rose</div>
+              <div class="profile-note">Merrick, NY • Long Island</div>
+            </div>
+          </div>
+
           <p class="microline">Autism evaluations and therapy in Long Island, New York</p>
 
           <h1 class="hero-title">
@@ -71,7 +87,8 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="tel:+15162345005">Call now</a>
+            <a class="btn btn-primary" href="#contact">Contact</a>
+            <a class="btn btn-primary btn-primary-alt" href="tel:+15162345005">Call now</a>
             <a class="btn btn-secondary" href="sms:+15162345005">Text to get started</a>
             <a class="btn btn-ghost" href="mailto:dr.zacharyrose1@gmail.com">Email</a>
           </div>
@@ -93,8 +110,8 @@
 
           <div class="hero-meta" aria-label="Location and contact">
             <div class="meta-card">
-              <span class="meta-label">Location</span>
-              <span class="meta-value">Merrick, NY (Long Island)</span>
+              <span class="meta-label">Office</span>
+              <span class="meta-value">1955 Merrick Road, Suite 205A, Merrick, New York 11566</span>
             </div>
             <div class="meta-card">
               <span class="meta-label">Fast contact</span>
@@ -132,7 +149,7 @@
 
             <div class="visual-cta">
               <div class="mini">
-                <span class="mini-label">Text for availability</span>
+                <span class="mini-label">Call or text</span>
                 <span class="mini-value">(516) 234-5005</span>
               </div>
               <div class="pulse" aria-hidden="true"></div>
@@ -154,7 +171,7 @@
   </main>
 
   <script>
-    // Tiny, optional: mobile menu toggle (kept minimal for speed).
+    // Minimal mobile menu toggle
     const btn = document.querySelector('.nav-toggle');
     const panel = document.querySelector('[data-mobile-panel]');
     if (btn && panel) {
