@@ -54,22 +54,18 @@
         </span>
       </a>
 
+      <!-- Mobile hamburger (CSS-only) -->
+      <input class="nav-toggle" type="checkbox" id="nav-toggle" aria-label="Open menu" />
+      <label class="hamburger" for="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+
       <nav class="menu" aria-label="Primary menu">
         <a class="menu__link" href="#evaluations">Evaluations</a>
         <a class="menu__link" href="#therapy">Therapy</a>
         <a class="menu__link" href="#ados2">ADOS-2</a>
         <a class="menu__link" href="#location">Location</a>
-        <a class="menu__link" href="#contact">Contact</a>
-      </nav>
-
-      <nav class="topbar__actions" aria-label="Primary actions">
-        <a class="chip" href="tel:+15162345005" aria-label="Call or text (516) 234-5005">
-          <span class="chip__dot" aria-hidden="true"></span>
-          Call or Text
-        </a>
-        <a class="chip chip--soft" href="mailto:dr.zacharyrose1@gmail.com" aria-label="Email dr.zacharyrose1@gmail.com">
-          Email
-        </a>
+        <a class="menu__link menu__link--cta" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
@@ -77,7 +73,6 @@
   <main>
     <section class="hero" aria-label="Hero">
       <div class="container hero__grid">
-
         <div class="hero__copy">
           <p class="microline">Autism evaluations and therapy in Merrick, New York</p>
 
@@ -87,7 +82,6 @@
             Full or partial autism evaluations for any age with ADOS-2, plus therapy for children, adolescents, adults, and families.
           </p>
 
-          <!-- Redesign CTA: less aggressive + “guided path” -->
           <div class="cta" id="contact" aria-label="Primary calls to action">
             <a class="btn btn--primary" href="tel:+15162345005">Start with a quick call</a>
             <a class="btn btn--ghost" href="#evaluations">See evaluation options</a>
@@ -133,8 +127,13 @@
               fetchpriority="high"
             />
 
-            <div class="portrait__badge" aria-label="Fast contact">
-              <div class="badge__title">Quick contact</div>
+            <!-- Badge now flush with image edges (left/right/bottom) + includes name & specialty -->
+            <div class="portrait__badge" aria-label="Contact details">
+              <div class="badge__head">
+                <div class="badge__who">Dr. Zachary Rose</div>
+                <div class="badge__role">Psychologist</div>
+              </div>
+
               <div class="badge__row">
                 <span class="badge__k">Call/Text</span>
                 <a class="badge__link" href="tel:+15162345005">+1 516 234 5005</a>
@@ -148,11 +147,9 @@
 
           <div class="glow" aria-hidden="true"></div>
         </div>
-
       </div>
     </section>
 
-    <!-- Small continuation block: looks like the site continues (same body bg) -->
     <section class="anchor" id="ados2" aria-label="ADOS-2 information">
       <div class="container anchor__inner">
         <h2 class="anchor__title">What is ADOS-2?</h2>
@@ -160,14 +157,9 @@
           ADOS-2 is a standardized assessment commonly used as part of an autism evaluation. If you’re unsure whether a full or partial evaluation fits,
           start with a brief call or text to get clear direction.
         </p>
-
-        <div class="anchor__cta">
-          <a class="btn btn--small" href="tel:+15162345005">Call or text now</a>
-          <a class="btn btn--small btn--soft" href="mailto:dr.zacharyrose1@gmail.com">Email questions</a>
-        </div>
+        <!-- Buttons removed per request -->
       </div>
     </section>
   </main>
 </body>
 </html>
-
