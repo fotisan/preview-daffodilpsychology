@@ -16,7 +16,45 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#" aria-label="Dr. Zachary Rose home">
-        <span class="brand-mark" aria-hidden="true"></span>
+        <!-- LOGO: inline SVG (no image file) -->
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="brand-flower" viewBox="0 0 128 128" focusable="false" aria-hidden="true">
+            <defs>
+              <radialGradient id="flowerCenter" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="var(--warm)" />
+                <stop offset="55%" stop-color="var(--accent2)" />
+                <stop offset="100%" stop-color="rgba(0,0,0,.18)" />
+              </radialGradient>
+
+              <linearGradient id="flowerPetal" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="rgba(255,255,255,.75)" />
+                <stop offset="40%" stop-color="var(--warm)" />
+                <stop offset="100%" stop-color="var(--accent2)" />
+              </linearGradient>
+
+              <filter id="flowerShadow" x="-25%" y="-25%" width="150%" height="150%">
+                <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-color="#000" flood-opacity=".25"/>
+              </filter>
+            </defs>
+
+            <!-- petals -->
+            <g filter="url(#flowerShadow)" transform="translate(64 64)">
+              <path d="M0-48 C14-48 22-30 18-16 C15-4 8 2 0 8 C-8 2 -15-4 -18-16 C-22-30 -14-48 0-48Z" fill="url(#flowerPetal)"/>
+              <path d="M34-34 C46-22 38-6 24 0 C12 6 2 6 -8 2 C-6 -8 -6 -18 0 -26 C8-36 22-46 34-34Z" fill="url(#flowerPetal)"/>
+              <path d="M48 0 C48 14 30 22 16 18 C4 15 -2 8 -8 0 C-2 -8 4 -15 16-18 C30-22 48-14 48 0Z" fill="url(#flowerPetal)"/>
+              <path d="M34 34 C22 46 6 38 0 24 C-6 12 -6 2 -2 -8 C8 -6 18 -6 26 0 C36 8 46 22 34 34Z" fill="url(#flowerPetal)"/>
+              <path d="M0 48 C-14 48 -22 30 -18 16 C-15 4 -8 -2 0 -8 C8 -2 15 4 18 16 C22 30 14 48 0 48Z" fill="url(#flowerPetal)"/>
+              <path d="M-34 34 C-46 22 -38 6 -24 0 C-12 -6 -2 -6 8 -2 C6 8 6 18 0 26 C-8 36 -22 46 -34 34Z" fill="url(#flowerPetal)"/>
+              <path d="M-48 0 C-48 -14 -30 -22 -16 -18 C-4 -15 2 -8 8 0 C2 8 -4 15 -16 18 C-30 22 -48 14 -48 0Z" fill="url(#flowerPetal)"/>
+              <path d="M-34 -34 C-22 -46 -6 -38 0 -24 C6 -12 6 -2 2 8 C-8 6 -18 6 -26 0 C-36 -8 -46 -22 -34 -34Z" fill="url(#flowerPetal)"/>
+            </g>
+
+            <!-- center -->
+            <circle cx="64" cy="64" r="20" fill="url(#flowerCenter)"/>
+            <circle cx="64" cy="64" r="11" fill="rgba(0,0,0,.18)"/>
+          </svg>
+        </span>
+
         <span class="brand-text">
           <span class="brand-name">Dr. Zachary Rose</span>
           <span class="brand-sub">Autism Evaluations and Therapy</span>
@@ -108,10 +146,8 @@
         </div>
 
         <div class="hero-visual" aria-hidden="true">
-          <!-- MOVED: Photo is now on the right, above the chips card -->
           <div class="profile-card profile-card-right">
             <div class="profile-media">
-              <!-- Replace with your real image file -->
               <img
                 src="dr-zachary-rose.jpg"
                 alt="Dr. Zachary Rose"
@@ -163,7 +199,6 @@
       </div>
     </section>
 
-    <!-- Dummy anchors so the nav makes sense on a single-page hero demo -->
     <section id="evaluations" class="anchor" aria-hidden="true"></section>
     <section id="therapy" class="anchor" aria-hidden="true"></section>
     <section id="approach" class="anchor" aria-hidden="true"></section>
@@ -171,7 +206,6 @@
   </main>
 
   <script>
-    // Minimal mobile menu toggle
     const btn = document.querySelector('.nav-toggle');
     const panel = document.querySelector('[data-mobile-panel]');
     if (btn && panel) {
@@ -185,4 +219,3 @@
   </script>
 </body>
 </html>
-
