@@ -1,4 +1,8 @@
-/* NAV inside hero */
+/* SAFETY: if something overrides, these prevent gigantic svg/img */
+.brand__mark svg{ width:36px; height:36px; display:block; }
+.portrait img{ max-width:100%; height:auto; display:block; }
+
+/* NAV */
 .heroNav{
   display:flex;
   align-items:center;
@@ -12,8 +16,6 @@
   box-shadow: 0 12px 28px rgba(31,29,26,.06);
   margin-bottom: 26px;
 }
-
-.heroNav .brand{ min-width: 260px; }
 
 .heroNav__links{
   display:flex;
@@ -32,6 +34,7 @@
   border: 1px solid transparent;
   transition: background .2s ease, border-color .2s ease, transform .18s ease;
 }
+
 .navLink:hover{
   background: rgba(255,255,255,.82);
   border-color: rgba(215,162,79,.45);
@@ -50,41 +53,29 @@
   border-radius: 999px;
   transition: transform .18s ease;
 }
+
 .navCta:hover{ transform: translateY(-2px); }
 
-/* Make right column end at the same line as left content */
-@media (min-width: 900px){
-  .hero__grid{
-    align-items: stretch; /* important */
-  }
-
-  .hero__visual{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-
-  /* This forces the card to sit at the bottom of the right column,
-     aligning its bottom edge with the left column bottom */
-  .infoCard{
-    margin-top: auto;
-  }
-}
-
-/* Smaller portrait so it doesn't dominate */
+/* Smaller portrait */
 .portrait--small{
   max-width: 420px;
   margin-left: auto;
 }
 
-/* Keep 3:4 but visually smaller */
-.portrait--small{
-  aspect-ratio: 3 / 4;
+/* Align right card bottom with left side content on desktop */
+@media (min-width: 900px){
+  .hero__grid{ align-items: stretch; }
+  .hero__visual{
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .infoCard{ margin-top: auto; }
 }
 
-/* Hide nav links on very small screens to keep it clean (optional but helps) */
+/* Mobile nav cleanup */
 @media (max-width: 520px){
   .heroNav__links{ display:none; }
-  .heroNav{ padding: 12px 12px; border-radius: 22px; }
+  .heroNav{ border-radius: 22px; padding: 12px 12px; }
 }
