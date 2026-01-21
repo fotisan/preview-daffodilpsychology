@@ -1,16 +1,17 @@
 /* styles.css */
 :root{
-  --bg: #0b1220;
-  --bg2: #0f1b33;
+  /* Palette adapted to the photo (navy + jacket blue + warm skin/curtain tones) */
+  --bg: #07111f;
+  --bg2: #0b1a2f;
 
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.72);
 
-  --accent: #7c5cff;
-  --accent2: #27d6c7;
-  --warm: #ffb86b;
+  --accent: #2f6bdc;   /* jacket blue */
+  --accent2:#c79a6a;   /* warm tan */
+  --warm:  #f2d6a8;    /* soft cream */
 
-  --ring: 0 0 0 4px rgba(124,92,255,.20);
+  --ring: 0 0 0 4px rgba(47,107,220,.22);
   --shadow: 0 18px 55px rgba(0,0,0,.45);
   --shadow2: 0 12px 30px rgba(0,0,0,.32);
 
@@ -28,9 +29,9 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
   background:
-    radial-gradient(900px 500px at 12% 0%, rgba(124,92,255,.22), transparent 60%),
-    radial-gradient(900px 500px at 85% 15%, rgba(39,214,199,.18), transparent 55%),
-    radial-gradient(700px 420px at 55% 110%, rgba(255,184,107,.16), transparent 60%),
+    radial-gradient(900px 500px at 12% 0%, rgba(47,107,220,.22), transparent 60%),
+    radial-gradient(900px 520px at 88% 14%, rgba(199,154,106,.18), transparent 56%),
+    radial-gradient(740px 420px at 56% 112%, rgba(242,214,168,.14), transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   min-height:100vh;
   overflow-x:hidden;
@@ -64,7 +65,7 @@ a:focus-visible, button:focus-visible{
   z-index: 60;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  background: rgba(11,18,32,.58);
+  background: rgba(7,17,31,.62);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
@@ -81,15 +82,25 @@ a:focus-visible, button:focus-visible{
   gap: 12px;
   min-width: 240px;
 }
+
+/* UPDATED: logo container for inline SVG (no image file) */
 .brand-mark{
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%),
-    linear-gradient(135deg, rgba(124,92,255,1) 0%, rgba(39,214,199,1) 55%, rgba(255,184,107,1) 100%);
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display:grid;
+  place-items:center;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.12);
   box-shadow: 0 10px 26px rgba(0,0,0,.28);
+  overflow:hidden;
 }
+.brand-flower{
+  width: 28px;
+  height: 28px;
+  display:block;
+}
+
 .brand-text{ display:flex; flex-direction:column; line-height:1.05; }
 .brand-name{ font-weight: 700; letter-spacing: .2px; }
 .brand-sub{ font-size: 12px; color: var(--muted); margin-top: 3px; }
@@ -118,6 +129,7 @@ a:focus-visible, button:focus-visible{
   align-items:center;
 }
 
+/* Buttons */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -140,17 +152,18 @@ a:focus-visible, button:focus-visible{
 .btn:active{ transform: translateY(1px); }
 
 .btn-primary{
-  background: linear-gradient(135deg, rgba(124,92,255,1), rgba(39,214,199,.95));
-  color: #0b1220;
-  box-shadow: 0 14px 32px rgba(124,92,255,.18);
+  background: linear-gradient(135deg, rgba(47,107,220,1), rgba(242,214,168,.92));
+  color: #07111f;
+  box-shadow: 0 14px 32px rgba(47,107,220,.18);
 }
-.btn-primary:hover{ box-shadow: 0 18px 42px rgba(124,92,255,.24); }
+.btn-primary:hover{ box-shadow: 0 18px 42px rgba(47,107,220,.22); }
 
 .btn-primary-alt{
-  background: linear-gradient(135deg, rgba(74, 148, 255, 1), rgba(39,214,199,.95));
-  box-shadow: 0 14px 32px rgba(39,214,199,.14);
+  background: linear-gradient(135deg, rgba(47,107,220,1), rgba(199,154,106,.92));
+  color: #07111f;
+  box-shadow: 0 14px 32px rgba(199,154,106,.16);
 }
-.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(39,214,199,.18); }
+.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(199,154,106,.20); }
 
 .btn-secondary{
   background: rgba(255,255,255,.10);
@@ -187,7 +200,7 @@ a:focus-visible, button:focus-visible{
 
 .mobile-panel{
   border-top: 1px solid rgba(255,255,255,.08);
-  background: rgba(11,18,32,.72);
+  background: rgba(7,17,31,.78);
 }
 .mobile-links{
   padding: 14px 0 18px;
@@ -278,7 +291,7 @@ a:focus-visible, button:focus-visible{
   height: 9px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  box-shadow: 0 0 0 4px rgba(124,92,255,.16);
+  box-shadow: 0 0 0 4px rgba(47,107,220,.16);
 }
 
 .hero-meta{
@@ -318,10 +331,10 @@ a:focus-visible, button:focus-visible{
 
 .hero-visual{
   position: relative;
-  min-height: 520px; /* a bit taller now with photo above */
+  min-height: 520px;
 }
 
-/* Photo card on the right (above the chips card) */
+/* Photo card */
 .profile-card{
   display:flex;
   align-items:center;
@@ -374,9 +387,9 @@ a:focus-visible, button:focus-visible{
   position:absolute;
   inset: -2px;
   background:
-    radial-gradient(600px 200px at 20% 0%, rgba(124,92,255,.25), transparent 60%),
-    radial-gradient(500px 240px at 85% 15%, rgba(39,214,199,.22), transparent 55%),
-    radial-gradient(520px 300px at 60% 120%, rgba(255,184,107,.18), transparent 60%);
+    radial-gradient(600px 200px at 20% 0%, rgba(47,107,220,.26), transparent 60%),
+    radial-gradient(520px 260px at 86% 18%, rgba(199,154,106,.22), transparent 55%),
+    radial-gradient(520px 320px at 60% 120%, rgba(242,214,168,.16), transparent 60%);
   pointer-events:none;
   filter: blur(6px);
   opacity: .85;
@@ -395,15 +408,15 @@ a:focus-visible, button:focus-visible{
   align-items:center;
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(124,92,255,.20);
-  border: 1px solid rgba(124,92,255,.30);
+  background: rgba(47,107,220,.20);
+  border: 1px solid rgba(47,107,220,.32);
   color: rgba(255,255,255,.92);
   font-size: 12px;
   font-weight: 650;
 }
 .chip-soft{
-  background: rgba(39,214,199,.16);
-  border-color: rgba(39,214,199,.26);
+  background: rgba(199,154,106,.16);
+  border-color: rgba(199,154,106,.26);
 }
 
 .visual-title{
@@ -438,9 +451,9 @@ a:focus-visible, button:focus-visible{
   height: 12px;
   border-radius: 4px;
   margin-top: 3px;
-  background: linear-gradient(135deg, var(--accent2), var(--warm));
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
   flex: 0 0 12px;
-  box-shadow: 0 0 0 4px rgba(39,214,199,.12);
+  box-shadow: 0 0 0 4px rgba(47,107,220,.12);
 }
 
 .visual-cta{
@@ -471,14 +484,14 @@ a:focus-visible, button:focus-visible{
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: var(--accent2);
-  box-shadow: 0 0 0 0 rgba(39,214,199,.40);
+  background: var(--accent);
+  box-shadow: 0 0 0 0 rgba(47,107,220,.40);
   animation: pulse 2.4s infinite;
 }
 @keyframes pulse{
-  0%{ box-shadow: 0 0 0 0 rgba(39,214,199,.35); }
-  60%{ box-shadow: 0 0 0 12px rgba(39,214,199,0); }
-  100%{ box-shadow: 0 0 0 0 rgba(39,214,199,0); }
+  0%{ box-shadow: 0 0 0 0 rgba(47,107,220,.35); }
+  60%{ box-shadow: 0 0 0 12px rgba(47,107,220,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(47,107,220,0); }
 }
 
 .orb{
@@ -491,17 +504,17 @@ a:focus-visible, button:focus-visible{
 .orb-1{
   width: 180px; height: 180px;
   left: -40px; top: 40px;
-  background: rgba(124,92,255,.30);
+  background: rgba(47,107,220,.28);
 }
 .orb-2{
   width: 220px; height: 220px;
   right: -60px; top: 120px;
-  background: rgba(39,214,199,.24);
+  background: rgba(199,154,106,.22);
 }
 .orb-3{
   width: 220px; height: 220px;
   right: 20px; bottom: -80px;
-  background: rgba(255,184,107,.20);
+  background: rgba(242,214,168,.18);
 }
 
 .anchor{ height: 1px; }
