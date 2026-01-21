@@ -1,19 +1,19 @@
 /* styles.css */
 :root{
-  /* Palette adapted to the photo (navy + jacket blue + warm skin/curtain tones) */
-  --bg: #07111f;
-  --bg2: #0b1a2f;
+  /* Sunflower palette (matches the logo tones) */
+  --bg: #0c0a07;      /* deep warm charcoal */
+  --bg2:#141008;      /* warm deep brown */
 
   --text: rgba(255,255,255,.92);
   --muted: rgba(255,255,255,.72);
 
-  --accent: #2f6bdc;   /* jacket blue */
-  --accent2:#c79a6a;   /* warm tan */
-  --warm:  #f2d6a8;    /* soft cream */
+  --accent:  #ffcf55; /* petals - bright yellow */
+  --accent2: #e6a52f; /* petals - golden */
+  --warm:    #b87412; /* center - amber */
 
-  --ring: 0 0 0 4px rgba(47,107,220,.22);
-  --shadow: 0 18px 55px rgba(0,0,0,.45);
-  --shadow2: 0 12px 30px rgba(0,0,0,.32);
+  --ring: 0 0 0 4px rgba(255,207,85,.22);
+  --shadow: 0 18px 55px rgba(0,0,0,.50);
+  --shadow2: 0 12px 30px rgba(0,0,0,.36);
 
   --radius-lg: 22px;
   --radius-md: 16px;
@@ -29,9 +29,9 @@ body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
   color: var(--text);
   background:
-    radial-gradient(900px 500px at 12% 0%, rgba(47,107,220,.22), transparent 60%),
-    radial-gradient(900px 520px at 88% 14%, rgba(199,154,106,.18), transparent 56%),
-    radial-gradient(740px 420px at 56% 112%, rgba(242,214,168,.14), transparent 60%),
+    radial-gradient(900px 520px at 14% 0%, rgba(255,207,85,.20), transparent 60%),
+    radial-gradient(900px 520px at 88% 14%, rgba(230,165,47,.18), transparent 56%),
+    radial-gradient(740px 420px at 56% 112%, rgba(184,116,18,.16), transparent 60%),
     linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
   min-height:100vh;
   overflow-x:hidden;
@@ -65,7 +65,7 @@ a:focus-visible, button:focus-visible{
   z-index: 60;
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  background: rgba(7,17,31,.62);
+  background: rgba(12,10,7,.66);
   border-bottom: 1px solid rgba(255,255,255,.08);
 }
 
@@ -83,7 +83,7 @@ a:focus-visible, button:focus-visible{
   min-width: 240px;
 }
 
-/* UPDATED: logo container for inline SVG (no image file) */
+/* Inline SVG logo container */
 .brand-mark{
   width: 38px;
   height: 38px;
@@ -129,7 +129,7 @@ a:focus-visible, button:focus-visible{
   align-items:center;
 }
 
-/* Buttons */
+/* Buttons (also fixes the tiny left seam line issue) */
 .btn{
   display:inline-flex;
   align-items:center;
@@ -152,18 +152,18 @@ a:focus-visible, button:focus-visible{
 .btn:active{ transform: translateY(1px); }
 
 .btn-primary{
-  background: linear-gradient(135deg, rgba(47,107,220,1), rgba(242,214,168,.92));
-  color: #07111f;
-  box-shadow: 0 14px 32px rgba(47,107,220,.18);
+  background: linear-gradient(135deg, rgba(255,207,85,1), rgba(230,165,47,1));
+  color: #141008;
+  box-shadow: 0 14px 32px rgba(255,207,85,.16);
 }
-.btn-primary:hover{ box-shadow: 0 18px 42px rgba(47,107,220,.22); }
+.btn-primary:hover{ box-shadow: 0 18px 42px rgba(255,207,85,.22); }
 
 .btn-primary-alt{
-  background: linear-gradient(135deg, rgba(47,107,220,1), rgba(199,154,106,.92));
-  color: #07111f;
-  box-shadow: 0 14px 32px rgba(199,154,106,.16);
+  background: linear-gradient(135deg, rgba(230,165,47,1), rgba(184,116,18,1));
+  color: #141008;
+  box-shadow: 0 14px 32px rgba(230,165,47,.16);
 }
-.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(199,154,106,.20); }
+.btn-primary-alt:hover{ box-shadow: 0 18px 42px rgba(230,165,47,.22); }
 
 .btn-secondary{
   background: rgba(255,255,255,.10);
@@ -200,7 +200,7 @@ a:focus-visible, button:focus-visible{
 
 .mobile-panel{
   border-top: 1px solid rgba(255,255,255,.08);
-  background: rgba(7,17,31,.78);
+  background: rgba(12,10,7,.80);
 }
 .mobile-links{
   padding: 14px 0 18px;
@@ -238,7 +238,7 @@ a:focus-visible, button:focus-visible{
 .microline{
   display:inline-block;
   font-size: 13px;
-  color: rgba(255,255,255,.76);
+  color: rgba(255,255,255,.80);
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.10);
   padding: 8px 12px;
@@ -291,7 +291,7 @@ a:focus-visible, button:focus-visible{
   height: 9px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
-  box-shadow: 0 0 0 4px rgba(47,107,220,.16);
+  box-shadow: 0 0 0 4px rgba(255,207,85,.16);
 }
 
 .hero-meta{
@@ -387,9 +387,9 @@ a:focus-visible, button:focus-visible{
   position:absolute;
   inset: -2px;
   background:
-    radial-gradient(600px 200px at 20% 0%, rgba(47,107,220,.26), transparent 60%),
-    radial-gradient(520px 260px at 86% 18%, rgba(199,154,106,.22), transparent 55%),
-    radial-gradient(520px 320px at 60% 120%, rgba(242,214,168,.16), transparent 60%);
+    radial-gradient(600px 220px at 20% 0%, rgba(255,207,85,.22), transparent 60%),
+    radial-gradient(540px 280px at 86% 18%, rgba(230,165,47,.20), transparent 55%),
+    radial-gradient(540px 340px at 60% 120%, rgba(184,116,18,.16), transparent 60%);
   pointer-events:none;
   filter: blur(6px);
   opacity: .85;
@@ -408,15 +408,15 @@ a:focus-visible, button:focus-visible{
   align-items:center;
   padding: 8px 10px;
   border-radius: 999px;
-  background: rgba(47,107,220,.20);
-  border: 1px solid rgba(47,107,220,.32);
+  background: rgba(255,207,85,.14);
+  border: 1px solid rgba(255,207,85,.26);
   color: rgba(255,255,255,.92);
   font-size: 12px;
   font-weight: 650;
 }
 .chip-soft{
-  background: rgba(199,154,106,.16);
-  border-color: rgba(199,154,106,.26);
+  background: rgba(230,165,47,.12);
+  border-color: rgba(230,165,47,.22);
 }
 
 .visual-title{
@@ -453,7 +453,7 @@ a:focus-visible, button:focus-visible{
   margin-top: 3px;
   background: linear-gradient(135deg, var(--accent), var(--accent2));
   flex: 0 0 12px;
-  box-shadow: 0 0 0 4px rgba(47,107,220,.12);
+  box-shadow: 0 0 0 4px rgba(255,207,85,.12);
 }
 
 .visual-cta{
@@ -484,14 +484,14 @@ a:focus-visible, button:focus-visible{
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 0 rgba(47,107,220,.40);
+  background: var(--accent2);
+  box-shadow: 0 0 0 0 rgba(230,165,47,.40);
   animation: pulse 2.4s infinite;
 }
 @keyframes pulse{
-  0%{ box-shadow: 0 0 0 0 rgba(47,107,220,.35); }
-  60%{ box-shadow: 0 0 0 12px rgba(47,107,220,0); }
-  100%{ box-shadow: 0 0 0 0 rgba(47,107,220,0); }
+  0%{ box-shadow: 0 0 0 0 rgba(230,165,47,.35); }
+  60%{ box-shadow: 0 0 0 12px rgba(230,165,47,0); }
+  100%{ box-shadow: 0 0 0 0 rgba(230,165,47,0); }
 }
 
 .orb{
@@ -504,17 +504,17 @@ a:focus-visible, button:focus-visible{
 .orb-1{
   width: 180px; height: 180px;
   left: -40px; top: 40px;
-  background: rgba(47,107,220,.28);
+  background: rgba(255,207,85,.22);
 }
 .orb-2{
   width: 220px; height: 220px;
   right: -60px; top: 120px;
-  background: rgba(199,154,106,.22);
+  background: rgba(230,165,47,.20);
 }
 .orb-3{
   width: 220px; height: 220px;
   right: 20px; bottom: -80px;
-  background: rgba(242,214,168,.18);
+  background: rgba(184,116,18,.18);
 }
 
 .anchor{ height: 1px; }
