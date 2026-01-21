@@ -1,175 +1,335 @@
-/* =========================
-   HERO (Dr. Zachary Rose)
-   ========================= */
-.hero--zachary{
-  /* πιο “sunflower / warm human” */
-  --accent: #e0b04a;      /* warm sunflower */
-  --accent-2: #7faea0;    /* soft green (ήδη ταιριάζει) */
-  --accent-3: #e8c2b2;    /* warm blush */
+:root{
+  /* warm human palette */
+  --bg: #fbf6ee;
+  --bg-2:#f4ecdf;
+
+  --ink:#1f1c17;
+  --muted: rgba(31,28,23,.72);
+
+  --line: rgba(177,145,104,.25);
+
+  --sun: #f2c14b;      /* sunflower */
+  --sun-2:#d79a2b;
+  --sage:#6fa79a;     /* soft contrast */
+  --rose:#e7b6a7;     /* warm blush */
+
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --shadow: 0 18px 50px rgba(31,28,23,.10);
+  --shadow-soft: 0 12px 34px rgba(31,28,23,.08);
+
+  --container: 1120px;
+
+  --h1: clamp(32px, 4.8vw, 58px);
+  --lead: clamp(16px, 2.0vw, 20px);
 }
 
-.hero--zachary .eyebrow{
-  color: rgba(224,176,74,.98);
+*{ box-sizing:border-box; }
+img{ display:block; max-width:100%; }
+
+.container{
+  width: min(var(--container), calc(100% - 40px));
+  margin-inline:auto;
 }
 
-/* Mini brand row inside hero */
-.hero-brand{
+.hero{
+  padding: clamp(28px, 5vw, 64px) 0;
+  background:
+    radial-gradient(1100px 650px at 10% -10%, rgba(242,193,75,.18), transparent 55%),
+    radial-gradient(900px 620px at 95% 10%, rgba(231,182,167,.18), transparent 55%),
+    radial-gradient(1000px 720px at 80% 90%, rgba(111,167,154,.14), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--bg-2));
+  color: var(--ink);
+}
+
+/* topbar inside hero (still counts as hero) */
+.hero-topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+  padding: 10px 0 18px;
+}
+
+.brand{
   display:flex;
   align-items:center;
   gap: 12px;
-  margin: 0 0 14px;
+  text-decoration:none;
+  color: inherit;
+  min-width: 240px;
 }
 
-.hero-logo{
-  width: 44px;
-  height: 44px;
+.brand-mark{
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.72);
-  box-shadow:
-    0 12px 28px rgba(31,29,26,.08),
-    inset 0 1px 0 rgba(255,255,255,.70);
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,.65);
+  box-shadow: 0 10px 24px rgba(31,28,23,.08);
   display:grid;
   place-items:center;
-  flex: 0 0 auto;
   overflow:hidden;
 }
+.brand-mark svg{ width: 28px; height: 28px; }
 
-.hero-logo svg{
-  width: 34px;
-  height: 34px;
-  display:block;
+.brand-text{ display:flex; flex-direction:column; line-height:1.15; }
+.brand-name{ font-weight: 820; letter-spacing: .2px; }
+.brand-sub{ font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.hero-nav{
+  display:none;
+  align-items:center;
+  gap: 10px;
+}
+.hero-nav-link{
+  text-decoration:none;
+  color: rgba(31,28,23,.82);
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(177,145,104,.18);
+  background: rgba(255,255,255,.55);
+  transition: transform .18s ease, background .2s ease, border-color .2s ease;
+  font-weight: 720;
+  font-size: 14px;
+}
+.hero-nav-link:hover{ transform: translateY(-1px); background: rgba(255,255,255,.82); border-color: rgba(215,154,43,.35); }
+.hero-nav-link--cta{
+  background: rgba(242,193,75,.92);
+  border-color: rgba(242,193,75,.55);
+  color: #23170a;
 }
 
-.hero-brand-text{
+.hero-grid{
+  display:grid;
+  gap: clamp(18px, 4vw, 48px);
+  align-items:start;
+}
+
+.hero-copy{ max-width: 680px; }
+
+.eyebrow{
+  margin: 0 0 14px;
+  color: rgba(215,154,43,.95);
+  font-weight: 850;
+  letter-spacing: .9px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.h1{
+  font-size: var(--h1);
+  line-height: 1.04;
+  margin: 0 0 16px;
+  letter-spacing: -0.9px;
+  text-wrap: balance;
+}
+
+.lead{
+  font-size: var(--lead);
+  color: rgba(31,28,23,.84);
+  margin: 0 0 18px;
+  line-height: 1.75;
+}
+
+.hero-cta{
   display:flex;
-  flex-direction: column;
-  line-height: 1.15;
+  flex-wrap:wrap;
+  gap: 12px;
+  margin: 10px 0 14px;
 }
 
-.hero-brand-name{
-  font-family: var(--font-serif);
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  padding: 13px 18px;
+  border-radius: 999px;
+  text-decoration:none;
+  border: 1px solid transparent;
   font-weight: 760;
-  letter-spacing: .2px;
-  color: rgba(31,29,26,.95);
+  letter-spacing: .1px;
+  cursor:pointer;
+  user-select:none;
+  transition: transform .18s ease, box-shadow .25s ease, background .2s ease, border-color .2s ease;
+}
+.btn:hover{ transform: translateY(-2px); }
+.btn:active{ transform: translateY(1px); }
+
+.btn-meta{
+  font-weight: 700;
+  font-size: 12px;
+  opacity: .8;
 }
 
-.hero-brand-sub{
-  font-size: 12.5px;
-  color: rgba(31,29,26,.72);
-  margin-top: 3px;
+.btn--primary{
+  background: rgba(242,193,75,.95);
+  color: #23170a;
+  border-color: rgba(242,193,75,.55);
+  box-shadow: 0 14px 34px rgba(242,193,75,.20);
+}
+.btn--primary:hover{ background: rgba(242,193,75,1); }
+
+.btn--outline{
+  background: rgba(255,255,255,.68);
+  border-color: rgba(177,145,104,.28);
+  color: rgba(31,28,23,.92);
+}
+.btn--outline:hover{
+  background: rgba(255,255,255,.92);
+  border-color: rgba(215,154,43,.40);
+}
+
+.trust-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px 16px;
+  padding-top: 4px;
+}
+.trust{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(31,28,23,.70);
+}
+.dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(215,154,43,.95);
+  box-shadow: 0 0 0 6px rgba(215,154,43,.14);
+}
+.dot--soft{
+  background: rgba(111,167,154,.75);
+  box-shadow: 0 0 0 6px rgba(111,167,154,.12);
+}
+
+.hero-mini{ margin-top: 14px; }
+.hero-mini-card{
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(177,145,104,.25);
+  background: rgba(255,255,255,.68);
+  box-shadow: var(--shadow-soft);
+  padding: 16px;
+}
+.hero-mini-card strong{
+  display:block;
+  margin-bottom: 10px;
+  color: rgba(31,28,23,.92);
+}
+.hero-mini-card ul{
+  margin: 0;
+  padding-left: 18px;
+  color: rgba(31,28,23,.78);
+  font-size: 14px;
+}
+.hero-mini-card li{ margin: 6px 0; }
+
+.hero-visual{
+  width: min(560px, 100%);
+  justify-self: end;
+  display:grid;
+  gap: 14px;
 }
 
 /* 3:4 photo */
-.hero--zachary .hero-photo{
-  height: auto;                 /* override το fixed height */
-  aspect-ratio: 3 / 4;          /* ζητούμενο */
-}
-
-.hero--zachary .hero-photo img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Make the right column feel more “portrait-first” */
-.hero--zachary .hero-visual{
-  width: min(520px, 100%);
-}
-
-/* Slightly warmer CTAs */
-.hero--zachary .btn--primary{
-  background: rgba(224,176,74,.96);
-  border-color: rgba(224,176,74,.62);
-  box-shadow: 0 14px 34px rgba(224,176,74,.22);
-  color: #231c12;
-}
-.hero--zachary .btn--primary:hover{
-  background: rgba(224,176,74,1);
-}
-
-/* Optional: make pills a touch cleaner */
-.hero--zachary .pill{
-  background: rgba(255,255,255,.78);
-}
-
-/* HERO overrides for Dr. Zachary Rose */
-.hero--zachary{
-  --accent: #e0b04a;
-}
-
-.hero--zachary .eyebrow{
-  color: rgba(224,176,74,.98);
-}
-
-/* Sunflower logo row */
-.hero--zachary .hero-brand{
-  display:flex;
-  align-items:center;
-  gap: 12px;
-  margin: 0 0 14px;
-}
-
-.hero--zachary .hero-logo{
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(222,211,196,.95);
-  background: rgba(255,255,255,.72);
-  box-shadow:
-    0 12px 28px rgba(31,29,26,.08),
-    inset 0 1px 0 rgba(255,255,255,.70);
-  display:grid;
-  place-items:center;
+.hero-photo{
+  border-radius: var(--radius-lg);
   overflow:hidden;
-  flex: 0 0 auto;
-}
-
-.hero--zachary .hero-logo svg{
-  width: 34px;
-  height: 34px;
-  display:block;
-}
-
-.hero--zachary .hero-brand-text{
-  display:flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.hero--zachary .hero-brand-name{
-  font-family: var(--font-serif);
-  font-weight: 760;
-  letter-spacing: .2px;
-  color: rgba(31,29,26,.95);
-}
-
-.hero--zachary .hero-brand-sub{
-  font-size: 12.5px;
-  color: rgba(31,29,26,.72);
-  margin-top: 3px;
-}
-
-/* 3:4 hero photo */
-.hero--zachary .hero-photo{
-  height: auto;          /* override */
+  border: 1px solid rgba(177,145,104,.25);
+  background: rgba(255,255,255,.60);
+  box-shadow: var(--shadow-soft);
   aspect-ratio: 3 / 4;
 }
-
-.hero--zachary .hero-photo img{
+.hero-photo img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* CTA warmer but still premium */
-.hero--zachary .btn--primary{
-  background: rgba(224,176,74,.96);
-  border-color: rgba(224,176,74,.62);
-  box-shadow: 0 14px 34px rgba(224,176,74,.22);
-  color: #231c12;
+.visual-card{
+  background:
+    radial-gradient(820px 260px at 15% 10%, rgba(231,182,167,.18), transparent 60%),
+    radial-gradient(920px 320px at 95% 85%, rgba(111,167,154,.14), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,.86), rgba(255,255,255,.62));
+  border: 1px solid rgba(177,145,104,.25);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  overflow:hidden;
 }
 
-.hero--zachary .btn--primary:hover{
-  background: rgba(224,176,74,1);
+.visual-card-top{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+}
+.pill{
+  font-size: 12px;
+  color: rgba(31,28,23,.78);
+  background: rgba(255,255,255,.84);
+  border: 1px solid rgba(177,145,104,.22);
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+.visual-card-mid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.metric{
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(177,145,104,.22);
+}
+.metric-label{
+  display:block;
+  font-size: 12px;
+  color: rgba(31,28,23,.62);
+  margin-bottom: 6px;
+}
+.metric-value{
+  font-weight: 800;
+  letter-spacing: .1px;
+  color: rgba(31,28,23,.92);
+}
+
+.visual-card-bottom{ display:grid; gap: 10px; }
+.badge{
+  display:flex;
+  align-items:flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,.76);
+  border: 1px solid rgba(177,145,104,.22);
+}
+.badge-icon{
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  display:inline-grid;
+  place-items:center;
+  background: rgba(242,193,75,.18);
+  border: 1px solid rgba(242,193,75,.30);
+  color: rgba(31,28,23,.88);
+  font-weight: 900;
+  font-size: 12px;
+  flex: 0 0 auto;
+}
+.badge-text{
+  color: rgba(31,28,23,.80);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@media (min-width: 860px){
+  .hero-nav{ display:flex; }
+  .hero-grid{ grid-template-columns: 1.05fr .95fr; }
+  .visual-card-mid{ grid-template-columns: 1fr 1fr; }
 }
