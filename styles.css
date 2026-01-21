@@ -344,7 +344,7 @@ h1{
   max-width: 420px;
   margin-inline: auto;
 
-  /* removed frame (border/shadow/background) */
+  /* removed frame */
   border: none;
   box-shadow: none;
   background: transparent;
@@ -356,18 +356,25 @@ h1{
   display:block;
   object-fit: cover;
   object-position: center 22%;
+
+  /* keeps rounded corners even when we allow overflow on mobile */
+  border-radius: var(--r-lg);
 }
 
-/* Badge flush to image edges */
+/* ✅ Badge: rounded corners on ALL devices */
 .portrait__badge{
   position:absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+
   background: rgba(255,255,255,.88);
-  border-top: 1px solid rgba(28,26,22,.12);
+  border: 1px solid rgba(28,26,22,.12);
+  border-radius: 18px;
   padding: 12px 14px;
+
   backdrop-filter: blur(12px);
+  box-shadow: 0 18px 46px rgba(18,14,10,.14);
 }
 
 .badge__head{
@@ -446,10 +453,23 @@ h1{
   line-height: 1.65;
 }
 
+/* ✅ Mobile-only: badge half on photo / half below */
+@media (max-width: 979px){
+  .portrait{
+    overflow: visible; /* allow badge to go below */
+    padding-bottom: clamp(64px, 10vw, 92px); /* space for the lower half */
+  }
+
+  .portrait__badge{
+    bottom: 0;
+    transform: translateY(50%); /* half outside */
+  }
+}
+
 /* Desktop layout */
 @media (min-width: 980px){
   .hamburger{ display:none; }
-  #nav-toggle:checked ~ .menu{ display:flex; } /* irrelevant on desktop but safe */
+  #nav-toggle:checked ~ .menu{ display:flex; }
 
   .menu{
     display:flex;
@@ -469,6 +489,16 @@ h1{
 
   .menu__link--cta{
     padding: 10px 14px;
+  }
+
+  /* reset any mobile behavior */
+  .portrait{
+    overflow: hidden;
+    padding-bottom: 0;
+  }
+  .portrait__badge{
+    transform: none;
+    bottom: 14px;
   }
 }
 
