@@ -69,19 +69,22 @@ h3{ font-size: 18px; }
   border-bottom: 1px solid rgba(28,26,22,.08);
 }
 
+/* Updated: deterministic alignment
+   - brand starts exactly at container left edge
+   - nav is pushed to the far right (so Book aligns with hero image right edge) */
 .header-row{
   display:flex;
   align-items:center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 14px;
-  padding: 14px 0;
+  padding: 16px 0;
 }
 
 .brand{
   display:flex;
   align-items:center;
   gap: 10px;
-  min-width: 240px;
+  /* Removed min-width so it doesn't “steal” layout space and misalign nav */
 }
 .brand-mark{
   width: 42px;
@@ -108,8 +111,9 @@ h3{ font-size: 18px; }
   margin-top: 1px;
 }
 
-/* Nav (bigger + clearer) */
+/* Nav */
 .nav{
+  margin-left: auto; /* KEY: flushes nav to the right edge of the container */
   display:flex;
   align-items:center;
   gap: 10px;
@@ -196,22 +200,42 @@ h3{ font-size: 18px; }
   max-width: 60ch;
 }
 
-.usp-pills{
+/* Updated: Credentials line (no jagged “pill” silhouettes) */
+.credentials{
   list-style: none;
   padding: 0;
   margin: 14px 0 16px;
   display:flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  align-items:center;
+  flex-wrap: wrap; /* wraps only if absolutely needed */
+  row-gap: 8px;
+  column-gap: 0;
+  color: rgba(28,26,22,.78);
+  font-size: 12.5px;
 }
-.usp-pills li{
-  font-size: 13px;
-  color: rgba(28,26,22,.84);
-  background: rgba(255,255,255,.62);
-  border: 1px solid rgba(28,26,22,.10);
+.credentials li{
+  display:inline-flex;
+  align-items:center;
+  gap: 7px;
+  white-space: nowrap; /* keeps each credential clean */
+}
+.credentials li + li::before{
+  content: "•";
+  margin: 0 12px;
+  color: rgba(28,26,22,.45);
+}
+.cred-check{
+  width: 18px;
+  height: 18px;
+  display:inline-grid;
+  place-items:center;
   border-radius: 999px;
-  padding: 8px 10px;
-  box-shadow: 0 12px 30px rgba(28,26,22,.05);
+  background: rgba(242,181,68,.20);
+  border: 1px solid rgba(242,181,68,.35);
+  color: rgba(28,26,22,.88);
+  font-weight: 900;
+  font-size: 12px;
+  line-height: 1;
 }
 
 .hero-actions{
@@ -260,7 +284,6 @@ h3{ font-size: 18px; }
 }
 .sep{ margin: 0 8px; color: rgba(28,26,22,.45); }
 
-/* Hero media (only image, no extra panel = less noise) */
 .hero-media{
   display:flex;
   flex-direction: column;
@@ -290,26 +313,33 @@ h3{ font-size: 18px; }
   aspect-ratio: 16 / 10;
 }
 
+/* Updated: caption in corner, compact (no “cutting” the image) */
 .photo-caption{
   position:absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
-  background: rgba(255,255,255,.78);
+  border-radius: 14px;
+  padding: 8px 10px;
   border: 1px solid rgba(28,26,22,.10);
-  border-radius: 16px;
-  padding: 10px 12px;
-  box-shadow: 0 18px 44px rgba(28,26,22,.10);
+  box-shadow: 0 16px 40px rgba(28,26,22,.10);
+  background: rgba(251,243,231,.88); /* warm, not glassy white */
+  max-width: 260px;
 }
 .photo-caption strong{
   display:block;
-  font-size: 13px;
+  font-size: 12.5px;
+  margin-bottom: 1px;
 }
 .photo-caption span{
   display:block;
   font-size: 12px;
   color: rgba(28,26,22,.72);
-  margin-top: 1px;
+}
+
+/* Corner placement */
+.photo-caption--corner{
+  top: 12px;
+  left: 12px;
+  right: auto;
+  bottom: auto;
 }
 
 /* Sections */
@@ -595,13 +625,12 @@ input:focus, select:focus, textarea:focus{
 .footer-small{ margin:0; font-size: 12px; }
 .muted{ color: rgba(28,26,22,.70); }
 
-/* Responsive: better mobile hierarchy (no “σεντόνι”) */
+/* Responsive */
 @media (max-width: 980px){
   .hero-grid{
     grid-template-columns: 1fr;
     align-items: start;
   }
-  /* On mobile, image first for instant trust, then copy */
   .hero-media{ order: -1; }
   .cards{ grid-template-columns: 1fr; }
   .media-split{ grid-template-columns: 1fr; }
@@ -613,7 +642,7 @@ input:focus, select:focus, textarea:focus{
   .nav{
     position: absolute;
     right: 20px;
-    top: 68px;
+    top: 70px;
     width: min(420px, calc(100% - 40px));
     background: rgba(255,255,255,.80);
     border: 1px solid rgba(28,26,22,.10);
@@ -624,6 +653,7 @@ input:focus, select:focus, textarea:focus{
     flex-direction: column;
     align-items: stretch;
     gap: 6px;
+    margin-left: 0; /* not needed when absolute */
   }
   .nav a{
     padding: 12px 12px;
@@ -631,6 +661,14 @@ input:focus, select:focus, textarea:focus{
     font-size: 15px;
   }
   .nav-toggle:checked ~ .nav{ display:flex; }
+
+  /* Credentials: keep them tidy on small screens */
+  .credentials{
+    font-size: 12px;
+  }
+  .credentials li{
+    white-space: normal;
+  }
 }
 
 @media (prefers-reduced-motion: reduce){
