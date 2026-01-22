@@ -19,16 +19,18 @@
 
   --container: 1120px;
 
-  /* ✅ σταθερό ύψος header για σωστό sticky + nav */
-  --header-h: 74px;
+  /* ✅ stable sticky header height */
+  --header-h: 82px;
 }
 
 *{ box-sizing: border-box; }
+
 html{
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--header-h) + 22px);
   -webkit-text-size-adjust: 100%;
 }
+
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -84,17 +86,15 @@ h3{ font-size: 18px; }
   top: 0;
   z-index: 50;
 
-  /* ✅ Mobile: solid background (λύση στο scroll glitch) */
+  /* ✅ Mobile: solid background (prevents iOS scroll repaint glitches) */
   background: rgba(251,243,231,.92);
   border-bottom: 1px solid rgba(28,26,22,.08);
 
-  /* ✅ βοηθάει iOS repaint */
   transform: translateZ(0);
   backface-visibility: hidden;
   will-change: transform;
 }
 
-/* ✅ μόνο σε desktop ενεργοποιούμε blur (όπου είναι πιο σταθερό) */
 @media (min-width: 980px){
   .site-header{
     background: rgba(251,243,231,.65);
@@ -109,7 +109,9 @@ h3{ font-size: 18px; }
   align-items:center;
   justify-content: flex-start;
   gap: 12px;
-  padding: 14px 0;
+
+  /* ✅ a bit more vertical breathing room */
+  padding: 16px 0;
 }
 
 .brand{
@@ -248,6 +250,26 @@ body.nav-open .nav{
   grid-template-columns: 1fr;
   gap: 16px;
   align-items: start;
+
+  /* ✅ explicit ordering on mobile */
+  grid-template-areas:
+    "copy"
+    "media"
+    "helper";
+}
+
+.hero-copy{
+  grid-area: copy;
+  display:flex;
+  flex-direction: column;
+  align-items: flex-start; /* ✅ micro pill anchors on the same vertical line as H1 */
+}
+
+.hero-media{ grid-area: media; }
+
+.hero-helper{
+  grid-area: helper;
+  margin-top: 2px;
 }
 
 .micro{
@@ -259,7 +281,8 @@ body.nav-open .nav{
   padding: 8px 10px;
   border-radius: 999px;
   box-shadow: 0 12px 30px rgba(28,26,22,.06);
-  margin-bottom: 12px;
+  margin: 0 0 12px 0; /* ✅ no left shift */
+  align-self: flex-start;
 }
 
 .subhead{
@@ -268,30 +291,28 @@ body.nav-open .nav{
   max-width: 60ch;
 }
 
-/* Credentials */
+/* ✅ Credentials: no bullets, perfect column alignment on mobile */
 .credentials{
   list-style: none;
   padding: 0;
   margin: 14px 0 16px;
-  display:flex;
-  align-items:center;
-  justify-content: center;
-  flex-wrap: wrap;
-  row-gap: 8px;
-  column-gap: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px 18px;
   color: rgba(28,26,22,.78);
   font-size: 12.25px;
+  width: 100%;
 }
+
+@media (min-width: 520px){
+  .credentials{ grid-template-columns: 1fr 1fr; }
+}
+
 .credentials li{
-  display:inline-flex;
+  display:flex;
   align-items:center;
   gap: 7px;
-  white-space: nowrap;
-}
-.credentials li + li::before{
-  content: "•";
-  margin: 0 clamp(6px, 1.6vw, 10px);
-  color: rgba(28,26,22,.45);
+  min-width: 0;
 }
 
 .cred-check{
@@ -306,6 +327,7 @@ body.nav-open .nav{
   font-weight: 900;
   font-size: 12px;
   line-height: 1;
+  flex: 0 0 18px; /* ✅ ensures exact vertical alignment */
 }
 
 .hero-actions{
@@ -362,7 +384,6 @@ body.nav-open .nav{
   gap: 12px;
 }
 
-/* ✅ hero image card */
 .photo-card{
   border-radius: var(--r-lg);
   overflow: hidden;
@@ -371,6 +392,7 @@ body.nav-open .nav{
   box-shadow: var(--shadow);
   position: relative;
 }
+
 .photo-card img{
   width:100%;
   height:100%;
@@ -378,7 +400,7 @@ body.nav-open .nav{
   display:block;
 }
 
-/* ✅ Mobile: πιο “safe” αναλογία για να κάθεται ωραία κάτω από τα κείμενα */
+/* ✅ mobile hero image ratio, looks stable under copy */
 .photo-card--hero{
   aspect-ratio: 4 / 3;
 }
@@ -689,7 +711,7 @@ input:focus, select:focus, textarea:focus{
 .muted{ color: rgba(28,26,22,.70); }
 
 /* =========================
-   DESKTOP ENHANCEMENTS
+   RESPONSIVE ENHANCEMENTS
    ========================= */
 
 @media (min-width: 720px){
@@ -719,14 +741,16 @@ input:focus, select:focus, textarea:focus{
     display:flex;
     flex-direction: row;
     align-items:center;
-    gap: 10px;
+
+    /* ✅ tighter grouping (less "air" between links) */
+    gap: 8px;
     margin-left: auto;
     transition: none;
   }
 
   .nav a{
     font-size: 14px;
-    padding: 10px 12px;
+    padding: 9px 10px; /* ✅ slightly tighter */
     border-radius: 999px;
   }
 
@@ -740,14 +764,25 @@ input:focus, select:focus, textarea:focus{
     grid-template-columns: 1.05fr .95fr;
     gap: 22px;
     align-items: center;
+
+    /* ✅ helper stays under copy, media spans full right column */
+    grid-template-areas:
+      "copy media"
+      "helper media";
   }
 
+  .hero-helper{ margin-top: 0; }
+
+  /* Credentials: can breathe a bit more on desktop */
   .credentials{
-    justify-content: flex-start;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin: 14px 0 16px;
     font-size: 12.5px;
   }
 
-  /* ✅ Desktop hero image πιο “cinematic” */
+  /* ✅ Desktop hero image more cinematic */
   .photo-card--hero{ aspect-ratio: 16 / 10; }
   .photo-card--hero img{ aspect-ratio: 16 / 10; }
 
