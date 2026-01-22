@@ -3,13 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
 
   <title>Daffodil Psychology | Therapy & Autism Evaluations in Merrick, NY</title>
   <meta name="description" content="Therapy for children, adolescents, adults, and families. Full or partial autism evaluations using gold-standard measures including ADOS-2. Merrick, NY." />
   <meta name="theme-color" content="#FBF3E7" />
 
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Non-blocking stylesheet preload (performance-friendly) -->
+  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="styles.css"></noscript>
 
   <!-- Images are remote (no assets). Preconnect for faster fetch. -->
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -113,13 +115,12 @@
         </span>
       </a>
 
-      <!-- CSS-only mobile menu -->
-      <input class="nav-toggle" type="checkbox" id="navToggle" aria-label="Open menu" />
-      <label class="nav-btn" for="navToggle" aria-hidden="true">
+      <!-- Accessible mobile menu button -->
+      <button class="nav-btn" type="button" aria-label="Open menu" aria-controls="primaryNav" aria-expanded="false">
         <span></span><span></span><span></span>
-      </label>
+      </button>
 
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" id="primaryNav" aria-label="Primary">
         <a href="#services">Services</a>
         <a href="#evaluations">Evaluations</a>
         <a href="#consultation">Consultation</a>
@@ -645,5 +646,66 @@
       </div>
     </footer>
   </main>
+
+  <script>
+    (function () {
+      const btn = document.querySelector(".nav-btn");
+      const nav = document.querySelector("#primaryNav");
+
+      if (!btn || !nav) return;
+
+      const mqDesktop = window.matchMedia("(min-width: 980px)");
+
+      function setExpanded(isOpen) {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+      }
+
+      function openNav() {
+        document.body.classList.add("nav-open");
+        setExpanded(true);
+      }
+
+      function closeNav() {
+        document.body.classList.remove("nav-open");
+        setExpanded(false);
+      }
+
+      function toggleNav() {
+        const isOpen = document.body.classList.contains("nav-open");
+        isOpen ? closeNav() : openNav();
+      }
+
+      btn.addEventListener("click", toggleNav);
+
+      // Close when clicking a link inside the nav (mobile behavior)
+      nav.addEventListener("click", (e) => {
+        const a = e.target.closest("a");
+        if (!a) return;
+        if (!mqDesktop.matches) closeNav();
+      });
+
+      // Close on ESC
+      document.addEventListener("keydown", (e) => {
+        if (e.key !== "Escape") return;
+        if (document.body.classList.contains("nav-open")) closeNav();
+      });
+
+      // Close when clicking outside header/nav area (mobile)
+      document.addEventListener("click", (e) => {
+        if (!document.body.classList.contains("nav-open")) return;
+        if (mqDesktop.matches) return;
+        if (e.target.closest(".site-header")) return;
+        closeNav();
+      });
+
+      // Ensure nav is closed when switching to desktop
+      function handleDesktopChange() {
+        if (mqDesktop.matches) closeNav();
+      }
+      mqDesktop.addEventListener("change", handleDesktopChange);
+      handleDesktopChange();
+    })();
+  </script>
 </body>
 </html>
