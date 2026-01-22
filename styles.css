@@ -19,7 +19,7 @@
 
   --container: 1120px;
 
-  /* ✅ stable sticky header height */
+  /* stable sticky header height hint */
   --header-h: 82px;
 }
 
@@ -86,7 +86,7 @@ h3{ font-size: 18px; }
   top: 0;
   z-index: 50;
 
-  /* ✅ Mobile: solid background (prevents iOS scroll repaint glitches) */
+  /* Mobile: solid background (prevents iOS scroll repaint glitches) */
   background: rgba(251,243,231,.92);
   border-bottom: 1px solid rgba(28,26,22,.08);
 
@@ -109,8 +109,6 @@ h3{ font-size: 18px; }
   align-items:center;
   justify-content: flex-start;
   gap: 12px;
-
-  /* ✅ a bit more vertical breathing room */
   padding: 16px 0;
 }
 
@@ -179,7 +177,10 @@ h3{ font-size: 18px; }
 .nav{
   position: absolute;
   right: 16px;
-  top: calc(var(--header-h) - 4px);
+
+  /* ✅ FIX: anchor dropdown under the real header height (no overlap/jumps) */
+  top: calc(100% + 10px);
+
   width: min(420px, calc(100% - 32px));
   background: rgba(255,255,255,.88);
   border: 1px solid rgba(28,26,22,.10);
@@ -251,7 +252,6 @@ body.nav-open .nav{
   gap: 16px;
   align-items: start;
 
-  /* ✅ explicit ordering on mobile */
   grid-template-areas:
     "copy"
     "media"
@@ -262,7 +262,7 @@ body.nav-open .nav{
   grid-area: copy;
   display:flex;
   flex-direction: column;
-  align-items: flex-start; /* ✅ micro pill anchors on the same vertical line as H1 */
+  align-items: flex-start;
 }
 
 .hero-media{ grid-area: media; }
@@ -270,6 +270,14 @@ body.nav-open .nav{
 .hero-helper{
   grid-area: helper;
   margin-top: 2px;
+}
+
+/* ✅ FIX: prevent mobile “breaks” from long email/strings */
+.hero-helper,
+.hero-helper a{
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .micro{
@@ -281,7 +289,7 @@ body.nav-open .nav{
   padding: 8px 10px;
   border-radius: 999px;
   box-shadow: 0 12px 30px rgba(28,26,22,.06);
-  margin: 0 0 12px 0; /* ✅ no left shift */
+  margin: 0 0 12px 0;
   align-self: flex-start;
 }
 
@@ -291,7 +299,7 @@ body.nav-open .nav{
   max-width: 60ch;
 }
 
-/* ✅ Credentials: no bullets, perfect column alignment on mobile */
+/* Credentials */
 .credentials{
   list-style: none;
   padding: 0;
@@ -327,7 +335,7 @@ body.nav-open .nav{
   font-weight: 900;
   font-size: 12px;
   line-height: 1;
-  flex: 0 0 18px; /* ✅ ensures exact vertical alignment */
+  flex: 0 0 18px;
 }
 
 .hero-actions{
@@ -400,7 +408,6 @@ body.nav-open .nav{
   display:block;
 }
 
-/* ✅ mobile hero image ratio, looks stable under copy */
 .photo-card--hero{
   aspect-ratio: 4 / 3;
 }
@@ -742,7 +749,6 @@ input:focus, select:focus, textarea:focus{
     flex-direction: row;
     align-items:center;
 
-    /* ✅ tighter grouping (less "air" between links) */
     gap: 8px;
     margin-left: auto;
     transition: none;
@@ -750,7 +756,7 @@ input:focus, select:focus, textarea:focus{
 
   .nav a{
     font-size: 14px;
-    padding: 9px 10px; /* ✅ slightly tighter */
+    padding: 9px 10px;
     border-radius: 999px;
   }
 
@@ -765,7 +771,6 @@ input:focus, select:focus, textarea:focus{
     gap: 22px;
     align-items: center;
 
-    /* ✅ helper stays under copy, media spans full right column */
     grid-template-areas:
       "copy media"
       "helper media";
@@ -773,7 +778,6 @@ input:focus, select:focus, textarea:focus{
 
   .hero-helper{ margin-top: 0; }
 
-  /* Credentials: can breathe a bit more on desktop */
   .credentials{
     display:flex;
     flex-wrap: wrap;
@@ -782,7 +786,6 @@ input:focus, select:focus, textarea:focus{
     font-size: 12.5px;
   }
 
-  /* ✅ Desktop hero image more cinematic */
   .photo-card--hero{ aspect-ratio: 16 / 10; }
   .photo-card--hero img{ aspect-ratio: 16 / 10; }
 
