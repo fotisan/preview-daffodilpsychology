@@ -131,7 +131,6 @@
   </header>
 
   <main id="main">
-    <!-- HERO (cleaner + one primary CTA + no address card + no extra boxes) -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
@@ -144,19 +143,18 @@
             Warm, evidence based care that feels grounded from the first conversation.
           </p>
 
-          <!-- Unified USP (replaces multiple cards + removes noise) -->
-          <ul class="usp-pills" aria-label="Key highlights">
-            <li>ADOS-2 trained</li>
-            <li>Therapy for all ages</li>
-            <li>Autism & psycho-educational testing</li>
-            <li>School consultation & advocacy</li>
+          <!-- Updated: credentials line (not “button-ish” pills) -->
+          <ul class="credentials" aria-label="Key credentials">
+            <li><span class="cred-check" aria-hidden="true">✓</span> ADOS-2 trained</li>
+            <li><span class="cred-check" aria-hidden="true">✓</span> Therapy for all ages</li>
+            <li><span class="cred-check" aria-hidden="true">✓</span> Autism & psycho-educational testing</li>
+            <li><span class="cred-check" aria-hidden="true">✓</span> School consultation & advocacy</li>
           </ul>
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contact">Schedule a Consultation</a>
           </div>
 
-          <!-- Secondary options as quiet links (not competing buttons) -->
           <p class="helper">
             Prefer email or phone?
             <a href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
@@ -166,7 +164,6 @@
         </div>
 
         <div class="hero-media" aria-label="Therapy office image">
-          <!-- HERO IMAGE: landscape + therapy-office vibe (no bedroom) -->
           <figure class="photo-card photo-card--landscape">
             <img
               src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2000&q=70"
@@ -176,7 +173,9 @@
               decoding="async"
               fetchpriority="high"
             />
-            <figcaption class="photo-caption">
+
+            <!-- Updated: corner badge caption (small, not covering the bottom third) -->
+            <figcaption class="photo-caption photo-caption--corner">
               <strong>Warm, welcoming care</strong>
               <span>A space designed for comfort and trust.</span>
             </figcaption>
@@ -187,7 +186,6 @@
       <div class="hero-band" aria-hidden="true"></div>
     </section>
 
-    <!-- SERVICES -->
     <section class="section" id="services">
       <div class="container">
         <header class="section-head">
@@ -241,7 +239,6 @@
       </div>
     </section>
 
-    <!-- EVALUATIONS -->
     <section class="section section-soft" id="evaluations">
       <div class="container">
         <header class="section-head">
@@ -290,7 +287,6 @@
       </div>
     </section>
 
-    <!-- CONSULTATION -->
     <section class="section" id="consultation">
       <div class="container">
         <header class="section-head">
@@ -320,7 +316,6 @@
       </div>
     </section>
 
-    <!-- TEAM -->
     <section class="section section-soft" id="team">
       <div class="container">
         <header class="section-head">
@@ -493,7 +488,6 @@
       </div>
     </section>
 
-    <!-- FAQ -->
     <section class="section" id="faq">
       <div class="container">
         <header class="section-head">
@@ -561,7 +555,6 @@
       </div>
     </section>
 
-    <!-- CONTACT / LOCATION (address moved here, not in hero) -->
     <section class="section section-soft" id="contact">
       <div class="container contact-grid">
         <div class="contact-card">
@@ -570,7 +563,6 @@
             Tell us what you’re looking for and we’ll guide you to the right next step for therapy, evaluations, or consultation.
           </p>
 
-          <!-- Simple form (works with your backend later / or Netlify forms if you want) -->
           <form class="form" action="#" method="post">
             <label class="field">
               <span>Name</span>
