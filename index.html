@@ -1,90 +1,126 @@
-<!-- HERO ONLY -->
-<section class="hero" id="top">
-  <div class="hero__wrap">
-    <div class="hero__grid">
-      <!-- LEFT -->
-      <div class="hero__content">
-        <div class="brand">
-          <div class="brand__mark" aria-hidden="true">
-            <!-- Sunflower (inline SVG, no image) -->
-            <svg class="sunflower" viewBox="0 0 64 64" role="img" aria-label="Sunflower">
-              <g>
-                <!-- petals -->
-                <path d="M32 3c3 5-2 10-2 10s-7-1-8-7c5-3 10 2 10 4z"/>
-                <path d="M49 8c-1 6-8 7-8 7s-5-5-2-10c2-2 7-5 10 3z"/>
-                <path d="M61 26c-5 3-10-2-10-2s1-7 7-8c8 3 4 10 3 10z"/>
-                <path d="M58 45c-6-1-7-8-7-8s5-5 10-2c8 2 0 10-3 10z"/>
-                <path d="M40 61c-3-5 2-10 2-10s7 1 8 7c-5 3-10-2-10-4z"/>
-                <path d="M15 56c1-6 8-7 8-7s5 5 2 10c-2 2-7 5-10-3z"/>
-                <path d="M3 38c5-3 10 2 10 2s-1 7-7 8c-8-3-4-10-3-10z"/>
-                <path d="M6 19c6 1 7 8 7 8s-5 5-10 2c-8-2 0-10 3-10z"/>
-                <!-- center -->
-                <circle cx="32" cy="32" r="12"/>
-                <circle cx="32" cy="32" r="6"/>
+<!-- HERO (ONLY) -->
+<section class="hero" id="top" aria-label="Hero">
+  <div class="hero__container">
+
+    <div class="hero__copy">
+      <div class="hero__brand" aria-label="Brand">
+        <span class="hero__logo" aria-hidden="true">
+          <!-- Sunflower logo (SVG) -->
+          <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <radialGradient id="sfCenter" cx="35%" cy="30%" r="75%">
+                <stop offset="0" stop-color="#F7D27A"/>
+                <stop offset="1" stop-color="#C89A3A"/>
+              </radialGradient>
+            </defs>
+
+            <!-- petals -->
+            <g transform="translate(32 32)">
+              <g fill="#E7B64A">
+                <ellipse rx="6.2" ry="13.8" transform="rotate(0) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(30) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(60) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(90) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(120) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(150) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(180) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(210) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(240) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(270) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(300) translate(0,-22)"/>
+                <ellipse rx="6.2" ry="13.8" transform="rotate(330) translate(0,-22)"/>
               </g>
-            </svg>
-          </div>
-          <div class="brand__text">
-            <div class="brand__name">Dr. Zachary Rose</div>
-            <div class="brand__tag">Therapy & Autism Evaluations • Merrick, NY</div>
-          </div>
-        </div>
 
-        <h1 class="hero__title">Support that feels human, and a plan that feels clear.</h1>
+              <!-- inner ring -->
+              <circle r="15.5" fill="url(#sfCenter)"/>
+              <circle r="11.5" fill="#6B4B1F" opacity=".9"/>
+              <!-- seeds -->
+              <g fill="#2B1B10" opacity=".35">
+                <circle r="1.05" cx="-5" cy="-2"/>
+                <circle r="1.05" cx="2" cy="-6"/>
+                <circle r="1.05" cx="6" cy="1"/>
+                <circle r="1.05" cx="-1" cy="6"/>
+                <circle r="1.05" cx="-7" cy="4"/>
+              </g>
+            </g>
+          </svg>
+        </span>
 
-        <p class="hero__lead">
-          Full or partial Autism Evaluations for any age, including ADOS-2, plus therapy for all ages
-          (including young kids). A warm, structured approach that meets you where you are.
-        </p>
-
-        <div class="hero__cta">
-          <a class="btn btn--primary" href="tel:+15162345005">Call or Text</a>
-          <a class="btn btn--ghost" href="mailto:dr.zacharyrose1@gmail.com">Email</a>
-        </div>
-
-        <div class="hero__info">
-          <div class="infoCard">
-            <div class="infoCard__title">Location</div>
-            <div class="infoCard__value">
-              1955 Merrick Road, Suite 205A<br />
-              Merrick, NY, United States, New York
-            </div>
-          </div>
-
-          <div class="infoCard">
-            <div class="infoCard__title">Phone</div>
-            <div class="infoCard__value">
-              <a href="tel:+15162345005">+1 516-234-5005</a>
-            </div>
-          </div>
-
-          <div class="infoCard">
-            <div class="infoCard__title">Email</div>
-            <div class="infoCard__value">
-              <a href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
-            </div>
-          </div>
+        <div class="hero__brandText">
+          <span class="hero__name">Dr. Zachary Rose</span>
+          <span class="hero__micro">Autism Evaluations &amp; Therapy • Merrick, NY</span>
         </div>
       </div>
 
-      <!-- RIGHT -->
-      <div class="hero__media">
-        <figure class="portrait">
-          <img
-            src="dr-zachary-rose.png"
-            alt="Dr. Zachary Rose portrait"
-            width="900"
-            height="1200"
-            loading="eager"
-            decoding="async"
-          />
-        </figure>
+      <h1 class="hero__title">
+        Clear answers, compassionate care, and a plan you can trust.
+      </h1>
 
-        <div class="hero__badge">
-          <div class="hero__badgeTitle">Services</div>
-          <div class="hero__badgeText">Autism Evaluations (ADOS-2) • Therapy (All Ages)</div>
-        </div>
+      <p class="hero__lead">
+        Dr. Rose offers <strong>FULL or PARTIAL Autism Evaluations</strong> for <strong>any age</strong> using <strong>ADOS-2</strong>.
+        He also provides <strong>therapy for all ages</strong>, including young kids.
+      </p>
+
+      <div class="hero__actions" aria-label="Primary actions">
+        <a class="btn btn--primary" href="tel:+15162345005">Call or Text (516) 234-5005</a>
+        <a class="btn btn--soft" href="mailto:dr.zacharyrose1@gmail.com">Email Dr. Rose</a>
+      </div>
+
+      <div class="hero__trust" aria-label="Trust points">
+        <div class="trustItem"><span class="trustDot" aria-hidden="true"></span> All ages welcome</div>
+        <div class="trustItem"><span class="trustDot trustDot--sage" aria-hidden="true"></span> ADOS-2 evaluations</div>
+        <div class="trustItem"><span class="trustDot" aria-hidden="true"></span> Warm, clear guidance</div>
       </div>
     </div>
+
+    <div class="hero__visual">
+      <figure class="hero__photo" aria-label="Dr. Zachary Rose photo">
+        <!-- 3:4 aspect ratio + width/height to avoid CLS -->
+        <img
+          src="dr-zachary-rose.png"
+          alt="Dr. Zachary Rose"
+          loading="eager"
+          decoding="async"
+          width="900"
+          height="1200"
+        />
+      </figure>
+
+      <aside class="hero__card" aria-label="Practice information">
+        <div class="hero__cardTop">
+          <span class="pill">Merrick, New York</span>
+          <span class="pill pill--soft">In-person</span>
+        </div>
+
+        <div class="hero__cardBody">
+          <div class="infoRow">
+            <span class="infoLabel">Address</span>
+            <span class="infoValue">1955 Merrick Road, Suite 205A, Merrick, NY, United States, New York</span>
+          </div>
+
+          <div class="infoGrid">
+            <div class="infoRow">
+              <span class="infoLabel">Phone</span>
+              <a class="infoValue link" href="tel:+15162345005">+1 516-234-5005</a>
+            </div>
+            <div class="infoRow">
+              <span class="infoLabel">Email</span>
+              <a class="infoValue link" href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="note">
+            <span class="noteMark" aria-hidden="true">✓</span>
+            <span class="noteText">Full or partial autism evaluations for any age, with ADOS-2.</span>
+          </div>
+
+          <div class="note">
+            <span class="noteMark" aria-hidden="true">✓</span>
+            <span class="noteText">Therapy for all ages, including young kids.</span>
+          </div>
+        </div>
+      </aside>
+    </div>
+
   </div>
 </section>
