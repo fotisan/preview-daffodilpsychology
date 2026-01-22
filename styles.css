@@ -679,3 +679,15 @@ input:focus, select:focus, textarea:focus{
   *{ scroll-behavior: auto; }
   .btn, .nav a{ transition: none; }
 }
+
+/* ONLY HERO MODE (temporary) */
+body.only-hero main > section:not(.hero),
+body.only-hero footer {
+  display: none;
+}
+
+/* Optional: hide nav links except Book (so it matches “only hero”) */
+body.only-hero .nav a:not(.nav-cta) {
+  display: none;
+}
+
