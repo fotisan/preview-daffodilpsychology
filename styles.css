@@ -69,12 +69,10 @@ h3{ font-size: 18px; }
   border-bottom: 1px solid rgba(28,26,22,.08);
 }
 
-/* Updated: deterministic alignment
-   - brand starts exactly at container left edge
-   - nav is pushed to the far right (so Book aligns with hero image right edge) */
+/* Header layout */
 .header-row{
   display:flex;
-  align-items:center;
+  align-items:center;            /* keep center alignment */
   justify-content: flex-start;
   gap: 14px;
   padding: 16px 0;
@@ -82,9 +80,8 @@ h3{ font-size: 18px; }
 
 .brand{
   display:flex;
-  align-items:center;
+  align-items:center;            /* ensure brand internals are centered */
   gap: 10px;
-  /* Removed min-width so it doesn't “steal” layout space and misalign nav */
 }
 .brand-mark{
   width: 42px;
@@ -104,24 +101,26 @@ h3{ font-size: 18px; }
   font-size: 14px;
   letter-spacing: 0.01em;
   color: rgba(28,26,22,.92);
+  line-height: 1.1;              /* improved vertical rhythm */
 }
 .brand-sub{
   font-size: 12px;
   color: rgba(28,26,22,.70);
-  margin-top: 1px;
+  margin-top: 2px;
+  line-height: 1.1;              /* improved vertical rhythm */
 }
 
 /* Nav */
 .nav{
-  margin-left: auto; /* KEY: flushes nav to the right edge of the container */
+  margin-left: auto;
   display:flex;
-  align-items:center;
+  align-items:center;            /* center align menu items with brand */
   gap: 10px;
 }
 .nav a{
   font-size: 14px;
   color: rgba(28,26,22,.84);
-  padding: 10px 12px;
+  padding: 11px 12px;            /* slightly better vertical alignment */
   border-radius: 999px;
   transition: background .18s ease, transform .18s ease, color .18s ease;
 }
@@ -200,16 +199,23 @@ h3{ font-size: 18px; }
   max-width: 60ch;
 }
 
-/* Updated: Credentials line (no jagged “pill” silhouettes) */
+/* ✅ FIX #1: Credentials as a clean 2×2 grid on desktop
+   - removes the “orphaned” last item
+   - keeps left alignment with the copy column
+*/
 .credentials{
   list-style: none;
   padding: 0;
   margin: 14px 0 16px;
-  display:flex;
-  align-items:center;
-  flex-wrap: wrap; /* wraps only if absolutely needed */
-  row-gap: 8px;
-  column-gap: 0;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  column-gap: 22px;
+  row-gap: 10px;
+
+  align-items: center;
+  justify-content: start;
+
   color: rgba(28,26,22,.78);
   font-size: 12.5px;
 }
@@ -217,13 +223,12 @@ h3{ font-size: 18px; }
   display:inline-flex;
   align-items:center;
   gap: 7px;
-  white-space: nowrap; /* keeps each credential clean */
+  white-space: nowrap;
 }
 .credentials li + li::before{
-  content: "•";
-  margin: 0 12px;
-  color: rgba(28,26,22,.45);
+  content: none; /* remove bullet separators that don't fit grid */
 }
+
 .cred-check{
   width: 18px;
   height: 18px;
@@ -313,14 +318,14 @@ h3{ font-size: 18px; }
   aspect-ratio: 16 / 10;
 }
 
-/* Updated: caption in corner, compact (no “cutting” the image) */
+/* Caption */
 .photo-caption{
   position:absolute;
   border-radius: 14px;
   padding: 8px 10px;
   border: 1px solid rgba(28,26,22,.10);
   box-shadow: 0 16px 40px rgba(28,26,22,.10);
-  background: rgba(251,243,231,.88); /* warm, not glassy white */
+  background: rgba(251,243,231,.88);
   max-width: 260px;
 }
 .photo-caption strong{
@@ -333,8 +338,6 @@ h3{ font-size: 18px; }
   font-size: 12px;
   color: rgba(28,26,22,.72);
 }
-
-/* Corner placement */
 .photo-caption--corner{
   top: 12px;
   left: 12px;
@@ -653,7 +656,7 @@ input:focus, select:focus, textarea:focus{
     flex-direction: column;
     align-items: stretch;
     gap: 6px;
-    margin-left: 0; /* not needed when absolute */
+    margin-left: 0;
   }
   .nav a{
     padding: 12px 12px;
@@ -662,9 +665,10 @@ input:focus, select:focus, textarea:focus{
   }
   .nav-toggle:checked ~ .nav{ display:flex; }
 
-  /* Credentials: keep them tidy on small screens */
+  /* Credentials: allow clean wrap on small screens */
   .credentials{
-    font-size: 12px;
+    grid-template-columns: 1fr;   /* stack on mobile */
+    row-gap: 8px;
   }
   .credentials li{
     white-space: normal;
