@@ -3,171 +3,432 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Dr. Zachary Rose provides therapy for all ages and autism & psycho-educational evaluations (including ADOS-2) in Merrick, NY." />
+  <meta name="theme-color" content="#FBF6EE" />
+  <title>Dr. Zachary Rose | Therapy & Autism Evaluations (ADOS-2) | Merrick, NY</title>
 
-  <title>Dr. Zachary Rose | Autism Evaluations (ADOS-2) & Therapy | Merrick, NY</title>
-  <meta name="description" content="Full or partial autism evaluations for any age with ADOS-2, plus therapy for children, adolescents, and adults. Merrick, NY. Call/Text: (516) 234-5005." />
-  <meta name="robots" content="index,follow" />
+  <link rel="preload" href="styles.css" as="style" />
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- IMPORTANT: same folder -->
-  <link rel="stylesheet" href="./styles.css" />
+  <!-- Minimal local-style: keep it light for performance -->
+  <script>
+    document.documentElement.classList.add('js');
+  </script>
 
-  <!-- Small safety net: if CSS fails to load, logo won't explode -->
-  <style>
-    .logo svg{width:22px;height:22px;display:block}
-  </style>
-
-  <!-- Schema -->
+  <!-- Optional: Basic structured data (lightweight, good for SEO) -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":["MedicalBusiness","Psychologist"],
+    "@type":"PsychologicalTreatment",
     "name":"Dr. Zachary Rose",
-    "telephone":"+15162345005",
-    "email":"dr.zacharyrose1@gmail.com",
     "address":{
       "@type":"PostalAddress",
       "streetAddress":"1955 Merrick Road, Suite 205A",
       "addressLocality":"Merrick",
       "addressRegion":"NY",
+      "postalCode":"11566",
       "addressCountry":"US"
-    }
+    },
+    "telephone":"+1-516-234-5005",
+    "email":"dr.zacharyrose1@gmail.com",
+    "areaServed":"Merrick, NY"
   }
   </script>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header__inner">
-      <a class="brand" href="#top" aria-label="Home">
-        <span class="logo" aria-hidden="true">
-          <!-- Sunflower as SVG (NOT an image) -->
-          <svg width="22" height="22" viewBox="0 0 64 64" role="img" aria-label="Sunflower">
-            <g fill="none">
-              <g fill="#D9B06C">
-                <path d="M32 6c3 8 3 10 0 18c-3-8-3-10 0-18z"/>
-                <path d="M32 58c-3-8-3-10 0-18c3 8 3 10 0 18z"/>
-                <path d="M6 32c8-3 10-3 18 0c-8 3-10 3-18 0z"/>
-                <path d="M58 32c-8 3-10 3-18 0c8-3 10-3 18 0z"/>
-                <path d="M12 12c8 3 9 4 12 12c-8-3-9-4-12-12z"/>
-                <path d="M52 52c-8-3-9-4-12-12c8 3 9 4 12 12z"/>
-                <path d="M52 12c-8 3-9 4-12 12c8-3 9-4 12-12z"/>
-                <path d="M12 52c8-3 9-4 12-12c-8 3-9 4-12 12z"/>
-              </g>
-              <circle cx="32" cy="32" r="10" fill="#7B4E1E"/>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-elevate>
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Dr. Zachary Rose, home">
+        <span class="brand-mark" aria-hidden="true">
+          <!-- Sunflower-style mark (inline SVG, no image request) -->
+          <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
+            <defs>
+              <radialGradient id="g" cx="50%" cy="45%" r="60%">
+                <stop offset="0%" stop-color="#FFE39A"/>
+                <stop offset="55%" stop-color="#FDBA2D"/>
+                <stop offset="100%" stop-color="#E88A00"/>
+              </radialGradient>
+            </defs>
+            <circle cx="32" cy="32" r="10" fill="#4B2F1C"/>
+            <circle cx="32" cy="32" r="7" fill="url(#g)" opacity="0.9"/>
+            <!-- petals -->
+            <g fill="#FDBA2D">
+              <path d="M32 3c4 5 4 9 0 14-4-5-4-9 0-14z"/>
+              <path d="M32 47c4 5 4 9 0 14-4-5-4-9 0-14z"/>
+              <path d="M3 32c5-4 9-4 14 0-5 4-9 4-14 0z"/>
+              <path d="M47 32c5-4 9-4 14 0-5 4-9 4-14 0z"/>
+              <path d="M11 11c6 1 9 4 10 10-6-1-9-4-10-10z"/>
+              <path d="M43 43c6 1 9 4 10 10-6-1-9-4-10-10z"/>
+              <path d="M53 11c-1 6-4 9-10 10 1-6 4-9 10-10z"/>
+              <path d="M21 43c-1 6-4 9-10 10 1-6 4-9 10-10z"/>
             </g>
           </svg>
         </span>
-
-        <span class="brand__text">
-          <span class="brand__name">Dr. Zachary Rose</span>
-          <span class="brand__sub">Autism Evaluations (ADOS-2) & Therapy • Merrick, NY</span>
+        <span class="brand-text">
+          <span class="brand-name">Dr. Zachary Rose</span>
+          <span class="brand-sub">Therapy & Evaluations · Merrick, NY</span>
         </span>
       </a>
 
-      <!-- CSS-only hamburger -->
-      <input class="navcheck" type="checkbox" id="navcheck" aria-label="Toggle navigation" />
-      <label class="hamburger" for="navcheck" aria-hidden="true">
-        <span></span>
-      </label>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">
+        <span class="nav-toggle-lines" aria-hidden="true"></span>
+        <span class="sr-only">Open menu</span>
+      </button>
 
-      <nav class="nav" aria-label="Primary">
+      <nav id="primary-nav" class="nav" aria-label="Primary">
+        <a href="#services">Services</a>
         <a href="#evaluations">Evaluations</a>
-        <a href="#therapy">Therapy</a>
-        <a href="#location">Location</a>
-        <a class="nav__cta" href="#contact">Contact</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact" class="nav-cta">Contact</a>
       </nav>
-
-      <!-- Mobile panel -->
-      <div class="mobile">
-        <div class="mobile__panel">
-          <div class="mobile__top">
-            <span class="mobile__title">Menu</span>
-            <label class="mobile__close" for="navcheck">Close</label>
-          </div>
-
-          <a href="#evaluations">Evaluations</a>
-          <a href="#therapy">Therapy</a>
-          <a href="#location">Location</a>
-          <a class="nav__cta" href="#contact">Contact</a>
-
-          <div class="mobile__divider"></div>
-
-          <a href="tel:+15162345005">Call/Text: (516) 234-5005</a>
-          <a href="mailto:dr.zacharyrose1@gmail.com">Email: dr.zacharyrose1@gmail.com</a>
-        </div>
-      </div>
     </div>
   </header>
 
-  <main id="top">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <p class="micro">Autism evaluations and therapy in Merrick, NY</p>
-
-          <h1 class="h1">Clear answers, compassionate care, and a plan you can trust.</h1>
-
+  <main id="main">
+    <section class="hero" aria-label="Hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="micro">Therapy & Autism Evaluations (ADOS-2) · Merrick, NY</p>
+          <h1>Warm, evidence-based support for every age and every stage.</h1>
           <p class="lead">
-            Dr. Rose offers <strong>full or partial autism evaluations for any age</strong> using <strong>ADOS-2</strong>.
-            He also provides therapy for <strong>all ages</strong>, including young kids.
+            Dr. Rose offers <strong>FULL or PARTIAL Autism Evaluations</strong> for <strong>any age</strong>,
+            including the <strong>ADOS-2</strong>, and provides therapy for children, adolescents, adults, and families.
           </p>
 
-          <div class="cta">
-            <a class="btn btn--primary" href="tel:+15162345005">(516) 234-5005</a>
-            <a class="btn btn--soft" href="mailto:dr.zacharyrose1@gmail.com">Email</a>
+          <div class="hero-actions">
+            <a class="btn primary" href="tel:+15162345005">Call or Text (516) 234-5005</a>
+            <a class="btn soft" href="mailto:dr.zacharyrose1@gmail.com">Email Dr. Rose</a>
           </div>
 
-          <div class="trust">
-            <span class="pill">All ages welcome</span>
-            <span class="pill">ADOS-2 evaluations</span>
-            <span class="pill">Warm, clear guidance</span>
+          <div class="trust-row" aria-label="Key highlights">
+            <div class="pill">All ages welcome</div>
+            <div class="pill">ADOS-2 available</div>
+            <div class="pill">Therapy + evaluations</div>
+          </div>
+
+          <div class="hero-card" role="region" aria-label="Office location">
+            <div class="hero-card-inner">
+              <div class="card-kicker">Office</div>
+              <div class="card-title">1955 Merrick Road, Suite 205A</div>
+              <div class="card-sub">Merrick, NY 11566 · United States</div>
+              <a class="card-link" href="#contact">See contact details</a>
+            </div>
           </div>
         </div>
 
-        <div class="hero__side">
-          <div class="portrait">
-            <!-- 3:4 -->
-            <img
-              src="./dr-zachary-rose.png"
-              alt="Dr. Zachary Rose"
-              width="900"
-              height="1200"
-              decoding="async"
-              loading="eager"
-            />
+        <div class="hero-media" aria-label="Portrait">
+          <!-- Provide explicit dimensions to prevent CLS -->
+          <img
+            src="dr-zachary-rose.png"
+            alt="Dr. Zachary Rose portrait"
+            width="900"
+            height="1200"
+            loading="eager"
+            decoding="async"
+          />
+          <div class="media-badge" aria-hidden="true">
+            <span class="dot"></span>
+            Same-week availability may vary
           </div>
+        </div>
+      </div>
 
-          <aside class="card" id="contact" aria-label="Contact details">
-            <h2 class="card__title">Contact</h2>
+      <div class="hero-wave" aria-hidden="true"></div>
+    </section>
 
-            <div class="item">
-              <div class="item__label">Address</div>
-              <a class="item__value" target="_blank" rel="noopener noreferrer"
-                 href="https://www.google.com/maps?q=1955%20Merrick%20Road%20Suite%20205A%20Merrick%20NY">
-                1955 Merrick Road, Suite 205A, Merrick, NY, United States, New York
-              </a>
-            </div>
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Services</h2>
+          <p class="section-sub">
+            Clear options, warm care, and a process built around trust, comfort, and practical progress.
+          </p>
+        </div>
 
-            <div class="item">
-              <div class="item__label">Phone</div>
-              <a class="item__value" href="tel:+15162345005">+1 516-234-5005</a>
-            </div>
+        <div class="cards">
+          <article class="card">
+            <h3>Therapy</h3>
+            <p>
+              Individual and group therapy for <strong>children, adolescents, adults, and families</strong>.
+              Support for anxiety, emotional dysregulation, ADHD, ODD, and more.
+            </p>
+            <ul class="check">
+              <li>Collaborative, goal-oriented sessions</li>
+              <li>Kid-friendly approaches when needed</li>
+              <li>Family support and skills building</li>
+            </ul>
+          </article>
 
-            <div class="item">
-              <div class="item__label">Email</div>
-              <a class="item__value" href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
-            </div>
-          </aside>
+          <article class="card" id="evaluations">
+            <h3>Evaluations</h3>
+            <p>
+              Autism and psycho-educational testing with “gold standard” measures, including
+              <strong>ADOS-2</strong>, <strong>ADI-R</strong>, <strong>Vineland-3</strong>, and more.
+            </p>
+            <ul class="check">
+              <li>Full or partial evaluations for any age</li>
+              <li>Structured testing + real-world interpretation</li>
+              <li>Feedback session included</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Consultation & Behavior</h3>
+            <p>
+              Behavioral, school, family, and special-education consultation informed by years of experience.
+              Parent training, behavior modification, and social-emotional regulation skills.
+            </p>
+            <ul class="check">
+              <li>School collaboration and guidance</li>
+              <li>Parent coaching and practical tools</li>
+              <li>Consistent plans you can follow</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Simple anchors so nav makes sense -->
-    <section class="anchors" id="evaluations"></section>
-    <section class="anchors" id="therapy"></section>
-    <section class="anchors" id="location"></section>
+    <section class="section alt">
+      <div class="container split">
+        <div>
+          <h2>What to expect</h2>
+          <p class="section-sub">
+            A calm, accepting environment where rapport comes first, especially for kids who may be “slow to warm.”
+          </p>
+          <div class="note">
+            We incorporate games, prizes, and kid-friendly modalities to soften the experience
+            while keeping the process rewarding and engaging.
+          </div>
+        </div>
+
+        <div class="stats" aria-label="Session basics">
+          <div class="stat">
+            <div class="stat-num">45</div>
+            <div class="stat-label">minutes per therapy session</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">2–3</div>
+            <div class="stat-label">visits for many evaluations</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">~4</div>
+            <div class="stat-label">weeks typical evaluation timeline</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Frequently Asked Questions</h2>
+          <p class="section-sub">Quick answers to common questions from parents, adults, and families.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item">
+            <summary>Where is your office located?</summary>
+            <div class="faq-body">
+              The office is located at 1955 Merrick Road, Suite 205, Merrick, New York 11566.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What if my child is hesitant to start therapy or to come to the office?</summary>
+            <div class="faq-body">
+              We make every effort to create a warm, comfortable, and accepting environment for all ages.
+              Establishing a strong, trusting rapport with your therapist is essential for treatment success.
+              Children especially can be slow to warm. Our team has worked with children for a combined 90+ years
+              in a variety of settings beyond the therapy office, including camps, schools, and coaching sports teams.
+              <br /><br />
+              We also incorporate games, prizes, and other kid-friendly modalities to soften the experience while making
+              the process both rewarding and fun.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do you accept insurance?</summary>
+            <div class="faq-body">
+              At this time, we are not members of any insurance panels. After session payment, a superbill is provided.
+              You can submit it directly to your insurance company for potential reimbursement.
+              Please check with your insurance provider in advance regarding out-of-network mental health benefits and deductibles.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How long is a typical therapy session or evaluation session?</summary>
+            <div class="faq-body">
+              Therapy sessions are usually 45 minutes. Evaluation length varies based on testing performed.
+              Many evaluations occur over 2–3 visits to the office, and we can clarify expected timing once we know
+              the patient and required measures.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is the ADOS-2?</summary>
+            <div class="faq-body">
+              The ADOS-2 (Autism Diagnostic Observation Schedule, 2nd Edition) is a highly structured, nuanced measure used
+              alongside other tools to evaluate Autism Spectrum Disorder. Testing clinicians are formally trained and certified.
+              Using communicative and social “presses,” the ADOS-2 elicits real-time observations that inform diagnostic decision-making.
+              <br /><br />
+              The ADOS-2 is rarely used in isolation. If a patient only needs an ADOS-2, we may request prior evaluations to clarify findings.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How long will it take for me or my child to feel better?</summary>
+            <div class="faq-body">
+              Everyone is different. Success often ebbs and flows. Some experience quick improvements, while others
+              follow a longer trajectory. There’s no one-size-fits-all approach other than establishing a strong, trusting relationship.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What is your rate for services?</summary>
+            <div class="faq-body">
+              We will inform you via telephone and/or email of the specific session or evaluation fee.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How long will evaluations take?</summary>
+            <div class="faq-body">
+              Depending on the testing needed, evaluations often take around 4 weeks from start to finish.
+              This includes information gathering, testing, report writing, and the feedback session.
+            </div>
+          </details>
+        </div>
+
+        <aside class="legal" aria-label="Good Faith Estimate">
+          <h3>Good Faith Estimate</h3>
+          <p>
+            You have the right to receive a “Good Faith Estimate” explaining how much your medical care will cost.
+            Under U.S. law, health care providers must give patients who don’t have insurance (or who aren’t using insurance)
+            an estimate of the bill for medical items and services.
+          </p>
+          <p>
+            You can request a written estimate at least 1 business day before a medical service or item. If you receive a bill
+            that is at least $400 more than your Good Faith Estimate, you can dispute the bill.
+          </p>
+          <p class="small">
+            For more information, visit <span class="mono">www.cms.gov/nosurprises</span>.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container contact-grid">
+        <div class="contact-card">
+          <h2>Contact</h2>
+          <p class="section-sub">Call, text, or email to ask a question or request an appointment.</p>
+
+          <div class="contact-lines">
+            <div class="line">
+              <span class="label">Phone</span>
+              <a href="tel:+15162345005" class="value">+1 (516) 234-5005</a>
+            </div>
+            <div class="line">
+              <span class="label">Email</span>
+              <a href="mailto:dr.zacharyrose1@gmail.com" class="value">dr.zacharyrose1@gmail.com</a>
+            </div>
+            <div class="line">
+              <span class="label">Address</span>
+              <span class="value">1955 Merrick Road, Suite 205A, Merrick, NY 11566</span>
+            </div>
+          </div>
+
+          <div class="hero-actions contact-actions">
+            <a class="btn primary" href="tel:+15162345005">Call / Text</a>
+            <a class="btn soft" href="mailto:dr.zacharyrose1@gmail.com">Send Email</a>
+          </div>
+
+          <p class="small muted">
+            If you’re reaching out about an evaluation, mention age, primary concerns, and any prior testing (if applicable).
+          </p>
+        </div>
+
+        <div class="map-card" aria-label="Map">
+          <div class="map-top">
+            <div>
+              <div class="card-kicker">Office location</div>
+              <div class="card-title">Merrick, New York</div>
+              <div class="card-sub">1955 Merrick Road · Suite 205A</div>
+            </div>
+            <a class="map-link" target="_blank" rel="noopener"
+               href="https://www.google.com/maps?q=1955+Merrick+Road,+Suite+205A,+Merrick,+NY+11566">
+              Open in Maps
+            </a>
+          </div>
+
+          <!-- Lightweight map placeholder (no iframe to keep performance perfect) -->
+          <div class="map-placeholder" role="img" aria-label="Map preview placeholder">
+            <div class="pin" aria-hidden="true"></div>
+            <div class="map-text">
+              <strong>1955 Merrick Road</strong><br />
+              Suite 205A · Merrick, NY 11566
+            </div>
+          </div>
+
+          <p class="small muted">
+            For fastest directions, tap “Open in Maps.”
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">
+          <span class="footer-mark" aria-hidden="true">🌼</span>
+          <div>
+            <div class="footer-name">Dr. Zachary Rose</div>
+            <div class="footer-sub">Therapy & Evaluations · Merrick, NY</div>
+          </div>
+        </div>
+        <div class="small muted">© <span id="year"></span> All rights reserved.</div>
+      </div>
+
+      <div class="footer-right">
+        <a href="#services">Services</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile nav (tiny, no framework)
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+
+    btn?.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!isOpen));
+      nav.classList.toggle('open', !isOpen);
+    });
+
+    // Close nav on link click (mobile)
+    nav?.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if (!a) return;
+      btn.setAttribute('aria-expanded', 'false');
+      nav.classList.remove('open');
+    });
+
+    // Elevation on scroll
+    const header = document.querySelector('[data-elevate]');
+    const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 6);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
 </body>
 </html>
