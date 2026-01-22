@@ -796,3 +796,16 @@ input:focus, select:focus, textarea:focus{
   *{ scroll-behavior: auto; }
   .btn, .nav a, .nav{ transition: none; }
 }
+
+/* =========================
+   VIEW MODE: HERO ONLY
+   (safe hide, no deletions)
+   ========================= */
+
+body.view-hero main > section:not(.hero){
+  display: none;
+}
+
+body.view-hero .site-footer{
+  display: none;
+}
