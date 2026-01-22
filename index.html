@@ -11,7 +11,7 @@
   <link rel="preload" href="styles.css" as="style" />
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Preconnect for faster image fetch (since images are not local assets) -->
+  <!-- Images are remote (no assets). Preconnect for faster fetch. -->
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link rel="preconnect" href="https://plus.unsplash.com" crossorigin>
 
@@ -19,7 +19,7 @@
   <meta property="og:title" content="Daffodil Psychology | Merrick, NY" />
   <meta property="og:description" content="Warm, evidence-based therapy and autism evaluations with ADOS-2 for all ages in Merrick, NY." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1600&q=70" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1600&q=70" />
 
   <!-- LocalBusiness schema -->
   <script type="application/ld+json">
@@ -84,7 +84,7 @@
     <div class="container header-row">
       <a class="brand" href="#top" aria-label="Daffodil Psychology Home">
         <span class="brand-mark" aria-hidden="true">
-          <!-- Daffodil / sunflower-inspired inline SVG (no image file needed) -->
+          <!-- Daffodil-inspired inline SVG (no image file needed) -->
           <svg viewBox="0 0 64 64" role="img" focusable="false" aria-hidden="true">
             <defs>
               <linearGradient id="petal" x1="0" x2="1">
@@ -92,8 +92,8 @@
                 <stop offset="1" stop-color="#F7D36B"></stop>
               </linearGradient>
             </defs>
-            <circle cx="32" cy="32" r="10" fill="#7A4A2B"></circle>
-            <circle cx="32" cy="32" r="6" fill="#9B5A33"></circle>
+            <circle cx="32" cy="32" r="10" fill="#6B3F27"></circle>
+            <circle cx="32" cy="32" r="6" fill="#8C4E2D"></circle>
             <g fill="url(#petal)">
               <path d="M32 6c6 6 6 12 0 18c-6-6-6-12 0-18z"></path>
               <path d="M58 32c-6 6-12 6-18 0c6-6 12-6 18 0z"></path>
@@ -125,78 +125,62 @@
         <a href="#consultation">Consultation</a>
         <a href="#team">Our Team</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a class="nav-cta" href="#contact">Book</a>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- HERO -->
+    <!-- HERO (cleaner + one primary CTA + no address card + no extra boxes) -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="micro">Therapy and autism evaluations for all ages in Merrick, New York</p>
 
-          <h1>Warm, evidence based care for kids, teens, adults, and families.</h1>
+          <h1>Clarity, calm, and practical progress for kids, teens, adults, and families.</h1>
 
           <p class="subhead">
-            Therapy, school support, and full or partial autism evaluations using gold standard measures,
-            including ADOS-2, in a calm and welcoming environment.
+            Therapy, school support, and full or partial autism evaluations using gold standard measures including ADOS-2.
+            Warm, evidence based care that feels grounded from the first conversation.
           </p>
 
+          <!-- Unified USP (replaces multiple cards + removes noise) -->
+          <ul class="usp-pills" aria-label="Key highlights">
+            <li>ADOS-2 trained</li>
+            <li>Therapy for all ages</li>
+            <li>Autism & psycho-educational testing</li>
+            <li>School consultation & advocacy</li>
+          </ul>
+
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Get in touch</a>
-            <a class="btn btn-ghost" href="mailto:dr.zacharyrose1@gmail.com">Sent an Email</a>
+            <a class="btn btn-primary" href="#contact">Schedule a Consultation</a>
           </div>
 
-          <div class="trust-row" aria-label="Highlights">
-            <div class="trust-chip">
-              <span class="chip-title">ADOS-2 trained</span>
-              <span class="chip-note">Autism evaluations</span>
-            </div>
-            <div class="trust-chip">
-              <span class="chip-title">All ages</span>
-              <span class="chip-note">Young kids to adults</span>
-            </div>
-            <div class="trust-chip">
-              <span class="chip-title">School expertise</span>
-              <span class="chip-note">Consultation and advocacy</span>
-            </div>
-          </div>
-
-          <div class="location-card" role="note" aria-label="Office location">
-            <p class="loc-title">Office</p>
-            <p class="loc-body">1955 Merrick Road, Suite 205A, Merrick, NY 11566</p>
-          </div>
+          <!-- Secondary options as quiet links (not competing buttons) -->
+          <p class="helper">
+            Prefer email or phone?
+            <a href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
+            <span class="sep" aria-hidden="true">•</span>
+            <a href="tel:+15162345005">(516) 234-5005</a>
+          </p>
         </div>
 
-        <div class="hero-media" aria-label="Warm therapy environment image">
-          <!-- HERO IMAGE: landscape (external URL, not assets) -->
+        <div class="hero-media" aria-label="Therapy office image">
+          <!-- HERO IMAGE: landscape + therapy-office vibe (no bedroom) -->
           <figure class="photo-card photo-card--landscape">
             <img
-              src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1800&q=70"
-              alt="A warm, welcoming therapy environment for children and families"
-              width="1800"
-              height="1100"
+              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=2000&q=70"
+              alt="A warm, welcoming professional office setting with comfortable seating"
+              width="2000"
+              height="1250"
               decoding="async"
               fetchpriority="high"
             />
             <figcaption class="photo-caption">
-              <strong>Therapy & Evaluations</strong>
-              <span>Care that feels calm, clear, and supportive.</span>
+              <strong>Warm, welcoming care</strong>
+              <span>A space designed for comfort and trust.</span>
             </figcaption>
           </figure>
-
-          <div class="quick-panel" aria-label="Quick overview">
-            <h2 class="panel-title">What we can help with</h2>
-            <ul class="panel-list">
-              <li>Anxiety and emotional regulation</li>
-              <li>ADHD support and strategy tailoring</li>
-              <li>Autism evaluations and therapy</li>
-              <li>Behavior support and parent training</li>
-              <li>School consultation and advocacy</li>
-            </ul>
-          </div>
         </div>
       </div>
 
@@ -207,48 +191,48 @@
     <section class="section" id="services">
       <div class="container">
         <header class="section-head">
-          <h2>Therapy that meets you where you are</h2>
+          <h2>Therapy</h2>
           <p>
-            Individual and group therapy for children, adolescents, adults, and families.
-            We prioritize comfort, clarity, and practical progress.
+            Individual and group therapy is offered for children, adolescents, adults, and families.
+            Anxiety and emotional dysregulation, ADHD, and ODD are just a few specialties.
           </p>
         </header>
 
         <div class="cards">
           <article class="card">
-            <h3>Individual therapy</h3>
-            <p>Support for anxiety, ADHD, emotional dysregulation, and more with a warm, structured approach.</p>
+            <h3>Children & adolescents</h3>
+            <p>Support that helps kids feel safe, understood, and ready to build skills.</p>
           </article>
 
           <article class="card">
-            <h3>Family support</h3>
-            <p>Aligned strategies at home and in school so progress feels consistent, not confusing.</p>
+            <h3>Adults & families</h3>
+            <p>Practical strategies and consistent support that translates to daily life.</p>
           </article>
 
           <article class="card">
-            <h3>Children and adolescents</h3>
-            <p>Kid friendly, engaging sessions designed to build trust and steady skills over time.</p>
+            <h3>Approaches</h3>
+            <p>Evidence based methods including CBT, tailored to each person and family.</p>
           </article>
         </div>
 
         <div class="media-split">
           <div class="media-text">
-            <h3>A space that helps kids feel safe</h3>
+            <h3>A gentle start matters</h3>
             <p>
-              Some children are slow to warm up. We create a comfortable environment and use kid friendly tools
-              to make the process feel approachable and rewarding.
+              Some children are slow to warm. We focus on trust first, and use kid friendly modalities
+              that make the experience feel approachable and rewarding.
             </p>
             <p class="small-note">
-              Establishing a strong rapport is essential for treatment success, especially for young clients.
+              Building a strong rapport is essential for treatment success.
             </p>
           </div>
 
           <figure class="media-figure">
             <img
-              src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1600&q=70"
-              alt="A calm office setting with warm light and comfortable seating"
-              width="1600"
-              height="1100"
+              src="https://images.unsplash.com/photo-1526498460520-4c246339dccb?auto=format&fit=crop&w=1800&q=70"
+              alt="A calm, cozy sitting area with warm light"
+              width="1800"
+              height="1200"
               loading="lazy"
               decoding="async"
             />
@@ -264,7 +248,7 @@
           <h2>Evaluations</h2>
           <p>
             Autism and psycho educational testing using gold standard measures, including ADOS-2,
-            ADI-R, and Vineland-3, as clinically appropriate.
+            ADI-R, Vineland-3 Adaptive Behavior Scales, and more.
           </p>
         </header>
 
@@ -276,29 +260,29 @@
 
           <article class="card">
             <h3>Psycho educational testing</h3>
-            <p>Clear answers that support learning plans, accommodations, and next steps.</p>
+            <p>Clear answers that support accommodations, plans, and next steps.</p>
           </article>
 
           <article class="card">
             <h3>What to expect</h3>
-            <p>Often completed across 2–3 visits, with a feedback session and a thoughtful written report.</p>
+            <p>Often across 2–3 visits, with a feedback session and written report.</p>
           </article>
         </div>
 
         <div class="notice">
           <h3 class="notice-title">Timeline</h3>
           <p class="notice-text">
-            Evaluations often take around four weeks from start to finish, including information gathering,
-            testing, report writing, and feedback.
+            Evaluations often take around 4 weeks from start to finish, including information gathering,
+            testing, report writing, and the feedback session.
           </p>
         </div>
 
         <figure class="wide-figure">
           <img
-            src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=2000&q=70"
-            alt="A desk with assessment materials representing structured evaluation work"
-            width="2000"
-            height="1100"
+            src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=2200&q=70"
+            alt="A professional desk setup representing structured evaluation work"
+            width="2200"
+            height="1238"
             loading="lazy"
             decoding="async"
           />
@@ -310,22 +294,22 @@
     <section class="section" id="consultation">
       <div class="container">
         <header class="section-head">
-          <h2>Consultation and behavior support</h2>
+          <h2>Consultation & behavior support</h2>
           <p>
-            With years of experience in school and special education, we offer behavioral, school, and family consultation
-            that turns observations into a plan you can actually use.
+            Behavioral, school, and family consultation informed by years of experience in school and special education.
+            Parent training, behavior modification, and social emotional regulation skill building.
           </p>
         </header>
 
         <div class="cards">
           <article class="card">
             <h3>Parent training</h3>
-            <p>Simple, consistent strategies to support behavior and build emotional regulation skills.</p>
+            <p>Clear, consistent strategies to support behavior and emotional regulation.</p>
           </article>
 
           <article class="card">
             <h3>School consultation</h3>
-            <p>Collaboration with educators to support learning, social skills, and executive functioning.</p>
+            <p>Collaboration with educators to support learning and social success.</p>
           </article>
 
           <article class="card">
@@ -341,9 +325,7 @@
       <div class="container">
         <header class="section-head">
           <h2>Our team</h2>
-          <p>
-            A collaborative group with deep school and clinical experience, focused on kids, teens, families, and adult care.
-          </p>
+          <p>Experienced clinicians focused on kids, teens, families, and adult care.</p>
         </header>
 
         <div class="team-grid">
@@ -356,18 +338,15 @@
               </div>
             </div>
             <p class="team-blurb">
-              Founder and Clinical Director of Daffodil Psychology. Over a decade supporting children and families in schools and private practice,
-              with specialties in autism diagnosis and treatment (ADOS-2 trained), behavior management, parent training, ADHD and anxiety strategies,
-              and school based consultation and advocacy.
+              Dr. Rose is the founder and Clinical Director of Daffodil Psychology, with over a decade of experience
+              supporting children and families in schools and in private practice. Specialties include autism evaluation
+              (ADOS-2 trained), behavior management, parent training, ADHD and anxiety strategies, and school based consultation.
             </p>
             <details class="team-more">
               <summary>Read full bio</summary>
               <p>
-                Dr. Rose brings a warm and approachable demeanor to the therapy space. His work blends clinical clarity with practical,
-                family friendly strategies that can carry over into home and school.
-              </p>
-              <p>
-                Outside of work, he enjoys cooking, listening to music, playing the guitar, and golfing.
+                Dr. Rose brings a warm, approachable demeanor to the therapy space. Outside of work he enjoys cooking,
+                listening to music, playing the guitar, and golfing.
               </p>
             </details>
           </article>
@@ -381,8 +360,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Tenured school psychologist with nearly a decade of experience. Specializes in supporting children and adolescents,
-              especially autism and ADHD, using CBT and engaging, kid friendly approaches.
+              Tenured school psychologist with nearly a decade of experience, specializing in supporting children and adolescents,
+              particularly those with autism and ADHD. Incorporates CBT and kid friendly, engaging approaches.
             </p>
           </article>
 
@@ -395,8 +374,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Psy.D. in School-Community Psychology. Supports adolescents, emerging adulthood, and transitions into parenthood,
-              using CBT strategies to reduce symptoms and build positivity.
+              Supports people across developmental stages using CBT strategies to reduce symptoms and build positivity,
+              including adolescence, emerging adulthood, and the transition into parenthood.
             </p>
           </article>
 
@@ -409,8 +388,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Evidence based, compassionate care for children and adolescents with expertise in autism, ADHD, learning differences,
-              and advanced pediatric clinical training.
+              Provides assessment and therapy for children and adolescents with expertise in autism, ADHD, and learning disabilities,
+              using a collaborative, evidence based, compassionate approach.
             </p>
           </article>
 
@@ -423,8 +402,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Works across schools, hospitals, and community settings. Strengths based CBT approach for ASD, ADHD, anxiety,
-              and disruptive behavior needs.
+              Works across schools, hospitals, and community settings, providing diagnostic assessments and evidence based therapy
+              for ASD, ADHD, anxiety, and disruptive behavior disorders, grounded in CBT and strengths based care.
             </p>
           </article>
 
@@ -437,8 +416,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Tenured school psychologist with over a decade supporting children, adolescents, and families,
-              with a focus on inclusion, social connection, and emotion regulation.
+              Over a decade supporting children, adolescents, and families, with a focus on inclusion, social connection,
+              and emotion regulation. Dedicated to creating spaces where children feel understood and empowered.
             </p>
           </article>
 
@@ -451,8 +430,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Veteran psychologist with over 40 years of experience. ADOS-2 trained and known for a warm,
-              professional approach in clinical care and supervision.
+              Veteran psychologist with over 40 years of experience, ADOS-2 trained, known for a warm and professional approach
+              and long standing school and clinical leadership.
             </p>
           </article>
 
@@ -465,7 +444,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Comprehensive diagnostic evaluations for children, adolescents, and adults, including ASD & ADOS-2, ADHD, and learning differences.
+              Comprehensive diagnostic evaluations for children, adolescents, and adults, including ASD & ADOS-2, ADHD,
+              and learning disabilities, focused on clarity and actionable next steps.
             </p>
           </article>
 
@@ -478,7 +458,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Outreach and clinical support with experience across autism, ADHD, learning differences, and social emotional needs.
+              Outreach, media, and resources support with clinical experience across autism, ADHD, learning differences,
+              and social emotional needs.
             </p>
           </article>
 
@@ -491,7 +472,8 @@
               </div>
             </div>
             <p class="team-blurb">
-              Supports children and adolescents with ASD, ADHD, anxiety, and learning differences in a strengths focused environment.
+              Experience supporting children and adolescents with ASD, ADHD, anxiety, and learning differences,
+              focused on strengths and supportive growth.
             </p>
           </article>
 
@@ -504,7 +486,7 @@
               </div>
             </div>
             <p class="team-blurb">
-              Not a certified therapy dog. Just an enthusiastic family favorite who adds warmth in all the right ways.
+              Not a certified therapy dog, just a lovable presence who brings warmth in all the right ways.
             </p>
           </article>
         </div>
@@ -530,24 +512,24 @@
           <details class="faq-item">
             <summary>What if my child is hesitant to start therapy or to come to the office?</summary>
             <div class="faq-body">
-              We make every effort to create a warm, comfortable, and accepting environment for all ages.
-              Establishing a trusting rapport is essential. Children can be slow to warm, so we incorporate kid friendly
-              modalities, including games and gentle incentives, to soften the experience.
+              We create a warm, comfortable, and accepting environment for all ages. Establishing a trusting rapport is essential,
+              and children can be slow to warm. We incorporate kid friendly modalities such as games and gentle incentives
+              to help the experience feel safe and rewarding.
             </div>
           </details>
 
           <details class="faq-item">
             <summary>Do you accept insurance?</summary>
             <div class="faq-body">
-              At this time, we are not members of insurance panels. Upon payment, a superbill is provided for potential
-              out of network reimbursement. Please check your plan’s benefits and deductible details in advance.
+              We are not members of insurance panels at this time. Upon completion of session payment, a superbill is provided
+              for potential out of network reimbursement. Please check your plan’s benefits and deductible details in advance.
             </div>
           </details>
 
           <details class="faq-item">
             <summary>How long is a typical therapy session or evaluation session?</summary>
             <div class="faq-body">
-              Therapy sessions are usually 45 minutes. Evaluation length varies based on testing needs, often across 2–3 visits,
+              Sessions are usually 45 minutes. Evaluations vary based on testing needs and are often completed over 2–3 visits,
               followed by a feedback session.
             </div>
           </details>
@@ -555,8 +537,8 @@
           <details class="faq-item">
             <summary>What is the ADOS-2?</summary>
             <div class="faq-body">
-              ADOS-2 stands for Autism Diagnostic Observation Schedule, 2nd Edition. It is a structured measure used with other tools
-              to support diagnostic clarity as part of a broader, comprehensive evaluation.
+              ADOS-2 stands for Autism Diagnostic Observation Schedule, 2nd Edition. It is a structured measure used alongside other tools
+              as part of a comprehensive autism evaluation and is rarely used in isolation.
             </div>
           </details>
 
@@ -571,7 +553,7 @@
           <details class="faq-item">
             <summary>What is your rate for services?</summary>
             <div class="faq-body">
-              Fees are shared by phone and or email based on the specific service. You can request a Good Faith Estimate at least
+              Fees are shared by phone and/or email based on the specific service. You can request a Good Faith Estimate at least
               1 business day before your service if you are not using insurance.
             </div>
           </details>
@@ -579,23 +561,56 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT / LOCATION (address moved here, not in hero) -->
     <section class="section section-soft" id="contact">
       <div class="container contact-grid">
         <div class="contact-card">
-          <h2>Contact</h2>
+          <h2>Schedule</h2>
           <p class="contact-lead">
-            If you are looking for therapy, evaluations, or school consultation, reach out and we will guide you to the right next step.
+            Tell us what you’re looking for and we’ll guide you to the right next step for therapy, evaluations, or consultation.
           </p>
 
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="tel:+15162345005">Call (516) 234-5005</a>
-            <a class="btn btn-ghost" href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
-          </div>
+          <!-- Simple form (works with your backend later / or Netlify forms if you want) -->
+          <form class="form" action="#" method="post">
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" required />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" placeholder="you@email.com" required />
+            </label>
+
+            <label class="field">
+              <span>I’m interested in</span>
+              <select name="interest" required>
+                <option value="" selected disabled>Select one</option>
+                <option>Therapy</option>
+                <option>Autism evaluation (ADOS-2)</option>
+                <option>Psycho-educational testing</option>
+                <option>Consultation / school support</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Message</span>
+              <textarea name="message" rows="4" placeholder="A few details (age range, timeline, goals)…" required></textarea>
+            </label>
+
+            <button class="btn btn-primary btn-full" type="submit">Send request</button>
+
+            <p class="helper helper--small">
+              Prefer email or phone?
+              <a href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a>
+              <span class="sep" aria-hidden="true">•</span>
+              <a href="tel:+15162345005">(516) 234-5005</a>
+            </p>
+          </form>
 
           <div class="contact-meta">
             <div class="meta-block">
-              <p class="meta-title">Address</p>
+              <p class="meta-title">Office</p>
               <p class="meta-text">1955 Merrick Road, Suite 205A<br />Merrick, NY 11566</p>
             </div>
             <div class="meta-block">
@@ -625,7 +640,7 @@
         <p class="footer-brand">
           <span class="dot" aria-hidden="true"></span>
           <strong>Daffodil Psychology</strong>
-          <span class="muted">Merrick, NY</span>
+          <span class="muted">1955 Merrick Road, Suite 205A, Merrick, NY</span>
         </p>
 
         <div class="footer-links">
@@ -633,7 +648,7 @@
           <a href="#evaluations">Evaluations</a>
           <a href="#team">Team</a>
           <a href="#faq">FAQ</a>
-          <a href="#contact">Contact</a>
+          <a href="#contact">Schedule</a>
         </div>
 
         <p class="footer-small muted">© <span>2026</span> Daffodil Psychology</p>
@@ -642,5 +657,3 @@
   </main>
 </body>
 </html>
-
-
