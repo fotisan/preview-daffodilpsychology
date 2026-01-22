@@ -176,34 +176,28 @@ h3{ font-size: 18px; }
 /* Mobile dropdown nav */
 .nav{
   position: absolute;
+
+  /* ✅ FIX: Keep dropdown inside viewport and avoid horizontal overflow */
+  left: 16px;
   right: 16px;
 
-  /* ✅ FIX: anchor dropdown under the real header height (no overlap/jumps) */
+  /* ✅ FIX: Anchor under the real header height (no overlap/jumps) */
   top: calc(100% + 10px);
 
-  width: min(420px, calc(100% - 32px));
   background: rgba(255,255,255,.88);
   border: 1px solid rgba(28,26,22,.10);
   border-radius: 18px;
   box-shadow: var(--shadow);
   padding: 10px;
 
-  display:flex;
+  display:none;
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
-
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-6px);
-  pointer-events: none;
-  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
 }
+
 body.nav-open .nav{
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  pointer-events: auto;
+  display:flex;
 }
 
 .nav a{
@@ -734,16 +728,15 @@ input:focus, select:focus, textarea:focus{
 
   .nav{
     position: static;
+    left: auto;
+    right: auto;
+    top: auto;
+
     width: auto;
     padding: 0;
     border: 0;
     box-shadow: none;
     background: transparent;
-
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    pointer-events: auto;
 
     display:flex;
     flex-direction: row;
@@ -751,7 +744,6 @@ input:focus, select:focus, textarea:focus{
 
     gap: 8px;
     margin-left: auto;
-    transition: none;
   }
 
   .nav a{
@@ -797,7 +789,7 @@ input:focus, select:focus, textarea:focus{
 
 @media (prefers-reduced-motion: reduce){
   *{ scroll-behavior: auto; }
-  .btn, .nav a, .nav{ transition: none; }
+  .btn, .nav a{ transition: none; }
 }
 
 /* =========================
