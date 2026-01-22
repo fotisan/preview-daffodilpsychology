@@ -3,576 +3,1088 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Therapy and autism evaluations in Merrick, NY. ADOS-2 trained clinicians. Children, adolescents, adults, and families." />
-  <title>Daffodil Psychology | Therapy & Autism Evaluations in Merrick, NY</title>
+  <meta name="theme-color" content="#F6E7C7" />
 
-  <meta name="theme-color" content="#f6efe6" />
+  <title>Daffodil Psychology | Therapy & Autism Evaluations (ADOS-2) in Merrick, NY</title>
+  <meta name="description" content="Therapy for children, adolescents, and adults, plus full or partial autism evaluations with ADOS-2. Merrick, NY. Call/text (516) 234-5005." />
 
-  <link rel="preload" href="styles.css" as="style" />
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      /* Warm Human palette */
+      --bg: #FBF7EF;
+      --surface: #FFFFFF;
+      --surface-2: #FFF2D8;
+      --ink: #1E1A16;
+      --muted: #5F544B;
+
+      --brand: #F4C542;     /* daffodil gold */
+      --brand-2:#E69B2E;    /* warm amber */
+      --accent:#2F7D6D;     /* calm teal */
+      --accent-2:#C65C3C;   /* warm terracotta */
+
+      --line: rgba(30,26,22,.12);
+      --shadow: 0 14px 40px rgba(30,26,22,.08);
+      --radius: 22px;
+
+      --max: 1120px;
+      --pad: clamp(18px, 3.2vw, 28px);
+
+      --h1: clamp(32px, 4.6vw, 54px);
+      --h2: clamp(22px, 2.6vw, 32px);
+      --p:  clamp(15px, 1.4vw, 18px);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 500px at 10% -10%, rgba(244,197,66,.35), transparent 60%),
+        radial-gradient(1000px 520px at 110% 10%, rgba(47,125,109,.20), transparent 60%),
+        radial-gradient(900px 520px at 50% 110%, rgba(198,92,60,.16), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    img{ max-width:100%; height:auto; display:block; }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:var(--max); margin:0 auto; padding: 0 var(--pad); }
+
+    /* Accessibility */
+    .skip{
+      position:absolute; left:-999px; top:0;
+      background:var(--surface); border:1px solid var(--line);
+      padding:10px 12px; border-radius:12px; box-shadow:var(--shadow);
+    }
+    .skip:focus{ left:12px; top:12px; z-index:9999; }
+
+    /* Header / Nav */
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(251,247,239,.72);
+      border-bottom:1px solid rgba(30,26,22,.08);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:14px; padding: 14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 210px;
+    }
+    .mark{
+      width:40px; height:40px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(244,197,66,.95), rgba(230,155,46,.95));
+      box-shadow: 0 12px 26px rgba(230,155,46,.20);
+      display:grid; place-items:center;
+      border:1px solid rgba(30,26,22,.08);
+    }
+    .brand strong{ display:block; font-size:14px; letter-spacing:.2px; }
+    .brand span{ display:block; font-size:12px; color:var(--muted); margin-top:1px; }
+
+    nav ul{
+      list-style:none; padding:0; margin:0;
+      display:flex; align-items:center; gap:8px;
+    }
+    nav a{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px; border-radius:999px;
+      color:rgba(30,26,22,.86);
+      border:1px solid transparent;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    nav a:hover{ background:rgba(255,255,255,.75); border-color:rgba(30,26,22,.08); }
+    .nav-cta{
+      background: linear-gradient(135deg, rgba(47,125,109,.12), rgba(244,197,66,.16));
+      border-color: rgba(47,125,109,.22) !important;
+      font-weight:650;
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px; height:44px;
+      border-radius:14px;
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(30,26,22,.10);
+      box-shadow: 0 10px 24px rgba(30,26,22,.08);
+      cursor:pointer;
+      align-items:center; justify-content:center;
+    }
+    .menu-btn svg{ width:20px; height:20px; }
+
+    @media (max-width: 880px){
+      .menu-btn{ display:inline-flex; }
+      nav{
+        position:fixed; left:0; right:0; top:72px;
+        background: rgba(251,247,239,.92);
+        border-top:1px solid rgba(30,26,22,.08);
+        border-bottom:1px solid rgba(30,26,22,.08);
+        transform: translateY(-10px);
+        opacity:0; pointer-events:none;
+        transition: .18s ease;
+      }
+      nav[data-open="true"]{
+        transform: translateY(0);
+        opacity:1; pointer-events:auto;
+      }
+      nav ul{
+        padding: 12px var(--pad) 16px;
+        flex-direction:column; align-items:stretch; gap:10px;
+        max-width: var(--max);
+        margin: 0 auto;
+      }
+      nav a{ justify-content:space-between; padding:12px 14px; }
+    }
+
+    /* Hero */
+    .hero{ padding: 34px 0 10px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .card{
+      background: rgba(255,255,255,.84);
+      border:1px solid rgba(30,26,22,.10);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    .hero-left{ padding: clamp(18px, 3vw, 28px); }
+    .microline{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px;
+      border-radius:999px;
+      background: rgba(244,197,66,.18);
+      border:1px solid rgba(230,155,46,.25);
+      color: rgba(30,26,22,.86);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .hero h1{
+      font-size: var(--h1);
+      line-height: 1.06;
+      letter-spacing: -0.6px;
+      margin: 0 0 12px;
+    }
+    .hero p{
+      font-size: var(--p);
+      color: rgba(30,26,22,.78);
+      margin: 0 0 18px;
+      max-width: 58ch;
+    }
+    .pill-row{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin: 0 0 18px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(30,26,22,.10);
+      color: rgba(30,26,22,.80);
+      font-size: 13px;
+    }
+    .cta-row{
+      display:flex; flex-wrap:wrap; gap:12px;
+      align-items:center;
+      margin-top: 10px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 14px 30px rgba(30,26,22,.07);
+      font-weight: 700;
+      font-size: 14px;
+      cursor:pointer;
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(244,197,66,.95), rgba(230,155,46,.95));
+      border-color: rgba(230,155,46,.35);
+    }
+    .btn.secondary{
+      background: linear-gradient(135deg, rgba(47,125,109,.12), rgba(255,255,255,.85));
+      border-color: rgba(47,125,109,.22);
+    }
+    .btn:focus{ outline: 3px solid rgba(244,197,66,.35); outline-offset: 2px; }
+
+    .hero-right{
+      display:grid;
+      grid-template-rows: 1fr auto;
+      gap: 12px;
+      padding: 14px;
+    }
+    .portrait{
+      border-radius: calc(var(--radius) - 6px);
+      overflow:hidden;
+      border: 1px solid rgba(30,26,22,.10);
+      background: rgba(244,197,66,.10);
+      position:relative;
+      min-height: 360px;
+    }
+    .portrait img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+    }
+    .portrait::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(600px 280px at 20% 15%, rgba(244,197,66,.22), transparent 60%),
+                  radial-gradient(520px 260px at 80% 20%, rgba(47,125,109,.14), transparent 60%);
+      pointer-events:none;
+    }
+    .hero-contact{
+      border-radius: calc(var(--radius) - 6px);
+      border: 1px solid rgba(30,26,22,.10);
+      background: rgba(255,242,216,.70);
+      padding: 14px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .hero-contact strong{ font-size: 14px; }
+    .contact-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      color: rgba(30,26,22,.80);
+      font-size: 14px;
+    }
+    .contact-item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.70);
+      border:1px solid rgba(30,26,22,.08);
+    }
+    .ico{
+      width:34px; height:34px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(244,197,66,.18);
+      border:1px solid rgba(230,155,46,.22);
+      flex:0 0 auto;
+    }
+
+    @media (max-width: 980px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .portrait{ min-height: 320px; }
+    }
+
+    /* Section layout */
+    section{ padding: 54px 0; }
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; margin-bottom: 18px;
+    }
+    h2{ font-size: var(--h2); margin:0; letter-spacing:-.2px; }
+    .sub{
+      margin:0; color: rgba(30,26,22,.70);
+      font-size: 14px;
+      max-width: 62ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    @media (max-width: 980px){
+      .grid-3{ grid-template-columns: 1fr; }
+      .grid-2{ grid-template-columns: 1fr; }
+    }
+
+    .tile{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 12px 30px rgba(30,26,22,.06);
+    }
+    .tile h3{
+      margin:0 0 8px;
+      font-size: 18px;
+      letter-spacing:-.2px;
+    }
+    .tile p{ margin:0; color: rgba(30,26,22,.74); font-size: 14.5px; }
+    .tile ul{ margin:10px 0 0; padding-left: 18px; color: rgba(30,26,22,.74); }
+    .tile li{ margin: 6px 0; }
+
+    .photo-card{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.70);
+      box-shadow: 0 14px 34px rgba(30,26,22,.07);
+    }
+    .photo-card .cap{
+      padding: 14px 16px;
+      display:flex; gap:12px; align-items:flex-start; justify-content:space-between;
+    }
+    .tag{
+      display:inline-flex; align-items:center;
+      padding: 6px 10px;
+      border-radius:999px;
+      background: rgba(47,125,109,.12);
+      border:1px solid rgba(47,125,109,.20);
+      color: rgba(30,26,22,.84);
+      font-size: 12.5px;
+      white-space:nowrap;
+    }
+    .cap strong{ display:block; font-size: 14px; }
+    .cap small{ display:block; margin-top:3px; color: rgba(30,26,22,.70); font-size: 13px; }
+
+    /* Team */
+    .team-card{
+      padding: 18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 12px 30px rgba(30,26,22,.06);
+    }
+    .who{
+      display:flex; gap:12px; align-items:flex-start;
+      margin-bottom: 10px;
+    }
+    .avatar{
+      width:44px; height:44px; border-radius: 16px;
+      background: linear-gradient(135deg, rgba(244,197,66,.35), rgba(47,125,109,.14));
+      border:1px solid rgba(30,26,22,.10);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      font-weight: 800;
+      color: rgba(30,26,22,.82);
+    }
+    .who strong{ display:block; line-height:1.15; }
+    .who span{ display:block; color: rgba(30,26,22,.68); font-size: 13px; margin-top:3px; }
+
+    details{
+      border-radius: 16px;
+      border:1px solid rgba(30,26,22,.08);
+      background: rgba(255,255,255,.66);
+      padding: 10px 12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 700;
+      color: rgba(30,26,22,.86);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary::after{
+      content:"+";
+      float:right;
+      width:28px; height:28px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(244,197,66,.18);
+      border: 1px solid rgba(230,155,46,.22);
+    }
+    details[open] summary::after{ content:"–"; }
+    details .bio{
+      margin-top: 10px;
+      color: rgba(30,26,22,.74);
+      font-size: 14.5px;
+    }
+
+    /* FAQ */
+    .faq details{ padding: 14px 14px; }
+    .faq summary{ font-size: 15px; }
+    .note{
+      padding: 16px;
+      border-radius: var(--radius);
+      background: rgba(255,242,216,.72);
+      border:1px solid rgba(230,155,46,.22);
+    }
+    .note strong{ display:block; margin-bottom:6px; }
+    .note p{ margin:0; color: rgba(30,26,22,.74); font-size: 14.5px; }
+
+    /* Contact */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){ .contact-wrap{ grid-template-columns: 1fr; } }
+
+    .map{
+      border-radius: var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.70);
+      min-height: 320px;
+    }
+    .map iframe{
+      width:100%; height:100%;
+      border:0;
+      display:block;
+    }
+
+    /* Footer */
+    footer{
+      padding: 32px 0 44px;
+      color: rgba(30,26,22,.70);
+    }
+    .footer-grid{
+      display:grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 14px;
+      align-items:start;
+      padding-top: 18px;
+      border-top:1px solid rgba(30,26,22,.10);
+    }
+    @media (max-width: 980px){ .footer-grid{ grid-template-columns:1fr; } }
+    .small{ font-size: 13px; color: rgba(30,26,22,.62); }
+    .footer-links{
+      display:flex; flex-wrap:wrap; gap:10px;
+      justify-content:flex-end;
+    }
+    @media (max-width: 980px){ .footer-links{ justify-content:flex-start; } }
+    .footer-links a{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(30,26,22,.10);
+      background: rgba(255,255,255,.70);
+      font-size: 13px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      nav{ transition:none; }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header" data-header>
-    <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Daffodil Psychology home">
-        <span class="logo" aria-hidden="true">
-          <!-- Sunflower / Daffodil mark as inline SVG (no image needed) -->
-          <svg viewBox="0 0 64 64" role="img" focusable="false">
-            <defs>
-              <radialGradient id="g1" cx="35%" cy="35%" r="75%">
-                <stop offset="0" stop-color="#fff3b5"/>
-                <stop offset="1" stop-color="#f4c542"/>
-              </radialGradient>
-              <radialGradient id="g2" cx="45%" cy="45%" r="70%">
-                <stop offset="0" stop-color="#7b4b2a"/>
-                <stop offset="1" stop-color="#2a1a12"/>
-              </radialGradient>
-            </defs>
-            <g>
-              <path fill="url(#g1)" d="M32 6c3 6-1 10-6 12 6 1 9 5 10 10 1-5 4-9 10-10-5-2-9-6-6-12-4 4-6 5-8 5s-4-1-8-5z"/>
-              <path fill="url(#g1)" d="M58 32c-6 3-10-1-12-6-1 6-5 9-10 10 5 1 9 4 10 10 2-5 6-9 12-6-4-4-5-6-5-8s1-4 5-8z"/>
-              <path fill="url(#g1)" d="M32 58c-3-6 1-10 6-12-6-1-9-5-10-10-1 5-4 9-10 10 5 2 9 6 6 12 4-4 6-5 8-5s4 1 8 5z"/>
-              <path fill="url(#g1)" d="M6 32c6-3 10 1 12 6 1-6 5-9 10-10-5-1-9-4-10-10-2 5-6 9-12 6 4 4 5 6 5 8s-1 4-5 8z"/>
-              <circle cx="32" cy="32" r="12" fill="url(#g2)"/>
-              <circle cx="27" cy="29" r="2.2" fill="#ffffff" opacity=".25"/>
-            </g>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Daffodil Psychology Home">
+          <div class="mark" aria-hidden="true">
+            <!-- Simple daffodil mark (SVG) -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3.2c1.2 2.2 2.2 3.2 4.6 4.2-2.4 1-3.4 2-4.6 4.2-1.2-2.2-2.2-3.2-4.6-4.2 2.4-1 3.4-2 4.6-4.2Z" fill="rgba(30,26,22,.85)"/>
+              <path d="M12 7.7c2.9 0 5.3 2.4 5.3 5.3S14.9 18.3 12 18.3 6.7 15.9 6.7 13 9.1 7.7 12 7.7Z" fill="rgba(30,26,22,.22)"/>
+              <path d="M12 10.2c1.6 0 2.8 1.3 2.8 2.8S13.6 15.8 12 15.8 9.2 14.5 9.2 13 10.4 10.2 12 10.2Z" fill="rgba(30,26,22,.85)"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Daffodil Psychology</strong>
+            <span>Therapy & Evaluations • Merrick, NY</span>
+          </div>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="rgba(30,26,22,.85)" stroke-width="2" stroke-linecap="round"/>
           </svg>
-        </span>
-        <span class="brand-text">
-          <span class="brand-name">Daffodil Psychology</span>
-          <span class="brand-sub">Therapy and Evaluations • Merrick, NY</span>
-        </span>
-      </a>
+        </button>
 
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-        <span class="sr-only">Open menu</span>
-        <span class="burger" aria-hidden="true"></span>
-      </button>
-
-      <nav class="nav" id="site-nav" data-nav>
-        <a href="#services">Services</a>
-        <a href="#evaluations">Evaluations</a>
-        <a href="#team">Our Team</a>
-        <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="#contact">Request an appointment</a>
-      </nav>
+        <nav id="siteNav" aria-label="Primary navigation" data-open="false">
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#evaluations">Evaluations</a></li>
+            <li><a href="#consultation">Consultation</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a class="nav-cta" href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main id="main">
-    <section class="hero" id="top" aria-label="Hero">
-      <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="micro">
-            Therapy and autism evaluations in <strong>Merrick, NY</strong>
-          </p>
-
-          <h1>
-            Feel understood.
-            Get clear answers.
-            Move forward with confidence.
-          </h1>
-
-          <p class="subhead">
-            Daffodil Psychology supports children, adolescents, adults, and families with therapy, school focused consultation, and comprehensive evaluations including ADOS 2.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="tel:+15162345005">Call or text (516) 234 5005</a>
-            <a class="btn ghost" href="mailto:dr.zacharyrose1@gmail.com">Email the practice</a>
-          </div>
-
-          <div class="trust-row" aria-label="Practice highlights">
-            <div class="pill">ADOS 2 trained clinicians</div>
-            <div class="pill">Children to adults</div>
-            <div class="pill">Warm, structured, evidence based care</div>
-          </div>
-
-          <div class="address-card">
-            <p class="address-title">Office</p>
-            <p class="address">
-              1955 Merrick Road, Suite 205A<br />
-              Merrick, NY 11566
-            </p>
-            <p class="address-links">
-              <a href="https://www.google.com/maps?q=1955+Merrick+Road+Suite+205A+Merrick+NY+11566" target="_blank" rel="noopener">Open in Maps</a>
-              <span aria-hidden="true">•</span>
-              <a href="#contact">Send a message</a>
-            </p>
-          </div>
-        </div>
-
-        <div class="hero-card" aria-label="Practice focus">
-          <div class="hero-card-top">
-            <p class="hero-card-kicker">What we help with</p>
-            <h2 class="hero-card-title">Therapy, evaluations, and practical support for real life.</h2>
-            <p class="hero-card-text">
-              Individual and group therapy for children, adolescents, adults, and families. Specialties include anxiety, emotional regulation, ADHD, and disruptive behavior concerns.
-            </p>
-          </div>
-
-          <div class="hero-card-bottom">
-            <div class="mini">
-              <p class="mini-title">Evaluations</p>
-              <p class="mini-text">
-                Autism and psycho educational testing with gold standard measures including ADOS 2, ADI R, Vineland 3, and more.
-              </p>
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="card hero-left">
+            <div class="microline">
+              <span aria-hidden="true">🌼</span>
+              <span>Therapy + Autism Evaluations (ADOS-2) • Merrick, NY</span>
             </div>
-            <div class="mini">
-              <p class="mini-title">Consultation and behavior</p>
-              <p class="mini-text">
-                School and family consultation, parent training, behavior strategies, and skill building for social emotional regulation.
-              </p>
+
+            <h1>Warm, evidence based care for kids, teens, and adults.</h1>
+            <p>
+              Dr. Zachary Rose and our team provide therapy for all ages and comprehensive autism and psycho educational evaluations,
+              including gold standard measures like ADOS-2.
+            </p>
+
+            <div class="pill-row" aria-label="Highlights">
+              <span class="pill">Therapy: children, adolescents, adults, families</span>
+              <span class="pill">Autism evaluations: full or partial</span>
+              <span class="pill">Anxiety, ADHD, emotional regulation, behavior</span>
             </div>
+
+            <div class="cta-row">
+              <a class="btn primary" href="tel:+15162345005" aria-label="Call or text (516) 234-5005">
+                Call / Text (516) 234-5005
+              </a>
+              <a class="btn secondary" href="mailto:dr.zacharyrose1@gmail.com?subject=Inquiry%20-%20Therapy%20or%20Evaluation" aria-label="Email dr.zacharyrose1@gmail.com">
+                Email the Practice
+              </a>
+              <a class="btn" href="#contact" aria-label="Request a consultation">
+                Request a Consultation
+              </a>
+            </div>
+          </div>
+
+          <div class="card hero-right" aria-label="Doctor portrait and key contact info">
+            <div class="portrait">
+              <!-- REQUIRED HERO IMAGE -->
+              <img
+                src="dr-zachary-rose.png"
+                width="900"
+                height="1200"
+                alt="Portrait of Dr. Zachary Rose"
+                decoding="async"
+              />
+            </div>
+
+            <div class="hero-contact">
+              <strong>Visit our office</strong>
+              <div class="contact-grid">
+                <div class="contact-item">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M12 22s7-5.2 7-12a7 7 0 0 0-14 0c0 6.8 7 12 7 12Z" stroke="rgba(30,26,22,.85)" stroke-width="2"/>
+                      <path d="M12 13.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" stroke="rgba(30,26,22,.85)" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div><strong>1955 Merrick Road, Suite 205A</strong></div>
+                    <div class="small">Merrick, NY 11566 • United States</div>
+                  </div>
+                </div>
+                <div class="contact-item">
+                  <div class="ico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                      <path d="M22 16.9v3a2 2 0 0 1-2.2 2c-9.6-.9-17.2-8.5-18.1-18.1A2 2 0 0 1 3.8 1.6h3a2 2 0 0 1 2 1.7c.2 1.3.5 2.6 1 3.8a2 2 0 0 1-.4 2.1L8.1 10.6a15.9 15.9 0 0 0 5.3 5.3l1.4-1.3a2 2 0 0 1 2.1-.4c1.2.5 2.5.8 3.8 1a2 2 0 0 1 1.7 2Z" stroke="rgba(30,26,22,.85)" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div><strong>+1 (516) 234-5005</strong></div>
+                    <div class="small">Call or text for scheduling and fees</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-
-      <div class="hero-bg" aria-hidden="true"></div>
     </section>
 
-    <section class="section" id="services" aria-label="Services">
-      <div class="wrap">
-        <header class="section-head">
-          <h2>Services</h2>
-          <p class="section-sub">
-            Clear steps, warm support, and a plan you can actually use.
-          </p>
-        </header>
+    <!-- TRUST / IMAGES (2 extra images here = total 3 images including hero) -->
+    <section aria-label="Practice atmosphere and approach">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>A space that feels safe, calm, and welcoming</h2>
+            <p class="sub">We prioritize strong rapport, clear communication, and practical strategies you can use at home, school, and work.</p>
+          </div>
+        </div>
 
-        <div class="cards">
-          <article class="card">
+        <div class="grid-3">
+          <div class="photo-card">
+            <picture>
+              <source srcset="office-warm.webp" type="image/webp" />
+              <img src="office-warm.jpg" width="1200" height="800" alt="Warm and welcoming office environment" loading="lazy" decoding="async" />
+            </picture>
+            <div class="cap">
+              <div>
+                <strong>Comfort first</strong>
+                <small>Warm, accepting environment for all ages</small>
+              </div>
+              <span class="tag">Merrick, NY</span>
+            </div>
+          </div>
+
+          <div class="photo-card">
+            <picture>
+              <source srcset="therapy-kids.webp" type="image/webp" />
+              <img src="therapy-kids.jpg" width="1200" height="800" alt="Child friendly therapy approach with games and creative activities" loading="lazy" decoding="async" />
+            </picture>
+            <div class="cap">
+              <div>
+                <strong>Kid friendly support</strong>
+                <small>Games, creative activities, and play based techniques</small>
+              </div>
+              <span class="tag">Therapy</span>
+            </div>
+          </div>
+
+          <div class="tile">
+            <h3>What you can expect</h3>
+            <p>Care that is both compassionate and structured, with a clear plan and measurable progress.</p>
+            <ul>
+              <li>Evidence based approaches (CBT and more)</li>
+              <li>Support for emotional regulation and behavior</li>
+              <li>Collaboration with caregivers and educators when helpful</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" aria-label="Services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Services</h2>
+            <p class="sub">Individual and group therapy for children, adolescents, adults, and families, with support for a range of needs.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="tile">
             <h3>Therapy</h3>
-            <p>
-              Individual and group therapy offered for children, adolescents, adults, and families. Sessions are structured, supportive, and tailored to your goals.
-            </p>
-            <p class="soft">
-              Common focus areas include anxiety, emotional dysregulation, ADHD, and ODD.
-            </p>
-          </article>
+            <p>Individual and group therapy offered for children, adolescents, adults, and families.</p>
+            <ul>
+              <li>Anxiety and emotional dysregulation</li>
+              <li>ADHD, ODD, behavior challenges</li>
+              <li>Skill building, coping strategies, confidence</li>
+            </ul>
+          </div>
 
-          <article class="card">
+          <div class="tile" id="evaluations">
             <h3>Evaluations</h3>
-            <p>
-              Autism and psycho educational testing with a thoughtful, comprehensive approach that helps families understand strengths, needs, and next steps.
-            </p>
-            <p class="soft">
-              Measures may include ADOS 2, ADI R, Vineland 3, and additional tools when appropriate.
-            </p>
-          </article>
+            <p>Autism and psycho educational testing with gold standard measures implemented when appropriate.</p>
+            <ul>
+              <li>ADOS-2, ADI-R, Vineland-3 and more</li>
+              <li>Full or partial autism evaluations for any age</li>
+              <li>Feedback session and written report</li>
+            </ul>
+          </div>
 
-          <article class="card">
-            <h3>Consultation and behavior</h3>
-            <p>
-              With years of experience in schools and special education, we support families with parent training, behavior planning, and school based advocacy.
-            </p>
-            <p class="soft">
-              The goal is practical skill building that transfers into daily routines.
-            </p>
-          </article>
+          <div class="tile" id="consultation">
+            <h3>Consultation & Behavior</h3>
+            <p>School, behavioral, and family consultation built on years of experience in education and private practice.</p>
+            <ul>
+              <li>Parent training and behavior modification</li>
+              <li>Strategy tailoring for ADHD and anxiety</li>
+              <li>School based consultation and advocacy</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="evaluations" aria-label="Evaluations details">
-      <div class="wrap split">
-        <div>
-          <h2>Autism and psycho educational evaluations</h2>
-          <p class="lead">
-            When you need clarity, we focus on careful observation, strong measures, and a report that actually helps you make decisions.
-          </p>
-
-          <div class="feature">
-            <p class="feature-title">Gold standard measures, used with care</p>
-            <p class="feature-text">
-              ADOS 2 is a structured tool that supports diagnostic decisions when combined with history, interviews, rating scales, and clinical judgment.
-              Evaluations are rarely a single test. We match the plan to the person in front of us.
-            </p>
-          </div>
-
-          <div class="feature">
-            <p class="feature-title">A process that respects your time</p>
-            <p class="feature-text">
-              Therapy sessions are typically 45 minutes.
-              Evaluations usually take place across 2 to 3 visits, with overall timelines often around 4 weeks from start to finish, depending on what is needed.
-            </p>
+    <!-- TEAM -->
+    <section id="team" aria-label="Our Team">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Our Team</h2>
+            <p class="sub">A multidisciplinary team supporting children, adolescents, adults, and families across therapy, evaluations, and consultation.</p>
           </div>
         </div>
 
-        <div class="callout">
-          <h3>What you receive</h3>
+        <div class="grid-2">
+          <!-- 1 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">ZR</div>
+              <div>
+                <strong>Dr. Zachary Rose, Psy.D.</strong>
+                <span>Founder & Clinical Director • Clinical & School Psychologist</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Rose is the founder and Clinical Director of Daffodil Psychology. With over a decade of experience working with children and families in schools and private practice, he brings a warm and approachable demeanor to therapy. Specialties include treatment and diagnosis of Autism (ADOS-2 trained), behavior management, parent training, strategy tailoring for ADHD and anxiety, and school based consultation and advocacy.
+              </div>
+            </details>
+          </article>
+
+          <!-- 2 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">EF</div>
+              <div>
+                <strong>Eileen Fusco, Psy.D.</strong>
+                <span>School Psychologist & Clinician (Limited Permit)</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Fusco is a tenured school psychologist with nearly a decade of experience and specializes in supporting children and adolescents, particularly those with Autism and ADHD. She uses a variety of therapeutic approaches including CBT and incorporates games, creative activities, and play based techniques to help children feel comfortable and engaged. She works closely with families and educators to support emotional regulation, social skills, and academic success.
+              </div>
+            </details>
+          </article>
+
+          <!-- 3 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">SN</div>
+              <div>
+                <strong>Dr. Samantha Napolitano, Psy.D.</strong>
+                <span>School Psychologist & Clinician (Limited Permit)</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Napolitano received her Psy.D. in School Community Psychology from Hofstra University. She supports clients across developmental stages and consistently utilizes CBT techniques and strategies to reduce negative symptoms and increase positivity. Her experience across varying needs and diagnoses informs effective intervention with practical, supportive care.
+              </div>
+            </details>
+          </article>
+
+          <!-- 4 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">AF</div>
+              <div>
+                <strong>Dr. Alyssa Feld, Psy.D., NCSP</strong>
+                <span>School Psychologist & Clinician (Limited Permit)</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Feld provides diagnostic assessment and therapy for children and adolescents, with expertise in autism spectrum disorder, ADHD, and learning disabilities. She takes a collaborative, evidence based, compassionate approach and completed advanced training at Northwell Health’s Cohen Children’s Medical Center in Developmental and Behavioral Pediatrics. She is both New York State certified and nationally certified as a School Psychologist.
+              </div>
+            </details>
+          </article>
+
+          <!-- 5 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">JS</div>
+              <div>
+                <strong>Jane Shnayder, Psy.D.</strong>
+                <span>School Psychologist & Clinician (Limited Permit)</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Shnayder provides diagnostic assessments and evidence based therapy for ASD, ADHD, anxiety, and disruptive behavior disorders across school, hospital, and community settings. Grounded in a cognitive behavioral framework, she takes a strengths based approach to build emotion regulation, problem solving, social skills, and resilience for children and families.
+              </div>
+            </details>
+          </article>
+
+          <!-- 6 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">AE</div>
+              <div>
+                <strong>Dr. Alyssa Elias, Psy.D.</strong>
+                <span>Licensed Psychologist & Certified School Psychologist</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Elias is a tenured school psychologist with over a decade of experience helping children, adolescents, and families. She supports developmental differences, social connection, and emotion regulation, and guides families through transitions. She is a certified PEERS and Sibshop facilitator and has contributed to research, education, and professional presentations.
+              </div>
+            </details>
+          </article>
+
+          <!-- 7 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">JR</div>
+              <div>
+                <strong>Dr. Janine W. Rose, Ph.D.</strong>
+                <span>Licensed Clinical Psychologist • Supervisor</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Rose has over 40 years of experience as a school and clinical psychologist and is ADOS-2 trained. She has supported adults, young adults, children, and families with anxiety, depression, eating disorders, and more. She has supervised doctoral students and continues to contribute as an adjunct professor and CPSE chairperson.
+              </div>
+            </details>
+          </article>
+
+          <!-- 8 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">SP</div>
+              <div>
+                <strong>Samantha Preston, Psy.D.</strong>
+                <span>Licensed Psychologist • Evaluator</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Dr. Preston specializes in comprehensive diagnostic evaluations for children, adolescents, and adults with expertise in ASD and ADOS-2, ADHD, and learning disabilities. She collaborates with educators and families to support student success and help families better understand strengths and challenges.
+              </div>
+            </details>
+          </article>
+
+          <!-- 9 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">KC</div>
+              <div>
+                <strong>Kayla Cusano, M.S.</strong>
+                <span>OMR Coordinator & Clinical Consultant • Psy.D. Candidate</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Kayla is a PsyD doctoral candidate in School Community Psychology with experience supporting children with ASD, ADHD, learning disabilities, and social emotional concerns. She was the 2025 NYASP Ted Bernstein Award recipient for Hofstra’s PsyD program and supports outreach, media, and resources for families.
+              </div>
+            </details>
+          </article>
+
+          <!-- 10 -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">GO</div>
+              <div>
+                <strong>Gabriel Oldshein, M.S.</strong>
+                <span>OMR Assistant & Clinical Consultant • Psy.D. Candidate</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Gabe is a PsyD doctoral candidate with experience supporting children and adolescents with ASD, ADHD, anxiety, and learning disabilities. He works closely with families in a fostering environment to support growth and cultivate strengths.
+              </div>
+            </details>
+          </article>
+
+          <!-- 11 (fun but still relevant) -->
+          <article class="team-card">
+            <div class="who">
+              <div class="avatar" aria-hidden="true">🐾</div>
+              <div>
+                <strong>Oats</strong>
+                <span>Rose Family Dog • Morale Booster</span>
+              </div>
+            </div>
+            <details>
+              <summary>Read bio</summary>
+              <div class="bio">
+                Oats is a 4 year old cockapoo who is not a certified therapy dog (too friendly), but is a beloved part of the family and a reliable morale boost.
+              </div>
+            </details>
+          </article>
+
+          <!-- 12 (optional spacing tile) -->
+          <div class="tile">
+            <h3>Not sure who to book with?</h3>
+            <p>
+              Tell us your goals and concerns. We will recommend the right clinician and the right next step,
+              whether that’s therapy, an evaluation, or consultation.
+            </p>
+            <div class="cta-row" style="margin-top:14px;">
+              <a class="btn primary" href="#contact">Get matched</a>
+              <a class="btn" href="tel:+15162345005">Call / Text</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq" aria-label="Frequently Asked Questions">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Frequently Asked Questions</h2>
+            <p class="sub">Clear answers to common questions about therapy, evaluations, and insurance.</p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="tile">
+            <details>
+              <summary>Where is your office located?</summary>
+              <div class="bio">The office is located at 1955 Merrick Road, Suite 205A, Merrick, New York 11566.</div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>What if my child is hesitant to start therapy or come to the office?</summary>
+              <div class="bio">
+                We work hard to create a warm, comfortable, accepting environment for all ages. Building rapport is essential for success.
+                Children can be slow to warm and our team has experience supporting kids in many settings, including schools and camps.
+                We may incorporate games, prizes, and other kid friendly modalities to soften the experience while making the process rewarding.
+              </div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>Do you accept insurance?</summary>
+              <div class="bio">
+                At this time, we are not members of insurance panels. After payment, we provide a superbill you can submit to your insurance
+                for potential out of network reimbursement. Please confirm your plan’s reimbursement and deductible details before starting.
+              </div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>How long is a typical therapy session or evaluation session?</summary>
+              <div class="bio">
+                Therapy sessions are typically 45 minutes. Evaluation length varies depending on testing performed and often takes 2–3 visits.
+              </div>
+            </details>
+          </div>
+
+          <div class="tile">
+            <details>
+              <summary>What is the ADOS-2?</summary>
+              <div class="bio">
+                ADOS-2 stands for Autism Diagnostic Observation Schedule, 2nd Edition. It is a structured evaluation tool used alongside other
+                measures to inform ASD diagnosis. ADOS-2 is rarely used in isolation and is often part of a more comprehensive evaluation.
+              </div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>How long will it take to feel better?</summary>
+              <div class="bio">
+                Everyone is different. Progress can ebb and flow. Some people experience quick results while others benefit from a longer term
+                trajectory. The consistent foundation is a strong, trusting relationship with your clinician.
+              </div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>What is your rate for services?</summary>
+              <div class="bio">
+                We will inform you by phone and/or email of the specific session or evaluation fee based on your needs.
+              </div>
+            </details>
+            <details style="margin-top:10px;">
+              <summary>How long will evaluations take?</summary>
+              <div class="bio">
+                Evaluations often take around 4 weeks from start to finish, including information gathering, testing, report writing,
+                and the feedback session (all included in the evaluation fee).
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top:14px;">
+          <strong>Good Faith Estimate (No Surprises Act)</strong>
           <p>
-            A clear explanation of findings, practical recommendations, and a feedback conversation that makes the next step feel doable.
+            You have the right to receive a Good Faith Estimate explaining how much your medical care will cost. If you receive a bill that is at least
+            $400 more than your Good Faith Estimate, you can dispute the bill. For more information, visit cms.gov/nosurprises.
           </p>
+        </div>
+      </div>
+    </section>
 
-          <div class="callout-box">
-            <p class="callout-title">Insurance</p>
-            <p class="callout-text">
-              The practice is not in network with insurance panels. After payment, a superbill can be provided for potential out of network reimbursement.
-              Please confirm your benefits with your insurer before starting.
+    <!-- CONTACT -->
+    <section id="contact" aria-label="Contact and location">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p class="sub">Call, text, or email to ask about availability, fees, and the best next step for your needs.</p>
+          </div>
+        </div>
+
+        <div class="contact-wrap">
+          <div class="tile">
+            <h3 style="margin-top:0;">Daffodil Psychology</h3>
+            <p style="margin:0 0 12px;">
+              1955 Merrick Road, Suite 205A<br />
+              Merrick, NY 11566 • United States
             </p>
+
+            <div class="grid-2" style="gap:10px;">
+              <a class="btn primary" href="tel:+15162345005">Call / Text (516) 234-5005</a>
+              <a class="btn secondary" href="mailto:dr.zacharyrose1@gmail.com?subject=Scheduling%20Request%20-%20Daffodil%20Psychology">Email dr.zacharyrose1@gmail.com</a>
+            </div>
+
+            <div class="tile" style="margin-top:14px; background:rgba(255,255,255,.70);">
+              <h3 style="margin:0 0 8px;">What to include in your message</h3>
+              <ul style="margin:0; padding-left:18px;">
+                <li>Who you’re seeking care for (child, teen, adult)</li>
+                <li>Therapy, evaluation, or consultation</li>
+                <li>Any scheduling constraints</li>
+              </ul>
+            </div>
           </div>
 
-          <div class="callout-box">
-            <p class="callout-title">Good Faith Estimate</p>
-            <p class="callout-text">
-              If you do not have insurance or are not using insurance, you have the right to receive a Good Faith Estimate of expected costs.
-              Learn more at <a href="https://www.cms.gov/nosurprises" target="_blank" rel="noopener">cms.gov/nosurprises</a>.
-            </p>
-          </div>
-
-          <a class="btn primary full" href="#contact">Ask about availability and fees</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="team" aria-label="Team">
-      <div class="wrap">
-        <header class="section-head">
-          <h2>Our Team</h2>
-          <p class="section-sub">
-            A collaborative group of clinicians focused on evidence based care and a warm experience for all ages.
-          </p>
-        </header>
-
-        <div class="team-grid">
-          <article class="team-card featured">
-            <div class="avatar" aria-hidden="true">ZR</div>
-            <div class="team-body">
-              <h3>Dr. Zachary Rose, Psy.D.</h3>
-              <p class="role">Founder and Clinical Director • Clinical and School Psychologist</p>
-              <p class="bio">
-                Dr. Rose brings over a decade of experience supporting children and families in schools and private practice.
-                He is ADOS 2 trained and specializes in autism diagnosis, behavior management, parent training, ADHD and anxiety strategy tailoring, and school based consultation and advocacy.
-              </p>
-            </div>
-          </article>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">EF</span>
-              <span class="sum">
-                <span class="name">Dr. Eileen Fusco, Psy.D.</span>
-                <span class="role">School Psychologist and Clinician with Limited Permit</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Fusco is a tenured school psychologist with nearly a decade of experience. She specializes in supporting children and adolescents, particularly with autism and ADHD.
-                She uses CBT and incorporates developmentally appropriate activities to help children feel comfortable and engaged.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">SN</span>
-              <span class="sum">
-                <span class="name">Dr. Samantha Napolitano, Psy.D.</span>
-                <span class="role">School Psychologist and Clinician with Limited Permit</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Napolitano received her Psy.D. in School Community Psychology from Hofstra University.
-                She supports people across developmental stages using CBT techniques to reduce distress and strengthen skills for healthier daily life.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">AF</span>
-              <span class="sum">
-                <span class="name">Dr. Alyssa Feld, Psy.D., NCSP</span>
-                <span class="role">School Psychologist and Clinician with Limited Permit</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Feld provides diagnostic assessment and therapy for children and adolescents with expertise in autism, ADHD, and learning differences.
-                Her approach is collaborative, evidence based, and compassionate.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">JS</span>
-              <span class="sum">
-                <span class="name">Dr. Jane Shnayder, Psy.D.</span>
-                <span class="role">School Psychologist and Clinician with Limited Permit</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Shnayder provides diagnostic assessments and therapy for a wide range of needs including ASD, ADHD, anxiety, and disruptive behavior disorders.
-                She uses a cognitive behavioral framework and a strengths based lens to build confidence and resilience.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">AE</span>
-              <span class="sum">
-                <span class="name">Dr. Alyssa Elias, Psy.D.</span>
-                <span class="role">Licensed Psychologist and Certified School Psychologist</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Elias supports children, adolescents, and families with a focus on inclusion, emotion regulation, social connection, and developmental transitions.
-                She is a certified PEERS and Sibshop facilitator and contributes to education and research.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">JR</span>
-              <span class="sum">
-                <span class="name">Dr. Janine W. Rose, Ph.D.</span>
-                <span class="role">Licensed Clinical Psychologist • Clinical Supervisor</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Rose brings over 40 years of experience across school and clinical psychology.
-                She is ADOS 2 trained and supports evaluations, supervision, and therapy with a warm, professional approach.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">SP</span>
-              <span class="sum">
-                <span class="name">Dr. Samantha Preston, Psy.D.</span>
-                <span class="role">Licensed Psychologist • Evaluator</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Dr. Preston specializes in comprehensive evaluations for children, adolescents, and adults, with expertise in ASD and ADOS 2, ADHD, and learning disabilities.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">KC</span>
-              <span class="sum">
-                <span class="name">Kayla Cusano, M.S.</span>
-                <span class="role">OMR Coordinator and Clinical Consultant • Psy.D. Candidate</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Kayla supports outreach, resources, and clinical consultation. She has experience working with children and families navigating autism, ADHD, learning differences, and social emotional concerns.
-              </p>
-            </div>
-          </details>
-
-          <details class="team-card">
-            <summary>
-              <span class="avatar" aria-hidden="true">GO</span>
-              <span class="sum">
-                <span class="name">Gabriel Oldshein, M.S.</span>
-                <span class="role">OMR Assistant and Clinical Consultant • Psy.D. Candidate</span>
-              </span>
-            </summary>
-            <div class="details-body">
-              <p>
-                Gabe supports children and adolescents with autism, ADHD, anxiety, and learning differences through a strengths focused and supportive approach.
-              </p>
-            </div>
-          </details>
-        </div>
-
-        <p class="note">
-          If you are unsure who is the best fit, share a few details and we will guide you to the right clinician.
-        </p>
-      </div>
-    </section>
-
-    <section class="section alt" id="faq" aria-label="Frequently asked questions">
-      <div class="wrap">
-        <header class="section-head">
-          <h2>Frequently Asked Questions</h2>
-          <p class="section-sub">
-            Quick answers, so you can feel grounded before you reach out.
-          </p>
-        </header>
-
-        <div class="faq">
-          <details class="qa">
-            <summary>Where is your office located?</summary>
-            <div class="qa-body">
-              <p>
-                The office is located at 1955 Merrick Road, Suite 205A, Merrick, New York 11566.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>What if my child is hesitant to start therapy or to come to the office?</summary>
-            <div class="qa-body">
-              <p>
-                We prioritize a warm, comfortable environment and take time to build trust.
-                Many children are slow to warm at first. Our team brings broad experience from schools, camps, and family settings and uses kid friendly approaches to make the process feel safer and more engaging.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>Do you accept insurance?</summary>
-            <div class="qa-body">
-              <p>
-                The practice is not in network with insurance panels. A superbill can be provided after payment for potential out of network reimbursement.
-                Please confirm benefits, deductibles, and reimbursement rates with your insurance company in advance.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>How long is a typical therapy session or evaluation session?</summary>
-            <div class="qa-body">
-              <p>
-                Therapy sessions are typically 45 minutes.
-                Evaluation length varies based on the testing plan and is commonly completed across 2 to 3 visits.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>What is the ADOS 2?</summary>
-            <div class="qa-body">
-              <p>
-                ADOS 2 stands for Autism Diagnostic Observation Schedule, 2nd Edition.
-                It is a structured evaluation used alongside other measures to support diagnostic decisions about autism spectrum disorder.
-                It is rarely used in isolation and is typically one part of a comprehensive evaluation.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>How long will evaluations take?</summary>
-            <div class="qa-body">
-              <p>
-                Depending on what testing is needed, evaluations often take around 4 weeks from start to finish, including information gathering, testing, report writing, and a feedback session.
-              </p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary>What is your rate for services?</summary>
-            <div class="qa-body">
-              <p>
-                Fees are provided by phone or email based on the service and clinician.
-                If you do not have insurance or are not using insurance, you can request a Good Faith Estimate before scheduling.
-              </p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact" aria-label="Contact">
-      <div class="wrap contact-grid">
-        <div class="contact-card">
-          <h2>Contact</h2>
-          <p class="lead">
-            Tell us what you are looking for and we will respond with the next best step.
-          </p>
-
-          <div class="contact-lines" aria-label="Contact details">
-            <p><strong>Phone</strong><br /><a href="tel:+15162345005">+1 516 234 5005</a></p>
-            <p><strong>Email</strong><br /><a href="mailto:dr.zacharyrose1@gmail.com">dr.zacharyrose1@gmail.com</a></p>
-            <p><strong>Address</strong><br />1955 Merrick Road, Suite 205A, Merrick, NY 11566</p>
-          </div>
-
-          <p class="soft">
-            If this is an emergency, call 911 or go to your nearest emergency room. This form is not monitored 24/7.
-          </p>
-
-          <div class="contact-actions">
-            <a class="btn primary" href="tel:+15162345005">Call or text</a>
-            <a class="btn ghost" href="https://www.google.com/maps?q=1955+Merrick+Road+Suite+205A+Merrick+NY+11566" target="_blank" rel="noopener">Directions</a>
+          <div class="map" aria-label="Google Map">
+            <!-- Lightweight embed; you can replace with your preferred map setup -->
+            <iframe
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map to 1955 Merrick Road, Merrick, NY"
+              src="https://www.google.com/maps?q=1955%20Merrick%20Road,%20Merrick,%20NY%2011566&output=embed">
+            </iframe>
           </div>
         </div>
-
-        <form class="form" aria-label="Contact form" onsubmit="return false;">
-          <h3>Send a message</h3>
-
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" autocomplete="name" inputmode="text" placeholder="Your name" />
-          </label>
-
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" autocomplete="email" inputmode="email" placeholder="you@example.com" />
-          </label>
-
-          <label>
-            <span>Phone</span>
-            <input type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="(555) 123 4567" />
-          </label>
-
-          <label>
-            <span>How can we help?</span>
-            <textarea name="message" rows="5" placeholder="Share a few details about what you are looking for"></textarea>
-          </label>
-
-          <button class="btn primary" type="submit">Request a callback</button>
-          <p class="tiny">
-            By submitting, you agree that we may contact you by phone or email. Do not include sensitive clinical details in this form.
-          </p>
-        </form>
       </div>
     </section>
   </main>
 
-  <footer class="footer" aria-label="Footer">
-    <div class="wrap footer-inner">
-      <p class="foot-brand">
-        <span class="foot-mark" aria-hidden="true">🌼</span>
-        Daffodil Psychology • Merrick, NY
-      </p>
-      <p class="tiny">
-        © <span id="y"></span> Daffodil Psychology. All rights reserved.
-      </p>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <strong style="display:block;">Daffodil Psychology</strong>
+          <div class="small" style="margin-top:6px;">
+            Therapy and evaluations for children, adolescents, and adults in Merrick, NY.<br />
+            Call/text <a href="tel:+15162345005" style="text-decoration:underline;">(516) 234-5005</a> or email
+            <a href="mailto:dr.zacharyrose1@gmail.com" style="text-decoration:underline;">dr.zacharyrose1@gmail.com</a>.
+          </div>
+          <div class="small" style="margin-top:10px;">
+            © <span id="year"></span> Daffodil Psychology. All rights reserved.
+          </div>
+        </div>
+
+        <div class="footer-links" aria-label="Footer quick links">
+          <a href="#services">Services</a>
+          <a href="#team">Team</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
-    (function () {
-      const btn = document.querySelector("[data-nav-toggle]");
-      const nav = document.querySelector("[data-nav]");
-      const header = document.querySelector("[data-header]");
-      const year = document.getElementById("y");
-
+    // Minimal JS: mobile nav + year (tiny, fast)
+    (function(){
+      const nav = document.getElementById('siteNav');
+      const btn = document.getElementById('menuBtn');
+      const year = document.getElementById('year');
       if (year) year.textContent = new Date().getFullYear();
 
-      if (!btn || !nav) return;
+      if (!nav || !btn) return;
 
-      btn.addEventListener("click", function () {
-        const open = btn.getAttribute("aria-expanded") === "true";
-        btn.setAttribute("aria-expanded", String(!open));
-        nav.classList.toggle("open", !open);
-        header.classList.toggle("nav-open", !open);
+      function closeNav(){
+        nav.dataset.open = "false";
+        btn.setAttribute('aria-expanded', 'false');
+      }
+      btn.addEventListener('click', () => {
+        const open = nav.dataset.open === "true";
+        nav.dataset.open = open ? "false" : "true";
+        btn.setAttribute('aria-expanded', open ? 'false' : 'true');
       });
 
-      nav.addEventListener("click", function (e) {
-        const a = e.target.closest("a");
-        if (!a) return;
-        btn.setAttribute("aria-expanded", "false");
-        nav.classList.remove("open");
-        header.classList.remove("nav-open");
+      nav.addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a) closeNav();
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === "Escape") closeNav();
       });
     })();
   </script>
