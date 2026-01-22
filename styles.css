@@ -19,7 +19,7 @@
 
   --container: 1120px;
 
-  /* stable sticky header height hint */
+  /* ✅ stable sticky header height */
   --header-h: 82px;
 }
 
@@ -86,7 +86,7 @@ h3{ font-size: 18px; }
   top: 0;
   z-index: 50;
 
-  /* Mobile: solid background (prevents iOS scroll repaint glitches) */
+  /* ✅ Mobile: solid background (prevents iOS scroll repaint glitches) */
   background: rgba(251,243,231,.92);
   border-bottom: 1px solid rgba(28,26,22,.08);
 
@@ -109,6 +109,8 @@ h3{ font-size: 18px; }
   align-items:center;
   justify-content: flex-start;
   gap: 12px;
+
+  /* ✅ a bit more vertical breathing room */
   padding: 16px 0;
 }
 
@@ -176,28 +178,31 @@ h3{ font-size: 18px; }
 /* Mobile dropdown nav */
 .nav{
   position: absolute;
-
-  /* ✅ FIX: Keep dropdown inside viewport and avoid horizontal overflow */
-  left: 16px;
   right: 16px;
-
-  /* ✅ FIX: Anchor under the real header height (no overlap/jumps) */
-  top: calc(100% + 10px);
-
+  top: calc(var(--header-h) - 4px);
+  width: min(420px, calc(100% - 32px));
   background: rgba(255,255,255,.88);
   border: 1px solid rgba(28,26,22,.10);
   border-radius: 18px;
   box-shadow: var(--shadow);
   padding: 10px;
 
-  display:none;
+  display:flex;
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
-}
 
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
 body.nav-open .nav{
-  display:flex;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .nav a{
@@ -246,6 +251,7 @@ body.nav-open .nav{
   gap: 16px;
   align-items: start;
 
+  /* ✅ explicit ordering on mobile */
   grid-template-areas:
     "copy"
     "media"
@@ -256,7 +262,7 @@ body.nav-open .nav{
   grid-area: copy;
   display:flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-start; /* ✅ micro pill anchors on the same vertical line as H1 */
 }
 
 .hero-media{ grid-area: media; }
@@ -264,14 +270,6 @@ body.nav-open .nav{
 .hero-helper{
   grid-area: helper;
   margin-top: 2px;
-}
-
-/* ✅ FIX: prevent mobile “breaks” from long email/strings */
-.hero-helper,
-.hero-helper a{
-  max-width: 100%;
-  overflow-wrap: anywhere;
-  word-break: break-word;
 }
 
 .micro{
@@ -283,7 +281,7 @@ body.nav-open .nav{
   padding: 8px 10px;
   border-radius: 999px;
   box-shadow: 0 12px 30px rgba(28,26,22,.06);
-  margin: 0 0 12px 0;
+  margin: 0 0 12px 0; /* ✅ no left shift */
   align-self: flex-start;
 }
 
@@ -293,7 +291,7 @@ body.nav-open .nav{
   max-width: 60ch;
 }
 
-/* Credentials */
+/* ✅ Credentials: no bullets, perfect column alignment on mobile */
 .credentials{
   list-style: none;
   padding: 0;
@@ -329,7 +327,7 @@ body.nav-open .nav{
   font-weight: 900;
   font-size: 12px;
   line-height: 1;
-  flex: 0 0 18px;
+  flex: 0 0 18px; /* ✅ ensures exact vertical alignment */
 }
 
 .hero-actions{
@@ -402,6 +400,7 @@ body.nav-open .nav{
   display:block;
 }
 
+/* ✅ mobile hero image ratio, looks stable under copy */
 .photo-card--hero{
   aspect-ratio: 4 / 3;
 }
@@ -728,27 +727,30 @@ input:focus, select:focus, textarea:focus{
 
   .nav{
     position: static;
-    left: auto;
-    right: auto;
-    top: auto;
-
     width: auto;
     padding: 0;
     border: 0;
     box-shadow: none;
     background: transparent;
 
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+
     display:flex;
     flex-direction: row;
     align-items:center;
 
+    /* ✅ tighter grouping (less "air" between links) */
     gap: 8px;
     margin-left: auto;
+    transition: none;
   }
 
   .nav a{
     font-size: 14px;
-    padding: 9px 10px;
+    padding: 9px 10px; /* ✅ slightly tighter */
     border-radius: 999px;
   }
 
@@ -763,6 +765,7 @@ input:focus, select:focus, textarea:focus{
     gap: 22px;
     align-items: center;
 
+    /* ✅ helper stays under copy, media spans full right column */
     grid-template-areas:
       "copy media"
       "helper media";
@@ -770,6 +773,7 @@ input:focus, select:focus, textarea:focus{
 
   .hero-helper{ margin-top: 0; }
 
+  /* Credentials: can breathe a bit more on desktop */
   .credentials{
     display:flex;
     flex-wrap: wrap;
@@ -778,6 +782,7 @@ input:focus, select:focus, textarea:focus{
     font-size: 12.5px;
   }
 
+  /* ✅ Desktop hero image more cinematic */
   .photo-card--hero{ aspect-ratio: 16 / 10; }
   .photo-card--hero img{ aspect-ratio: 16 / 10; }
 
@@ -789,18 +794,5 @@ input:focus, select:focus, textarea:focus{
 
 @media (prefers-reduced-motion: reduce){
   *{ scroll-behavior: auto; }
-  .btn, .nav a{ transition: none; }
-}
-
-/* =========================
-   VIEW MODE: HERO ONLY
-   (safe hide, no deletions)
-   ========================= */
-
-body.view-hero main > section:not(.hero){
-  display: none;
-}
-
-body.view-hero .site-footer{
-  display: none;
+  .btn, .nav a, .nav{ transition: none; }
 }
