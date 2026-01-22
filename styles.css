@@ -18,10 +18,17 @@
   --r-sm: 12px;
 
   --container: 1120px;
+
+  /* Stable sticky header height for consistent dropdown positioning */
+  --header-h: 74px;
 }
 
 *{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; }
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* prevents anchors hiding under sticky header */
+  -webkit-text-size-adjust: 100%;
+}
 body{
   margin:0;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
@@ -32,10 +39,13 @@ body{
     radial-gradient(900px 600px at 40% 120%, rgba(107,63,39,.10), transparent 60%),
     var(--bg);
   line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 img{ max-width:100%; display:block; }
 a{ color: inherit; text-decoration: none; }
+button{ font: inherit; color: inherit; }
 p{ margin: 0 0 12px; }
 h1,h2,h3{ margin:0 0 10px; line-height:1.12; letter-spacing: -0.02em; }
 h1{ font-size: clamp(32px, 7vw, 52px); }
@@ -45,6 +55,12 @@ h3{ font-size: 18px; }
 .container{
   width: min(var(--container), calc(100% - 32px));
   margin: 0 auto;
+}
+
+/* Accessible focus */
+:focus-visible{
+  outline: 3px solid rgba(229,142,42,.55);
+  outline-offset: 3px;
 }
 
 .skip-link{
@@ -71,8 +87,9 @@ h3{ font-size: 18px; }
 
 /* MOBILE FIRST HEADER */
 .header-row{
+  min-height: var(--header-h);
   display:flex;
-  align-items:center;          /* ✅ vertical center */
+  align-items:center;
   justify-content: flex-start;
   gap: 12px;
   padding: 14px 0;
@@ -80,7 +97,7 @@ h3{ font-size: 18px; }
 
 .brand{
   display:flex;
-  align-items:center;          /* ✅ vertical center with nav items */
+  align-items:center;
   gap: 10px;
 }
 
@@ -101,8 +118,8 @@ h3{ font-size: 18px; }
 .brand-text{
   display:flex;
   flex-direction: column;
-  justify-content: center;     /* ✅ makes the two lines sit optically centered */
-  line-height: 1.15;           /* ✅ reduces perceived “logo sits higher” effect */
+  justify-content: center;
+  line-height: 1.15;
 }
 
 .brand-name{
@@ -118,12 +135,10 @@ h3{ font-size: 18px; }
   margin-top: 2px;
 }
 
-/* CSS-only mobile menu */
-.nav-toggle{ display:none; }
-
+/* Mobile menu button */
 .nav-btn{
   margin-left: auto;
-  display:flex;                /* ✅ mobile default: burger visible */
+  display:flex;
   width: 42px;
   height: 42px;
   border-radius: 14px;
@@ -135,6 +150,7 @@ h3{ font-size: 18px; }
   gap: 5px;
   flex-direction: column;
   cursor: pointer;
+  padding: 0;
 }
 
 .nav-btn span{
@@ -144,21 +160,35 @@ h3{ font-size: 18px; }
   border-radius: 10px;
 }
 
-/* Mobile dropdown nav (hidden until toggle) */
+/* Mobile dropdown nav */
 .nav{
   position: absolute;
   right: 16px;
-  top: 70px;
+  top: calc(var(--header-h) - 4px);
   width: min(420px, calc(100% - 32px));
   background: rgba(255,255,255,.80);
   border: 1px solid rgba(28,26,22,.10);
   border-radius: 18px;
   box-shadow: var(--shadow);
   padding: 10px;
-  display:none;
+
+  display:flex;
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+}
+
+body.nav-open .nav{
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .nav a{
@@ -167,7 +197,7 @@ h3{ font-size: 18px; }
   padding: 12px 12px;
   border-radius: 14px;
   transition: background .18s ease, transform .18s ease, color .18s ease;
-  line-height: 1.1;            /* ✅ helps optical vertical centering */
+  line-height: 1.1;
 }
 
 .nav a:hover{
@@ -187,8 +217,6 @@ h3{ font-size: 18px; }
   background: rgba(242,181,68,.30);
 }
 
-.nav-toggle:checked ~ .nav{ display:flex; }
-
 /* HERO (mobile-first: stacked) */
 .hero{
   position: relative;
@@ -205,7 +233,7 @@ h3{ font-size: 18px; }
 
 .hero-grid{
   display:grid;
-  grid-template-columns: 1fr;  /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 18px;
   align-items: start;
 }
@@ -230,17 +258,14 @@ h3{ font-size: 18px; }
   max-width: 60ch;
 }
 
-/* ✅ Credentials: fix orphaned tick appearance
-   - slightly tighter separators
-   - centered when wrapping (so line 2 doesn’t look empty on the right)
-   - still looks “official”, not like buttons */
+/* Credentials */
 .credentials{
   list-style: none;
   padding: 0;
   margin: 14px 0 16px;
   display:flex;
   align-items:center;
-  justify-content: center;     /* ✅ mobile default centers wrapped line */
+  justify-content: center;
   flex-wrap: wrap;
   row-gap: 8px;
   column-gap: 0;
@@ -257,7 +282,7 @@ h3{ font-size: 18px; }
 
 .credentials li + li::before{
   content: "•";
-  margin: 0 clamp(6px, 1.6vw, 10px); /* ✅ tighter gap to help fit */
+  margin: 0 clamp(6px, 1.6vw, 10px);
   color: rgba(28,26,22,.45);
 }
 
@@ -411,7 +436,7 @@ h3{ font-size: 18px; }
 
 .cards{
   display:grid;
-  grid-template-columns: 1fr;  /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 16px;
 }
@@ -429,7 +454,7 @@ h3{ font-size: 18px; }
 .media-split{
   margin-top: 16px;
   display:grid;
-  grid-template-columns: 1fr; /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 14px;
   align-items: center;
 }
@@ -490,7 +515,7 @@ h3{ font-size: 18px; }
 /* Team */
 .team-grid{
   display:grid;
-  grid-template-columns: 1fr; /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 12px;
   margin-top: 16px;
 }
@@ -577,7 +602,7 @@ h3{ font-size: 18px; }
 /* Contact */
 .contact-grid{
   display:grid;
-  grid-template-columns: 1fr; /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 12px;
   align-items: stretch;
 }
@@ -629,7 +654,7 @@ input:focus, select:focus, textarea:focus{
 
 .contact-meta{
   display:grid;
-  grid-template-columns: 1fr; /* ✅ mobile default */
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-top: 14px;
 }
@@ -734,11 +759,18 @@ input:focus, select:focus, textarea:focus{
     border: 0;
     box-shadow: none;
     background: transparent;
-    display:flex !important;
+
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+
+    display:flex;
     flex-direction: row;
-    align-items:center;         /* ✅ center align with logo */
+    align-items:center;
     gap: 10px;
     margin-left: auto;
+    transition: none;
   }
 
   .nav a{
@@ -766,7 +798,7 @@ input:focus, select:focus, textarea:focus{
 
   .hero-media{ order: 0; }
 
-  /* Credentials: align left on desktop (still avoids orphan feel via tighter separators) */
+  /* Credentials: align left on desktop */
   .credentials{
     justify-content: flex-start;
     font-size: 12.5px;
@@ -780,5 +812,5 @@ input:focus, select:focus, textarea:focus{
 
 @media (prefers-reduced-motion: reduce){
   *{ scroll-behavior: auto; }
-  .btn, .nav a{ transition: none; }
+  .btn, .nav a, .nav{ transition: none; }
 }
